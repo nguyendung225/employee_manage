@@ -1,4 +1,4 @@
-# NguyenVanDung98
+# NguyenVanDung1998
 
 
 
@@ -15,14 +15,14 @@ Already a pro? Just edit this README.md and make it your own. Want to make it ea
 
 ```
 cd existing_repo
-git remote add origin https://gitlab.oceantech.com.vn/thuctap/nguyenvandung98.git
+git remote add origin https://gitlab.oceantech.com.vn/thuctap/nguyenvandung1998.git
 git branch -M main
 git push -uf origin main
 ```
 
 ## Integrate with your tools
 
-- [ ] [Set up project integrations](https://gitlab.oceantech.com.vn/thuctap/nguyenvandung98/-/settings/integrations)
+- [ ] [Set up project integrations](https://gitlab.oceantech.com.vn/thuctap/nguyenvandung1998/-/settings/integrations)
 
 ## Collaborate with your team
 
