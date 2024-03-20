@@ -1,0 +1,154 @@
+.wrapper{
+    
+     font-size: 14px !important;
+     
+   
+ .left{
+    .title,.title, .title{
+
+        font-size: 18px !important;
+        text-transform: uppercase !important;
+        font-weight: 500 !important;
+        letter-spacing: 0.3px;
+    }
+    margin: 0px 20px;
+.skills,.active{
+    ul{
+       list-style: square;
+   }
+   textarea{
+       outline: none;
+       width: 100%;
+       resize: vertical;
+        whiteSpace: pre-wrap
+   }
+
+}
+
+ul.language{
+   list-style: none;
+   padding: 0;
+   li{
+
+       display: flex;
+       align-items: center;
+       justify-content: space-between;
+       .skill{
+           display: flex;
+           .square{
+               width: 8px;
+               height: 8px;
+               background: black;
+               transform: rotate(45deg);
+               border: 1px solid black;
+               margin: 0px 8px;
+               
+          }
+          .square--ouline{
+              background: none;
+           }
+       }
+
+   }
+}
+ul.active{
+   list-style: none;
+   padding: 0;
+}
+
+ }
+
+.right{
+    .info{
+        margin-left: -14px;
+        .gender,.cake,.location{
+           
+    width: 34px;
+    margin-right: 10px;
+    height: 34px;
+    border-radius: 50%;
+           }
+    }
+  
+.name{
+   
+   
+    // font-size: 28px !important;
+    // letter-spacing: 3px;
+    // font-weight: 500 !important;
+    
+   
+    font-size: 35px !important;
+    letter-spacing: 3.7px;
+    font-weight: 500 !important;
+}
+}
+.job{
+   
+    text-transform: uppercase;
+    font-weight: 800 !important;
+    font-size: 16px !important;
+    letter-spacing: 4px;
+}
+.tittle, .title{
+
+    font-size: 18px !important;
+    text-transform: uppercase !important;
+    font-weight: 500 !important;
+    /* letter-spacing: 0.2px; */
+
+}
+
+    
+.goals{
+    border-left: 1px solid gray;
+    .description{
+      
+    background: #0000000d;
+    position: relative;
+    border-radius: 10px;
+    padding: 20px 10px;
+    letter-spacing: 0.4px;
+  
+        &::after{
+            content: '"';
+            position: absolute;
+            right: 5px;
+            bottom: -29px;
+            font-size: 40px;
+        }
+        &::before{
+            content: '"';
+            position: absolute;
+            left: 5px;
+            top: -7px;
+            font-size: 40px;
+            color: black;
+
+
+        }
+    }
+    
+}
+
+
+.experience{
+    border-left: 1px solid gray;
+    font-size: 20px !important;
+   // .nameCompany{
+        .MuiTypography-body1{
+      
+    font-size: 12px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.7px;
+    font-weight: 600 !important;
+        }
+       
+ //   }
+   ul{
+    li{
+        font-size: 12px;
+    }
+   }
+}
+}
