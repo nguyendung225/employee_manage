@@ -4,6 +4,7 @@ import homeRoutes from "./views/home/HomeRoutes";
 import sessionRoutes from "./views/sessions/SessionRoutes";
 import dashboardRoutes from "./views/dashboard/DashboardRoutes";
 import ConstantList from "./appConfig";
+import AddEmployeeRoutes from "./views/Employee/AddEmployee/AddEmployeeRoutes";
 
 const redirectRoute = [
   {
@@ -23,6 +24,7 @@ const routes = [
   ...homeRoutes,
   ...sessionRoutes,
   ...dashboardRoutes,
+  ...AddEmployeeRoutes,
   ...errorRoute,
 ];
 
