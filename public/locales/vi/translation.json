@@ -25,6 +25,7 @@
       "title":"Quản lý nhân viên",
       "end":"Kết thúc nhân viên"
      },
+    
     "subcategory": {
       "product": "Danh sách sản phẩm",
       "productType": "Loại sản phẩm",
@@ -86,6 +87,7 @@
     "search": "Tìm kiếm",
     "search_tree_department": "Tìm kiếm phòng ban",
     "save": "Lưu",
+    "addNew":"Thêm mới",
     "viewDocument": "Xem tài liệu",
     "downloadDocument": "Tải xuống",
     "removeDocument": "Xoá tài liệu",
@@ -837,13 +839,22 @@
     "title": "Nhân viên",
     "name": "Tên nhân viên",
     "code": "Mã nhân viên",
+    "dateOfBirth": "Ngày sinh",
+    "address": "Địa chỉ",
+    "team": "Nhóm",
+    "citizenIdentificationNumber": "CCCD",
+    "ethnic": "Dân tộc",
+    "religion": "Tôn giáo",
+    "dateOfIssuanceCard": "Ngày cấp",
+    "placeOfIssueCard": "Nơi cấp",
+    "status": "Trạng thái",
     "firstName": "Tên",
     "lastName": "Họ",
     "displayName": "Họ và tên nhân viên",
     "gender": "Giới tính",
     "birthDate": "Ngày sinh",
     "birthPlaceame": "Nơi sinh",
-    "phoneNumber": "SĐT",
+    "phone": "SĐT",
     "email": "Email",
     "search": "Tìm kiếm theo tên hoặc mã nhân viên",
     "UserName": "Tên đăng nhập",
@@ -854,6 +865,18 @@
       "use_all": "Nhân viên đều đã sử dụng",
       "deleted_unused": "Đã xoá nhân viên chưa sử dụng",
       "dupli_code": "Mã đã được sử dụng"
+    },
+    "submitProfileStatus": {
+      "save": "Nộp lưu",
+      "createNew": "Tạo mới",
+      "pending": "Chờ xử lý",
+      "approved": "Đã duyệt",
+      "additionalRequest": "Yêu cầu bổ sung",
+      "reject": "Từ chối",
+      "pendingEnd": "Chờ xử lý kết thúc",
+      "approvedEnd": "Đã duyệt kết thúc",
+      "additionalRequestEnd": "Yêu cầu bổ sung kết thúc",
+      "rejectEnd": "Từ chối kết thúc"
     }
   },
   "Store": {
