@@ -1,26 +1,39 @@
 import React, { useEffect, useState } from "react";
 
 import { Breadcrumb, ConfirmationDialog, ShowDialog } from "egret";
-import { Button, Input, InputAdornment, IconButton, Icon } from "@material-ui/core";
+import {
+  Button,
+  Input,
+  InputAdornment,
+  IconButton,
+  Icon,
+} from "@material-ui/core";
 
 import SearchIcon from "@material-ui/icons/Search";
 import { useDispatch, useSelector } from "react-redux";
 import { getEmployees } from "app/redux/actions/EmployeeActions";
-import { ACTION_EMPLOYEE, STATUS_EMPLOYEE } from "app/constants/employeeConstants";
+import {
+  ACTION_EMPLOYEE,
+  STATUS_EMPLOYEE,
+} from "app/constants/employeeConstants";
 import CustomTable from "app/components/CustomTable";
 import { employeesColumns } from "app/components/CustomColumns";
 import { Notifications, Visibility } from "@material-ui/icons";
+import AddEmployeeDialog from "./AddEmployeeDialog";
 export default function AddEmployee({ t }) {
   const [keyword, setKeyword] = useState("");
   const [pageSize, setPageSize] = useState(10);
   const [pageIndex, setPageIndex] = useState(0);
-  const { employeeList, totalElements, success, employee } = useSelector(
+  const [showEmployee, setShowEmployee] = useState(false);
+  const [employee, setEmployee] = useState({});
+  const { employeeList, totalElements, success } = useSelector(
     (state) => state.employee
   );
+
   const dispatch = useDispatch();
   useEffect(() => {
     handleSearch();
-  }, [pageIndex,pageSize,success ]);
+  }, [pageIndex, pageSize, success]);
 
   const handleChangeKeyword = (e) => {
     setKeyword(e.target.value);
@@ -32,7 +45,7 @@ export default function AddEmployee({ t }) {
       pageSize,
       listStatus: STATUS_EMPLOYEE.ADD,
     };
-    dispatch(getEmployees(payload)); 
+    dispatch(getEmployees(payload));
   };
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -40,7 +53,7 @@ export default function AddEmployee({ t }) {
     }
   };
 
-  const handleChangeRowsPerPage = (event) => { 
+  const handleChangeRowsPerPage = (event) => {
     setPageSize(parseInt(event.target.value, 10));
     setPageIndex(0);
   };
@@ -48,19 +61,20 @@ export default function AddEmployee({ t }) {
     setPageIndex(newPage);
   };
 
-  const handleDialogEmployee=(employee)=>{
+  const handleDialogEmployee = (employee) => {
+    setShowEmployee(true);
+    employee && setEmployee(employee);
+  };
 
-  }
-  const handleDeleteEmployee=(employee)=>{
-    
-  }
-  const handleViewEmployee=(employee)=>{
+  const handleCloseEmployeeDialog = () => {
+    setShowEmployee(false);
+    setEmployee({});
+  };
 
-  }
-  const handleNotifyDialog=(employee)=>{
-
-  }
-  const columns = employeesColumns(t,(rowData) => (   
+  const handleDeleteEmployee = (employee) => {};
+  const handleViewEmployee = (employee) => {};
+  const handleNotifyDialog = (employee) => {};
+  const columns = employeesColumns(t, (rowData) => (
     <div>
       {ACTION_EMPLOYEE.EDIT.includes(rowData.submitProfileStatus) && (
         <IconButton
@@ -68,9 +82,9 @@ export default function AddEmployee({ t }) {
           color="primary"
           onClick={() => handleDialogEmployee(rowData)}
         >
-          <Icon>edit</Icon>  
+          <Icon>edit</Icon>
         </IconButton>
-      )} 
+      )}
       {ACTION_EMPLOYEE.DELETE.includes(rowData.submitProfileStatus) && (
         <IconButton
           fontSize="small"
@@ -87,7 +101,7 @@ export default function AddEmployee({ t }) {
           color="secondary"
           onClick={() => handleViewEmployee(rowData)}
         >
-          <Icon >
+          <Icon>
             <Visibility />
           </Icon>
         </IconButton>
@@ -112,7 +126,11 @@ export default function AddEmployee({ t }) {
             routeSegments={[{ name: t("Dashboard.employee_manage.add") }]}
           />
           <div className="flex-space-between flex mt-20">
-            <Button variant="contained" color="primary">
+            <Button
+              variant="contained"
+              color="primary"
+              onClick={() => handleDialogEmployee()}
+            >
               {t("general.addNew")}
             </Button>
             <Input
@@ -147,6 +165,15 @@ export default function AddEmployee({ t }) {
         handleChangeRowsPerPage={handleChangeRowsPerPage}
         handleChangePage={handleChangePage}
       />
+
+      {showEmployee && (
+        <AddEmployeeDialog
+          handleClose={handleCloseEmployeeDialog}
+          open={showEmployee}
+          t={t}
+          employeeData={employee}
+        />
+      )}
     </div>
   );
 }

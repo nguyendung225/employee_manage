@@ -145,6 +145,7 @@
     "selects": "Đã chọn {0} hàng",
     "download": "Tải về",
     "view": "Xem",
+    "choosePhoto":"Chọn ảnh",
     "add_asset": "Thêm tài sản",
     "warrantyMonthError": "Tháng bảo hành không hợp lệ",
     "yearPutIntoUseError": "Năm đưa vào sử dụng không hợp lệ",
@@ -152,7 +153,8 @@
     "confirmCalculator": "Bạn có chắc chắn muốn lưu?",
     "add_file":"Thêm tài liệu",
     "allProduct": "Tất cả sản phẩm",
-    "invalidDateFormat": "Định dạng ngày tháng không hợp lệ"
+    "invalidDateFormat": "Định dạng ngày tháng không hợp lệ",
+    "register":"Đăng ký"
   },
   "toastr": {
     "error": "Có lỗi xảy ra, vui lòng thử lại."
@@ -851,7 +853,12 @@
     "firstName": "Tên",
     "lastName": "Họ",
     "displayName": "Họ và tên nhân viên",
-    "gender": "Giới tính",
+    "gender":{
+     "title":"Giới tính",
+     "male":"Nam",
+     "female":"Nữ",
+     "other":"Khác"
+    } ,
     "birthDate": "Ngày sinh",
     "birthPlaceame": "Nơi sinh",
     "phone": "SĐT",
@@ -860,6 +867,7 @@
     "UserName": "Tên đăng nhập",
     "department": "Phòng ban",
     "Email": "Email",
+    
     "noti": {
       "use": "Nhân viên đang sử dụng, không thể xóa",
       "use_all": "Nhân viên đều đã sử dụng",
@@ -878,6 +886,38 @@
       "additionalRequestEnd": "Yêu cầu bổ sung kết thúc",
       "rejectEnd": "Từ chối kết thúc"
     }
+   
+  },
+  "cetificate": {
+    "name": "Tên văn bằng",
+    "code": "Mã văn bằng",
+    "field": "Lĩnh vực",
+    "issueDate": "Ngày cấp",
+    "content": "Nội dung"
+  },
+
+  "family": {
+    "displayName": "Họ tên",
+    "name": "Họ và viên",
+    "gender": "Giới tính",
+    "dateOfBirth": "Ngày sinh",
+    "relationShip": {
+     "title":"Quan hệ",
+     "father":"Bố",
+     "mother":"Mẹ",
+     "olderBrother":"Anh trai",
+     "youngerBrother":"Em trai",
+     "olderSister":"Chị gái",
+     "youngerSister":"Em gái",
+     "grandFather":"Ông",
+     "grandma":"Bà",
+     "wife/husband":"Vợ/chồng",
+     "other":"Khác"
+    },
+    "citizenIdentificationNumber": "Căn cước công dân",
+    "address": "Địa chỉ",
+    "email": "Email",
+    "phoneNumber": "SĐT"
   },
   "Store": {
     "title": "Kho",

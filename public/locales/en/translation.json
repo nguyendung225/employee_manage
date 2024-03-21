@@ -181,6 +181,7 @@
     "close": "Close",
     "filterYear": "Select year",
     "upload": "Upload",
+    "choosePhoto":"choosePhoto",
     "remove": "Remove",
     "select_file": "Choose file",
     "size": "Size",
@@ -196,7 +197,8 @@
     "add_asset": "Add Asset",
     "required": "This field is required",
     "warrantyMonthError": "Warranty Month is not valid",
-    "yearPutIntoUseError": "Year Put Into Use is not valid"
+    "yearPutIntoUseError": "Year Put Into Use is not valid",
+    "register":"Register"
   },
   "component": {
     "product": {
@@ -686,7 +688,12 @@
     "firstName": "firstName",
     "lastName": "LastName",
     "displayName": "displayName",
-    "gender": "'Gender",
+    "gender": {
+      "title":"Gender",
+      "male":"Nam",
+      "female":"female",
+      "other":"other"
+    },
     "birthDate": "BirthDate",
     "birthPlaceame": "BirthPlaceame",
     "phone": "Phone",
@@ -713,6 +720,44 @@
       "additionalRequestEnd": "additionalRequestEnd",
       "rejectEnd": "rejectEnd"
     }
+   
+  },
+  "cetificate": {
+    "name": "Name certificate",
+    "code": "Code certificate",
+    "field": "field",
+    "issueDate": "issueDate",
+    "content": "content"
+  },
+
+  "family": {
+    "displayName": "displayName",
+    "name": "name",
+    "gender": "gender",
+    "dateOfBirth": "dateOfBirth",
+    "family": {
+      "displayName": "Họ tên",
+      "name": "Họ và viên",
+      "gender": "Giới tính",
+      "dateOfBirth": "Ngày sinh",
+      "relationShip": {
+       "title":"relationShip",
+       "father":"Father",
+       "mother":"Mother",
+       "olderBrother":"olderBrother",
+       "youngerBrother":"youngerBrother",
+       "olderSister":"olderSister",
+       "youngerSister":"youngerSister",
+       "grandFather":"grandFather",
+       "grandma":"grandma",
+       "wife/husband":"wife/husband",
+       "other":"other"
+      },
+    "cccd": "cccd",
+    "citizenIdentificationNumber": "citizenIdentificationNumber",
+    "address": "address",
+    "email": "email",
+    "phoneNumber": "SĐT"
   },
   "Store": {
     "name": "Store name",
