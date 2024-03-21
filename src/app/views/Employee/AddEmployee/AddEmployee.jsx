@@ -11,7 +11,7 @@ import {
 
 import SearchIcon from "@material-ui/icons/Search";
 import { useDispatch, useSelector } from "react-redux";
-import { getEmployees } from "app/redux/actions/EmployeeActions";
+import { deleteEmployee, getEmployees } from "app/redux/actions/EmployeeActions";
 import {
   ACTION_EMPLOYEE,
   STATUS_EMPLOYEE,
@@ -26,6 +26,9 @@ export default function AddEmployee({ t }) {
   const [pageIndex, setPageIndex] = useState(0);
   const [showEmployee, setShowEmployee] = useState(false);
   const [employee, setEmployee] = useState({});
+  const [shouldOpenConfirmationDialog, setShouldOpenConfirmationDialog] =
+  useState(false);
+const [id, setId] = useState(null);
   const { employeeList, totalElements, success } = useSelector(
     (state) => state.employee
   );
@@ -71,8 +74,22 @@ export default function AddEmployee({ t }) {
     setEmployee({});
   };
 
-  const handleDeleteEmployee = (employee) => {};
-  const handleViewEmployee = (employee) => {};
+  const handleDeleteEmployee = (employee) => {
+    setShouldOpenConfirmationDialog(true);
+    setId(employee?.id)
+  };
+
+  const handleDialogConfirmationClose=()=>{
+    setShouldOpenConfirmationDialog(false)
+    setId(null)
+  }
+  const handleConfirmationResponse=()=>{
+     dispatch(deleteEmployee(id));
+     handleDialogConfirmationClose()
+  }
+  const handleViewEmployee = (employee) => {
+      
+  };
   const handleNotifyDialog = (employee) => {};
   const columns = employeesColumns(t, (rowData) => (
     <div>
@@ -172,6 +189,18 @@ export default function AddEmployee({ t }) {
           open={showEmployee}
           t={t}
           employeeData={employee}
+        />
+      )}
+
+{shouldOpenConfirmationDialog && (
+        <ConfirmationDialog
+          open={shouldOpenConfirmationDialog}
+          onConfirmDialogClose={handleDialogConfirmationClose}
+          onYesClick={() => handleConfirmationResponse()}
+          title={t("confirm")}
+          text={t("general.deleteConfirm")}
+          Yes={t("general.confirm")}
+          No={t("general.cancel")}
         />
       )}
     </div>

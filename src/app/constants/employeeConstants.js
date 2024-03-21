@@ -35,6 +35,9 @@ export const TAB_EMPLOYEE = 0;
 export const TAB_CERTIFICATE = 1;
 export const TAB_FAMILY = 2;
 
+// export const TAB_CV=0
+// export const TAB_PROFILE=1
+// export const TAB_CERTIFICATE_= 3;
 
 export const RELATIONSHIP = [
   {
@@ -99,3 +102,4 @@ export const PROPOSAL = [
   { id: 3, name: "Thời gian" },
   { id: 4, name: "Kế hạch" },
 ];
+

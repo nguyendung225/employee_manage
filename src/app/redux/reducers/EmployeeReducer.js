@@ -31,7 +31,7 @@ import {
           success: false,
         };
   
-       case GET_EMPLOYEE_LIST_FAIL:
+      
       case ADD_EMPLOYEE_FAIL:
       case UPDATE_EMPLOYEE_FAIL:
       case DELETE_EMPLOYEE_FAIL:

@@ -40,7 +40,7 @@ export const employeesColumns = (t, action) => [
     title: t("staff.phone"),
     field: "phone",
     align: "center",
-  },
+  }, 
   {
     title: t("staff.email"),
     field: "email",

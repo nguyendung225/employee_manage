@@ -26,9 +26,10 @@ import { toast } from "react-toastify";
 import { setEmployee, updateEmployee } from "app/redux/actions/EmployeeActions";
 import { getCertificates } from "app/redux/actions/CertificateActions";
 import { getFamilies } from "app/redux/actions/FamilyActions";
+import ProfileEmployee from "../ProfileEmployee/ProfileEmployee";
 
 const styles = (theme) => ({
-  root: { 
+  root: {
     margin: 0,
     padding: theme.spacing(2),
   },
@@ -73,15 +74,18 @@ const DialogActions = withStyles((theme) => ({
   },
 }))(MuiDialogActions);
 
-export default function AddEmployeeDialog({ open,employeeData, handleClose, t }) {
+export default function AddEmployeeDialog({
+  open,
+  employeeData,
+  handleClose,
+  t,
+}) {
   const [tab, setTab] = React.useState(0);
   const [showProfile, setShowProfile] = useState(false);
-  const  [employee ,setEmployee] =useState(employeeData)
+  const [employee, setEmployee] = useState(employeeData);
   const refFormAddEmployee = useRef(null);
- 
 
   const dispatch = useDispatch();
-  
 
   const handleChangeTab = (event, newValue) => {
     if (newValue !== TAB_EMPLOYEE) {
@@ -97,24 +101,17 @@ export default function AddEmployeeDialog({ open,employeeData, handleClose, t })
 
   const handleSubmit = () => {
     if (tab === TAB_EMPLOYEE) {
-    
       refFormAddEmployee.current.submit();
-      
-    } 
+    }
   };
 
+  const handleRegister = () => {
+    console.log(employee);
+    dispatch(updateEmployee(employee));
 
+    setShowProfile(true);
+  };
 
-    const handleRegister =  () => {
-      console.log(employee)
-       dispatch(updateEmployee(employee)); 
-      
-      setShowProfile(true); 
-    
-}; 
-
- 
-    
   const handleDialogProfileClose = () => {
     setShowProfile(false);
   };
@@ -157,7 +154,6 @@ export default function AddEmployeeDialog({ open,employeeData, handleClose, t })
                 employee={employee}
                 setEmployee={setEmployee}
                 handleClose={handleClose}
-              
               />
             </TabPanel>
             <TabPanel value={tab} index={TAB_CERTIFICATE}>
@@ -168,20 +164,21 @@ export default function AddEmployeeDialog({ open,employeeData, handleClose, t })
               />
             </TabPanel>
             <TabPanel value={tab} index={TAB_FAMILY}>
-              <TabFamily t={t} employee={employee}
-                setEmployee={setEmployee} />
+              <TabFamily t={t} employee={employee} setEmployee={setEmployee} />
             </TabPanel>
           </div>
         </DialogContent>
         <DialogActions>
-          {employeeData?.id && <Button
-            variant="contained"
-            color="primary"
-            type="button"
-            onClick={() => handleRegister()}
-          >
-            {t("general.register")}
-          </Button>}
+          {employeeData?.id && (
+            <Button
+              variant="contained"
+              color="primary"
+              type="button"
+              onClick={() => handleRegister()}
+            >
+              {t("general.register")}
+            </Button>
+          )}
 
           {tab === TAB_EMPLOYEE && (
             <div>
@@ -207,7 +204,14 @@ export default function AddEmployeeDialog({ open,employeeData, handleClose, t })
         </DialogActions>
       </Dialog>
 
-     
+      {showProfile && (
+        <ProfileEmployee
+          open={showProfile}
+          t={t}
+          handleClose={handleDialogProfileClose}
+          employee={employee}
+        />
+      )}
     </div>
   );
 }

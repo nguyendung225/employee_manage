@@ -107,7 +107,7 @@ export default function TabEmployee({
         }
       };
 
-      console.log(employee)
+      
   return (
     <div>
        <ValidatorForm ref={refFormAddEmployee} onSubmit={handleSubmit}>
@@ -120,7 +120,7 @@ export default function TabEmployee({
                 ? employee?.image
                 : ConstantList.ROOT_PATH + "assets/images/avatar.jpg"
             }
-            className="w-160 h-160 m-auto"
+            className="w-140 h-140 m-auto"
           />
 
           <Button variant="contained" color="primary" component="label">
@@ -138,6 +138,8 @@ export default function TabEmployee({
           <Grid container spacing={2} className="mb-20">
             <Grid item xs={12} sm={5} md={3}>
               <TextValidator
+                variant="outlined"
+                size={'small'}
                 label={
                   <span>
                     <span className="text-error">*</span>
@@ -157,6 +159,8 @@ export default function TabEmployee({
             </Grid>
             <Grid item xs={12} sm={7} md={5}>
               <TextValidator
+                variant="outlined"
+                size={'small'}
                 label={
                   <span>
                     <span className="text-error">*</span>
@@ -173,6 +177,8 @@ export default function TabEmployee({
             </Grid>
             <Grid item xs={12} sm={3} md={2}>
               <TextValidator
+                variant="outlined"
+                size={'small'}
                 label={
                   <span>
                     <span className="text-error">*</span> 
@@ -199,6 +205,8 @@ export default function TabEmployee({
 
             <Grid item xs={12} sm={4} md={2}>
               <TextValidator
+                variant="outlined"
+                size={'small'}
                 label={
                   <span>
                     <span className="text-error">*</span>
@@ -226,6 +234,8 @@ export default function TabEmployee({
             </Grid>
             <Grid item xs={12} sm={5} md={3}>
               <TextValidator
+                variant="outlined"
+                size={'small'}
                 label={
                   <span>
                     <span className="text-error">*</span> 
@@ -245,6 +255,8 @@ export default function TabEmployee({
             </Grid>
             <Grid item xs={12} sm={3} md={2}>
               <TextValidator
+                variant="outlined"
+                size={'small'}
                 label={
                   <span>
                     <span className="text-error">*</span>
@@ -271,6 +283,8 @@ export default function TabEmployee({
 
             <Grid item xs={12} sm={4} md={3}>
               <TextValidator
+                variant="outlined"
+                size={'small'}
                 label={
                   <span>
                     <span className="text-error">*</span>
@@ -290,6 +304,8 @@ export default function TabEmployee({
             </Grid>
             <Grid item xs={12} sm={3} md={2}>
               <TextValidator
+                variant="outlined"
+                size={'small'}
                 label={
                   <span>
                     <span className="text-error">*</span>
@@ -317,6 +333,8 @@ export default function TabEmployee({
             </Grid>
             <Grid item xs={12} sm={2}md={2}>
               <TextValidator
+                variant="outlined"
+                size={'small'}
                 label={
                   <span>
                     <span className="text-error">*</span>
@@ -334,6 +352,8 @@ export default function TabEmployee({
 
             <Grid item xs={12} sm={4} md={3}>
               <TextValidator
+                variant="outlined"
+                size={'small'}
                 label={
                   <span>
                     <span className="text-error">*</span>
@@ -350,6 +370,8 @@ export default function TabEmployee({
             </Grid>
             <Grid item xs={12} sm={8} md={9}>
               <TextValidator
+                variant="outlined"
+                size={'small'}
                 label={
                   <span>
                     <span className="text-error">*</span>

@@ -113,6 +113,8 @@ const [id, setId] = useState(null);
         <Grid container spacing={2} className="mb-20">
           <Grid item xs={12} sm={8} md={5} lg={4}>
             <TextValidator
+              variant="outlined"
+              size={'small'}
               label={
                 <span>
                   <span className="text-error">*</span>
@@ -129,6 +131,8 @@ const [id, setId] = useState(null);
           </Grid>
           <Grid item xs={12} sm={4}  md={2} lg={2}>
             <TextValidator
+              variant="outlined"
+              size={'small'}
               label={
                 <span>
                   <span className="text-error">*</span>
@@ -156,6 +160,8 @@ const [id, setId] = useState(null);
           </Grid>
           <Grid item xs={12} sm={3}  md={2} lg={1}>
             <TextValidator
+              variant="outlined"
+              size={'small'}
               label={
                 <span>
                   <span className="text-error">*</span>
@@ -182,6 +188,8 @@ const [id, setId] = useState(null);
 
           <Grid item xs={12} sm={4}  md={3} lg={2}>
             <TextValidator
+              variant="outlined"
+              size={'small'}
               label={
                 <span>
                   <span className="text-error">*</span>
@@ -201,6 +209,8 @@ const [id, setId] = useState(null);
           </Grid>
           <Grid item xs={12} sm={5} md={3} lg={3}>
             <TextValidator
+              variant="outlined"
+              size={'small'}
               label={
                 <span>
                   <span className="text-error">*</span>
@@ -220,6 +230,8 @@ const [id, setId] = useState(null);
           </Grid>
           <Grid item xs={12} sm={3} md={2} lg={2}>
             <TextValidator
+              variant="outlined"
+              size={'small'}
               label={
                 <span>
                   <span className="text-error">*</span>
@@ -246,6 +258,8 @@ const [id, setId] = useState(null);
 
           <Grid item xs={12} sm={4} md={3} lg={3}>
             <TextValidator
+              variant="outlined"
+              size={'small'}
               label={
                 <span>
                   <span className="text-error">*</span>
@@ -262,6 +276,8 @@ const [id, setId] = useState(null);
           </Grid>
           <Grid item xs={12} sm={5} md={4}  lg={5}>
             <TextValidator
+              variant="outlined"
+              size={'small'}
               label={
                 <span>
                   <span className="text-error">*</span>

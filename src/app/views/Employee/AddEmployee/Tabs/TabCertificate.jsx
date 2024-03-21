@@ -85,11 +85,14 @@ export default function TabCertificate({ t, employee }) {
         <Grid container spacing={2}>
           <Grid item xs={12} sm={6} md={3}>
             <TextValidator
+            variant="outlined"
+            size={'small'}
               label={
                 <span>
                   <span className="text-error">*</span>
                   {t("cetificate.name")}
                 </span>
+                
               }
               value={certificate?.certificateName || ""}
               onChange={handleChangInput}
@@ -102,6 +105,8 @@ export default function TabCertificate({ t, employee }) {
 
           <Grid item xs={12} sm={3} md={2}>
             <TextValidator
+              variant="outlined"
+              size={'small'}
               label={
                 <span>
                   <span className="text-error">*</span>
@@ -129,6 +134,8 @@ export default function TabCertificate({ t, employee }) {
           </Grid>
           <Grid item xs={12} sm={3} md={2}>
             <TextValidator
+              variant="outlined"
+              size={'small'}
               label={
                 <span>
                   <span className="text-error">*</span>
@@ -146,6 +153,8 @@ export default function TabCertificate({ t, employee }) {
 
           <Grid item xs={12}   md={3}>
             <TextValidator
+              variant="outlined"
+              size={'small'}
               label={
                 <span>
                   <span className="text-error">*</span>
