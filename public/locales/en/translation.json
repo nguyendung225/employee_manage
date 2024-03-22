@@ -688,6 +688,7 @@
     "firstName": "firstName",
     "lastName": "LastName",
     "displayName": "displayName",
+    
     "gender": {
       "title":"Gender",
       "male":"Nam",
@@ -707,6 +708,12 @@
       "use_all": "Nhân viên đều đã sử dụng",
       "deleted_unused": "Đã xoá nhân viên chưa sử dụng",
       "dupli_code": "Mã đã được sử dụng"
+    },
+    "profile":{
+      "title":"Staff Profile",
+      "cv":"cv",
+      "personalBackground":"personalBackground",
+      "certificate":"certificate"
     },
     "submitProfileStatus": {
       "save": "Save",
@@ -885,4 +892,5 @@
   "Delete": "Delete",
   "Search": "Search",
   "enterSearch": "Enter Search"
+}
 }

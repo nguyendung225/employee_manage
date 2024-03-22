@@ -11,7 +11,10 @@ import {
 
 import SearchIcon from "@material-ui/icons/Search";
 import { useDispatch, useSelector } from "react-redux";
-import { deleteEmployee, getEmployees } from "app/redux/actions/EmployeeActions";
+import {
+  deleteEmployee,
+  getEmployees,
+} from "app/redux/actions/EmployeeActions";
 import {
   ACTION_EMPLOYEE,
   STATUS_EMPLOYEE,
@@ -20,15 +23,17 @@ import CustomTable from "app/components/CustomTable";
 import { employeesColumns } from "app/components/CustomColumns";
 import { Notifications, Visibility } from "@material-ui/icons";
 import AddEmployeeDialog from "./AddEmployeeDialog";
+import ProfileEmployee from "../ProfileEmployee/ProfileEmployee";
 export default function AddEmployee({ t }) {
   const [keyword, setKeyword] = useState("");
   const [pageSize, setPageSize] = useState(10);
   const [pageIndex, setPageIndex] = useState(0);
   const [showEmployee, setShowEmployee] = useState(false);
+  const [showProfile, setShowProfile] = useState(false);
   const [employee, setEmployee] = useState({});
   const [shouldOpenConfirmationDialog, setShouldOpenConfirmationDialog] =
-  useState(false);
-const [id, setId] = useState(null);
+    useState(false);
+  const [id, setId] = useState(null);
   const { employeeList, totalElements, success } = useSelector(
     (state) => state.employee
   );
@@ -76,19 +81,23 @@ const [id, setId] = useState(null);
 
   const handleDeleteEmployee = (employee) => {
     setShouldOpenConfirmationDialog(true);
-    setId(employee?.id)
+    setId(employee?.id);
   };
 
-  const handleDialogConfirmationClose=()=>{
-    setShouldOpenConfirmationDialog(false)
-    setId(null)
-  }
-  const handleConfirmationResponse=()=>{
-     dispatch(deleteEmployee(id));
-     handleDialogConfirmationClose()
-  }
+  const handleDialogConfirmationClose = () => {
+    setShouldOpenConfirmationDialog(false);
+    setId(null);
+  };
+  const handleConfirmationResponse = () => {
+    dispatch(deleteEmployee(id));
+    handleDialogConfirmationClose();
+  };
   const handleViewEmployee = (employee) => {
-      
+    setShowProfile(true);
+    setEmployee(employee)
+  };
+  const handleDialogProfileClose = () => {
+    setShowProfile(false);
   };
   const handleNotifyDialog = (employee) => {};
   const columns = employeesColumns(t, (rowData) => (
@@ -192,7 +201,7 @@ const [id, setId] = useState(null);
         />
       )}
 
-{shouldOpenConfirmationDialog && (
+      {shouldOpenConfirmationDialog && (
         <ConfirmationDialog
           open={shouldOpenConfirmationDialog}
           onConfirmDialogClose={handleDialogConfirmationClose}
@@ -201,6 +210,14 @@ const [id, setId] = useState(null);
           text={t("general.deleteConfirm")}
           Yes={t("general.confirm")}
           No={t("general.cancel")}
+        />
+      )}
+      {showProfile && (
+        <ProfileEmployee
+          open={showProfile}
+          t={t}
+          handleClose={handleDialogProfileClose}
+          employee={employee}
         />
       )}
     </div>

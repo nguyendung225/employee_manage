@@ -16,7 +16,7 @@ import {
     addAgeValidationRule,
     addEmailValidationRule,
     addEmployeeIdValidationRule,
-    addFullNameValidationRule,
+    addFullNameValidationRule, 
     addIdentityCardValidationRule,
     addPhoneValidationRule,
     removeAddressValidationRule,

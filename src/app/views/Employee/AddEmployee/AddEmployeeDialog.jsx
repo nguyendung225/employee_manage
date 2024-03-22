@@ -84,12 +84,12 @@ export default function AddEmployeeDialog({
   const [showProfile, setShowProfile] = useState(false);
   const [employee, setEmployee] = useState(employeeData);
   const refFormAddEmployee = useRef(null);
-
+  
   const dispatch = useDispatch();
-
+ 
   const handleChangeTab = (event, newValue) => {
     if (newValue !== TAB_EMPLOYEE) {
-      if (employeeData?.id) {
+      if (employee?.id) {
         setTab(newValue);
       } else {
         toast.error("Vui lòng thêm thông tin nhân viên");

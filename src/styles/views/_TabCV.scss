@@ -1,154 +1,168 @@
 .wrapper{
-    
-     font-size: 14px !important;
-     
-   
- .left{
-    .title,.title, .title{
-
-        font-size: 18px !important;
-        text-transform: uppercase !important;
-        font-weight: 500 !important;
-        letter-spacing: 0.3px;
-    }
-    margin: 0px 20px;
-.skills,.active{
-    ul{
-       list-style: square;
-   }
-   textarea{
-       outline: none;
-       width: 100%;
-       resize: vertical;
-        whiteSpace: pre-wrap
-   }
-
-}
-
-ul.language{
-   list-style: none;
-   padding: 0;
-   li{
-
-       display: flex;
-       align-items: center;
-       justify-content: space-between;
-       .skill{
-           display: flex;
-           .square{
-               width: 8px;
-               height: 8px;
-               background: black;
-               transform: rotate(45deg);
-               border: 1px solid black;
-               margin: 0px 8px;
+    height: 1000px;
+    width: 950px;
+    background: white;
+    margin: auto;
+    .left{
+        width: 36%;
+        padding-left: 40px;
+        .avatar{
+            width: 176px;
+            height: 176px;
+            margin:100px auto 10px auto;
+        }
+        .skills,.actions{
+            .title{
+                
                
-          }
-          .square--ouline{
-              background: none;
+                font-weight: bold;
+                font-size: 19px;
+                text-transform: uppercase;
+            }
+            ul{
+                padding-left: 28px;
+                margin-top: 10px;
+                li{
+                    line-height: 2;
+                    
+                }
+            }
+        }
+        .language{
+            .title{
+                
+                
+                font-weight: bold;
+                font-size: 19px;
+                text-transform: uppercase;
+            }
+            ul{
+                padding-left: 0px;
+                margin-top: 10px;
+                li{
+                    line-height: 2;
+                    list-style: none;
+                    
+                }
+                .dot{
+                    width: 8px;
+                    height: 8px;
+                    border: 1px solid black;
+                    transform: rotate(45deg);
+                    background: black;
+                    &.outline{
+                        background: white;
+                       
+                    }
+                }
+            }
+        }
+    }
+    .right{
+        width: 60%;
+        .head{
+            
+            padding-left: 40px;
+            margin-top: 60px;
+            border-left: 1px solid black;
+            margin-left: 12px;
+            margin-bottom: 20px;
+            .name{
+                font-weight: 450;
+             font-size: 41px;
+             letter-spacing: 2px;
            }
-       }
+           .job{
+             
+             font-size: 20px;
+             text-transform: uppercase;
+             font-weight: 600;
+             letter-spacing: 3px;
+ 
+           }
+        }
+        .info{
+            .gender,.cake,.location{
+                width: 36px;
+                height: 36px;
+                margin-right: 10px;
+            }
+        }
+        .goal{
+               
+            padding-left: 40px;
+            margin-top: 60px;
+            border-left: 1px solid #00000047;
+            margin-left: 12px;
+            margin-bottom: 20px;
+            width: 100%;
+            .title{
+               
+                font-weight: bold;
+                font-size: 19px;
+                text-transform: uppercase;
+            }
+            .description{
+                 background-color: #00000012;
+                 position: relative;
+                 padding: 30px 12px 10px 10px;
+                 border-radius: 10px;
+                 margin-top: 20px;
+                 &::before{
+                    content: '"';
+                    position: absolute;
+                    left: 4px;
+                    top: 0px;
+                    font-size: 40px;
+                 }
 
-   }
-}
-ul.active{
-   list-style: none;
-   padding: 0;
-}
-
- }
-
-.right{
-    .info{
-        margin-left: -14px;
-        .gender,.cake,.location{
+                 &::after{
+                    content: '"';
+                    position: absolute;
+                    right: 4px;
+                    bottom: -28px;
+                    font-size: 40px;
+                 }
+            }
+        }
+        .experience{
+            padding-left: 40px;
+            margin-top: 60px;
+            border-left: 1px solid #00000047;
+            margin-left: 10px;
+            margin-bottom: 20px;
+            width: 100%;
+            .title{
+                  
+                font-weight: bold;
+                font-size: 19px;
+                text-transform: uppercase;
+            }
+            .description,.job{
+                font-weight: bold;
+                font-size: 17px;
+                text-transform: uppercase;
+                .dot{
+                    font-size: 40px;
+                }
+               
+            }
            
-    width: 34px;
-    margin-right: 10px;
-    height: 34px;
-    border-radius: 50%;
-           }
-    }
-  
-.name{
-   
-   
-    // font-size: 28px !important;
-    // letter-spacing: 3px;
-    // font-weight: 500 !important;
-    
-   
-    font-size: 35px !important;
-    letter-spacing: 3.7px;
-    font-weight: 500 !important;
-}
-}
-.job{
-   
-    text-transform: uppercase;
-    font-weight: 800 !important;
-    font-size: 16px !important;
-    letter-spacing: 4px;
-}
-.tittle, .title{
-
-    font-size: 18px !important;
-    text-transform: uppercase !important;
-    font-weight: 500 !important;
-    /* letter-spacing: 0.2px; */
-
-}
-
-    
-.goals{
-    border-left: 1px solid gray;
-    .description{
-      
-    background: #0000000d;
-    position: relative;
-    border-radius: 10px;
-    padding: 20px 10px;
-    letter-spacing: 0.4px;
-  
-        &::after{
-            content: '"';
-            position: absolute;
-            right: 5px;
-            bottom: -29px;
-            font-size: 40px;
         }
-        &::before{
-            content: '"';
-            position: absolute;
-            left: 5px;
-            top: -7px;
-            font-size: 40px;
-            color: black;
-
-
+        .certificate{
+            padding-left: 40px;
+            margin-top: 60px;
+            border-left: 1px solid #00000047;
+            margin-left: 12px;
+            margin-bottom: 20px;
+            width: 100%;
+            .title{
+                font-weight: bold;
+                font-size: 17px;
+                text-transform: uppercase;
+            }
         }
+        
+        
     }
-    
-}
-
-
-.experience{
-    border-left: 1px solid gray;
-    font-size: 20px !important;
-   // .nameCompany{
-        .MuiTypography-body1{
-      
-    font-size: 12px !important;
-    text-transform: uppercase !important;
-    letter-spacing: 0.7px;
-    font-weight: 600 !important;
-        }
-       
- //   }
-   ul{
-    li{
-        font-size: 12px;
-    }
-   }
-}
 }
