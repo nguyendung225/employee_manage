@@ -1,14 +1,18 @@
-.wrapper{
+.tabCV{
     height: 1000px;
-    width: 950px;
+    width: 100%;
     background: white;
-    margin: auto;
+    margin: auto;  
+    .MuiBox-root-270{
+        padding: 0px !important;
+    }
     .left{
         width: 36%;
         padding-left: 40px;
+        font-size: 16px;
         .avatar{
-            width: 176px;
-            height: 176px;
+            width: 200px;
+            height: 200px;
             margin:100px auto 10px auto;
         }
         .skills,.actions{
@@ -16,7 +20,7 @@
                 
                
                 font-weight: bold;
-                font-size: 19px;
+                font-size: 22px;
                 text-transform: uppercase;
             }
             ul{
@@ -33,7 +37,7 @@
                 
                 
                 font-weight: bold;
-                font-size: 19px;
+                font-size: 22px;
                 text-transform: uppercase;
             }
             ul{
@@ -60,6 +64,7 @@
     }
     .right{
         width: 60%;
+        font-size: 16px;
         .head{
             
             padding-left: 40px;
@@ -69,12 +74,12 @@
             margin-bottom: 20px;
             .name{
                 font-weight: 450;
-             font-size: 41px;
-             letter-spacing: 2px;
+             font-size: 42px;
+             letter-spacing: 4px;
            }
            .job{
              
-             font-size: 20px;
+             font-size: 23px;
              text-transform: uppercase;
              font-weight: 600;
              letter-spacing: 3px;
@@ -83,8 +88,8 @@
         }
         .info{
             .gender,.cake,.location{
-                width: 36px;
-                height: 36px;
+                width: 42px;
+                height: 42px;
                 margin-right: 10px;
             }
         }
@@ -99,7 +104,7 @@
             .title{
                
                 font-weight: bold;
-                font-size: 19px;
+                font-size: 22px;
                 text-transform: uppercase;
             }
             .description{
@@ -135,7 +140,7 @@
             .title{
                   
                 font-weight: bold;
-                font-size: 19px;
+                font-size: 22px;
                 text-transform: uppercase;
             }
             .description,.job{

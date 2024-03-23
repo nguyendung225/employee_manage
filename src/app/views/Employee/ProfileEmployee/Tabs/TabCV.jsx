@@ -4,11 +4,12 @@ import ConstantList from "app/appConfig";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import PhoneIcon from "@material-ui/icons/Phone";
 import { formatDate } from "utils";
+import "styles/views/_TabCV.scss";
 import { GENDER } from "app/constants/employeeConstants";
 export default function TabCV({t, employee }) {
   console.log(employee);
   return (
-    <div className="wrapper">
+    <div className="">
       <div className="flex">
         <div className="left">
           <Avatar
@@ -21,11 +22,11 @@ export default function TabCV({t, employee }) {
           />
           <div className="w-80 text-right ">
             <div className="flex flex-middle flex-end">
-              <MailOutlineIcon fontSize="small" />
+              <MailOutlineIcon  />
               <div className="ml-10">quynhmai92@gmail.com</div>
             </div>
             <div className="flex flex-middle flex-end mt-10">
-              <PhoneIcon fontSize="small" />
+              <PhoneIcon  />
               <div className="ml-10">0948958604</div>
             </div>
           </div>
