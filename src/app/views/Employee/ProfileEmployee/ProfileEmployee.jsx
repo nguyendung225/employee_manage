@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { makeStyles, withStyles } from '@material-ui/core/styles';
+import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Button from '@material-ui/core/Button';
 import Dialog from '@material-ui/core/Dialog';
 import MuiDialogTitle from '@material-ui/core/DialogTitle';
@@ -10,11 +10,11 @@ import CloseIcon from '@material-ui/icons/Close';
 import Typography from '@material-ui/core/Typography';
 import { Tab, Tabs } from '@material-ui/core';
 import { TabPanel, a11yProps } from 'app/components/CustomTab';
-import { TAB_CERTIFICATE, TAB_CV, TAB_PERSONAL_BACKGROUND } from 'app/constants/employeeConstants';
+import { TAB_CERTIFICATE, TAB_CERTIFICATE_INFO, TAB_CV, TAB_PERSONAL_BACKGROUND } from 'app/constants/employeeConstants';
 import TabCV from './Tabs/TabCV';
 import TabProfile from './Tabs/TabProfile';
 import TabCertificate from './Tabs/TabCertificate';
-import "styles/views/_TabCV.scss"
+
 const styles = (theme) => ({
   root: {
     margin: 0,
@@ -44,10 +44,10 @@ const DialogTitle = withStyles(styles)((props) => {
 
 const DialogContent = withStyles((theme) => ({
   root: {
-    padding: theme.spacing(2),
+   
     background: "#0000002e",
     height: "730px",
-  //  width:'1140px'
+    width:'1140px'
   },
 }))(MuiDialogContent);
 
@@ -99,7 +99,7 @@ export default function ProfileEmployee({open,t,handleClose,employee}) {
       >
         <Tab label={t('staff.profile.cv')} {...a11yProps(TAB_CV)} />
         <Tab label={t('staff.profile.personalBackground')} {...a11yProps(TAB_PERSONAL_BACKGROUND)} />
-        <Tab label={t('staff.profile.certificate')} {...a11yProps(TAB_CERTIFICATE)} />
+        <Tab label={t('staff.profile.certificate')} {...a11yProps(TAB_CERTIFICATE_INFO)} />
        
       </Tabs>
       <DialogContent dividers>
@@ -109,8 +109,8 @@ export default function ProfileEmployee({open,t,handleClose,employee}) {
       <TabPanel value={tab} index={TAB_PERSONAL_BACKGROUND} className={'tabProfile'}>
         <TabProfile employee={employee} t={t}/>
       </TabPanel>
-      <TabPanel value={tab} index={TAB_CERTIFICATE} className={'tabCertificate'}>
-        <TabCertificate employee={employee} t={t}/>
+      <TabPanel value={tab} index={TAB_CERTIFICATE_INFO} className={'tabCertificate'}>
+         <TabCertificate employee={employee} t={t}/> 
       </TabPanel>
       
    

@@ -1,71 +1,74 @@
 
-    .profile{
+.tabProfile{
        
-   font-family: 'Times New Roman', Times, serif !important;
-   font-size: 1rem !important;
-   .MuiTypography-body1{
-    font-family: 'Times New Roman', Times, serif !important;
-   font-size: large;
-}
-    .title{
-        position: relative;
-      
-        flex: 1;
-        padding-left: 10px;
-         &:after{
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 1px;
-            bottom: 5px;
-            left: 7px;
-            border: 1px dashed #0000007d;
-         }
-    }
-    .MuiTableCell-head{
-        text-align: center;
-        font-weight: bold !important;
-        font-size: 1rem ;
-    }
-   .dashed{
-      position: relative;
-      &::after{
-       
-    position: absolute;
-    content: '';
-    width: 100%;
-    bottom: 5px;
-    border: 1px dashed #000000ad;
-    left: 0px;
+     font-family: 'Times New Roman', Times, serif !important;
+     background: white;
+     font-size: 1rem !important;
+     padding: 10px;
+     .MuiTypography-body1{
+      font-family: 'Times New Roman', Times, serif !important;
+     font-size: large;
+    
+  }
+      .title{
+          position: relative;
+        
+          flex: 1;
+          padding-left: 10px;
+           &:after{
+              content: '';
+              position: absolute;
+              width: 100%;
+              height: 1px;
+              bottom: 5px;
+              left: 7px;
+              border: 1px dashed #0000007d;
+           }
       }
-   }
-
-.myself{
-    overflow: hidden;
-}
-.family,.certificate{
-    padding: 8px 0px;
-    .MuiTableRow-root .MuiTableCell-root {
-        font-family: 'Times New Roman', Times, serif;
-        border: 1px solid #00000082;
-        font-weight: 100;
-
-    }
-}
-
-.time{
-    position: relative;
-    display: inline-block !important;
-    padding: 0px 4px;
-    &::after{ 
-      content: '';
+      .MuiTableCell-head{
+          text-align: center;
+          font-weight: bold !important;
+          font-size: 1rem ;
+      }
+     .dashed{
+        position: relative;
+        &::after{
+         
       position: absolute;
-      left: 0px;
-      bottom: 6px;
-      border: 1px dashed black;
-      height: 1px;
+      content: '';
       width: 100%;
-     
-    }
-   }
-}
+      bottom: 5px;
+      border: 1px dashed #000000ad;
+      left: 0px;
+        }
+     }
+  
+  .myself{
+      overflow: hidden;
+  }
+  .family,.certificate{
+      padding: 8px 0px;
+      .MuiTableRow-root .MuiTableCell-root {
+          font-family: 'Times New Roman', Times, serif;
+          border: 1px solid #00000082;
+          font-weight: 100;
+  
+      }
+  }
+  
+  .time{
+      position: relative;
+      display: inline-block !important;
+      padding: 0px 4px;
+      &::after{ 
+        content: '';
+        position: absolute;
+        left: 0px;
+        bottom: 6px;
+        border: 1px dashed black;
+        height: 1px;
+        width: 100%;
+       
+      }
+     }
+  }
