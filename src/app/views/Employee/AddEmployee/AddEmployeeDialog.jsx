@@ -84,7 +84,6 @@ export default function AddEmployeeDialog({
   const [showProfile, setShowProfile] = useState(false);
   const [employee, setEmployee] = useState(employeeData);
   const refFormAddEmployee = useRef(null);
-  
   const dispatch = useDispatch();
  
   const handleChangeTab = (event, newValue) => {
@@ -115,6 +114,7 @@ export default function AddEmployeeDialog({
   const handleDialogProfileClose = () => {
     setShowProfile(false);
   };
+
   return (
     <div>
       <Dialog
@@ -186,6 +186,7 @@ export default function AddEmployeeDialog({
               <Button
                 variant="contained"
                 color="primary"
+                //className="ml-10"
                 onClick={() => handleSubmit()}
               >
                 {t("general.save")}
@@ -197,6 +198,7 @@ export default function AddEmployeeDialog({
             variant="contained"
             color="secondary"
             type="button"
+          //  className="ml-10"
             onClick={handleClose}
           >
             {t("general.cancel")}
@@ -210,6 +212,7 @@ export default function AddEmployeeDialog({
           t={t}
           handleClose={handleDialogProfileClose}
           employee={employee}
+          handleEmployeeDialogClose={handleClose}
         />
       )}
     </div>

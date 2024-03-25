@@ -24,7 +24,7 @@ export const TEAMS = [
 ];
 
 export const ACTION_EMPLOYEE={
-  VIEW:'2,3',
+  VIEW:'2,3,4,5',
   EDIT:'1,4,5',
   DELETE:'1',
   NOTIFY:'4,5'
@@ -85,21 +85,21 @@ export const RELATIONSHIP = [
 
 
 export const POSITIONS = [
-  { id: 1, name: "Nhân viên" },
-  { id: 2, name: "Trưởng phòng" },
-  { id: 3, name: "Phó phòng" },
-  { id: 4, name: "Giám đốc" },
-  { id: 5, name: "Phó giám đốc" },
-  { id: 6, name: "Trưởng nhóm Fontend" },
-  { id: 7, name: "Trưởng nhóm Backend" },
-  { id: 8, name: "Trưởng nhóm BA" },
-  { id: 9, name: "Trưởng nhóm Tester" },
+  { id: 1, name: "staff" },
+  { id: 2, name: "generalinchief" },
+  { id: 3, name: "deputyDepartment" },
+  { id: 4, name: "manager" },
+  { id: 5, name: "viceDirector" },
+  { id: 6, name: "leaderFontend" },
+  { id: 7, name: "LeaderBackend" },
+  { id: 8, name: "LeaderBA" },
+  { id: 9, name: "LeaderTester" },
 ];
 
 export const PROPOSAL = [
-  { id: 1, name: "Đào tạo" },
-  { id: 2, name: "Quy trình" },
-  { id: 3, name: "Thời gian" },
-  { id: 4, name: "Kế hạch" },
+  { id: 1, name: "train" },
+  { id: 2, name: "procedure" },
+  { id: 3, name: "time" },
+  { id: 4, name: "phlen" },
 ];
 
