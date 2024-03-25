@@ -5,6 +5,7 @@ import sessionRoutes from "./views/sessions/SessionRoutes";
 import dashboardRoutes from "./views/dashboard/DashboardRoutes";
 import ConstantList from "./appConfig";
 import AddEmployeeRoutes from "./views/Employee/AddEmployee/AddEmployeeRoutes";
+import LeadershipPendingRoutes from "./views/Leader/LeadershipPending/LeadershipPendingRoutes";
 
 const redirectRoute = [
   {
@@ -25,6 +26,7 @@ const routes = [
   ...sessionRoutes,
   ...dashboardRoutes,
   ...AddEmployeeRoutes,
+  ...LeadershipPendingRoutes,
   ...errorRoute,
 ];
 

@@ -3,6 +3,7 @@ export const GENDER = [{value: 0, name:"male" }, { value:1, name:"female" }, {va
 
 export const STATUS_EMPLOYEE = {
   ADD: "1,2,4,5",
+  PENDING:'2,6'
 };
 export const SUBMIT_PROFILE_STATUS = [
   { value: 0, name:"save" },
@@ -27,7 +28,9 @@ export const ACTION_EMPLOYEE={
   VIEW:'2,3,4,5',
   EDIT:'1,4,5',
   DELETE:'1',
-  NOTIFY:'4,5'
+  NOTIFY:'4,5',
+  PENDING_END:'6',
+
 }
 
 
@@ -38,6 +41,11 @@ export const TAB_FAMILY = 2;
 export const TAB_CV=0
 export const TAB_PERSONAL_BACKGROUND=1
 export const TAB_CERTIFICATE_INFO= 2;
+
+export const TAB_PENDING_REGISTER=0;
+export const TAB_PENDING_SALARY=1;
+export const TAB_PENDING_PROMOTION=2;
+export const TAB_PENDING_PROPOSAL=3
 
 export const RELATIONSHIP = [
   {
