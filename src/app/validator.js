@@ -96,11 +96,8 @@ export const removeAgeValidationRule = () => {
   ValidatorForm.removeValidationRule("isAgeValid");
 };
 const isAddressValid = (value) => {
-   
-   const valueWithoutAccents = value.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
-  
-   const regex = /^[a-zA-Z0-9\s,/-]+$/; 
-   return regex.test(valueWithoutAccents);
+  const regex = /^[a-zA-Z0-9\sđĐàÀảẢáÁạẠăĂằẰắẮẳẲẵẴặẶâÂầẦấẤẩẨẫẪậẬêÊềỀếẾểỂễỄệỆôÔồỒốỐổỔỗỖộỘơƠờỜớỚởỞỡỠợỢưƯừỪứỨửỬữỮựỰíÍìÌỉỈĩĨịỊúÚùÙủỦũŨụỤýÝỳỲỷỶỹỸỵỴ,/-]+$/;
+  return regex.test(value);
 };
 
 export const addAddressValidationRule = () => {

@@ -33,7 +33,7 @@ export default function TabCertificate({ t,employee }) {
  },[employee?.id,success])
   return (
 
-    <div className="tabCertificate">
+    <div className="certificate">
       <div className=" font-size-24 font-weight-500">
         <Typography className="h3 font-weight-bold">Văn bằng</Typography>
         <TableContainer component={Paper} className="m-8">
@@ -41,10 +41,10 @@ export default function TabCertificate({ t,employee }) {
             <TableHead>
               <TableRow>
                 <TableCell align="center" width={50}>STT</TableCell>
-                <TableCell align="left">Tên văn bằng</TableCell>
-                <TableCell align="center" width={100}>Ngày cấp</TableCell>
-                <TableCell align="left">Lĩnh vực</TableCell>
-                <TableCell align="left">Nội dung</TableCell>
+                <TableCell align="left">   {t("certificate.name")}</TableCell>
+                <TableCell align="center" width={100}>{t('certificate.issueDate')}</TableCell>
+                <TableCell align="left">{t('certificate.field')}</TableCell>
+                <TableCell align="left">{t('certificate.content')}</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>

@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   deleteEmployee,
   getEmployees,
+  setEmployee,
 } from "app/redux/actions/EmployeeActions";
 import {
   ACTION_EMPLOYEE,
@@ -30,11 +31,11 @@ export default function AddEmployee({ t }) {
   const [pageIndex, setPageIndex] = useState(0);
   const [showEmployee, setShowEmployee] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
-  const [employee, setEmployee] = useState({});
+ 
   const [shouldOpenConfirmationDialog, setShouldOpenConfirmationDialog] =
     useState(false);
   const [id, setId] = useState(null);
-  const { employeeList, totalElements, success } = useSelector(
+  const { employeeList, totalElements,employee, success } = useSelector(
     (state) => state.employee
   );
 
@@ -71,12 +72,12 @@ export default function AddEmployee({ t }) {
 
   const handleDialogEmployee = (employee) => {
     setShowEmployee(true);
-    employee && setEmployee(employee);
+    employee && dispatch(setEmployee(employee));
   };
 
   const handleCloseEmployeeDialog = () => {
     setShowEmployee(false);
-    setEmployee({});
+    dispatch(setEmployee({}));
   };
 
   const handleDeleteEmployee = (employee) => {
@@ -94,7 +95,8 @@ export default function AddEmployee({ t }) {
   };
   const handleViewEmployee = (employee) => {
     setShowProfile(true);
-    setEmployee(employee)
+    dispatch(setEmployee(employee));
+    
   };
   const handleDialogProfileClose = () => {
     setShowProfile(false);

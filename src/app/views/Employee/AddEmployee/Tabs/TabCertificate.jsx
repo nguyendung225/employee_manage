@@ -90,7 +90,7 @@ export default function TabCertificate({ t, employee }) {
               label={
                 <span>
                   <span className="text-error">*</span>
-                  {t("cetificate.name")}
+                  {t("certificate.name")}
                 </span>
                 
               }
@@ -110,7 +110,7 @@ export default function TabCertificate({ t, employee }) {
               label={
                 <span>
                   <span className="text-error">*</span>
-                  {t("cetificate.issueDate")}
+                  {t("certificate.issueDate")}
                 </span>
               }
               type="date"
@@ -139,7 +139,7 @@ export default function TabCertificate({ t, employee }) {
               label={
                 <span>
                   <span className="text-error">*</span>
-                  {t("cetificate.field")}
+                  {t("certificate.field")}
                 </span>
               }
               value={certificate?.field || ""}
@@ -158,7 +158,7 @@ export default function TabCertificate({ t, employee }) {
               label={
                 <span>
                   <span className="text-error">*</span>
-                  {t("cetificate.content")}
+                  {t("certificate.content")}
                 </span>
               }
               value={certificate?.content || ""}

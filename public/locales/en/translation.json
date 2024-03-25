@@ -198,7 +198,9 @@
     "required": "This field is required",
     "warrantyMonthError": "Warranty Month is not valid",
     "yearPutIntoUseError": "Year Put Into Use is not valid",
-    "register":"Register"
+    "register":"Register",
+    "sendLeader":"sendLeader"
+   
   },
   "component": {
     "product": {
@@ -688,6 +690,7 @@
     "firstName": "firstName",
     "lastName": "LastName",
     "displayName": "displayName",
+    "leaderName":"leaderName",
     
     "gender": {
       "title":"Gender",
@@ -703,6 +706,9 @@
     "search": "Search by name and code",
     "UserName": "User name",
     "department": "Department",
+    "submitDay":"submitDay",
+    "submitContent":"submitContent",
+
     "noti": {
       "use": "Nhân viên đang sử dụng, không thể xóa",
       "use_all": "Nhân viên đều đã sử dụng",
@@ -729,7 +735,8 @@
     }
    
   },
-  "cetificate": {
+
+  "certificate": {
     "name": "Name certificate",
     "code": "Code certificate",
     "field": "field",
@@ -737,11 +744,6 @@
     "content": "content"
   },
 
-  "family": {
-    "displayName": "displayName",
-    "name": "name",
-    "gender": "gender",
-    "dateOfBirth": "dateOfBirth",
     "family": {
       "displayName": "Họ tên",
       "name": "Họ và viên",
@@ -758,7 +760,8 @@
        "grandFather":"grandFather",
        "grandma":"grandma",
        "wife/husband":"wife/husband",
-       "other":"other"
+       "other":"other",
+       "position":"position"
       },
     "cccd": "cccd",
     "citizenIdentificationNumber": "citizenIdentificationNumber",
@@ -766,6 +769,30 @@
     "email": "email",
     "phoneNumber": "SĐT"
   },
+  "leader": {
+    "title":"title",
+    "name:":"name",
+     "position":"position"
+  },
+  "position":{
+    "staff":"staff",
+    "generalinchief":"generalinchief",
+    "deputyDepartment":"deputyDepartment",
+    "manager":"manager",
+    "viceDirector":"viceDirector",
+    "LeaderFontend":"LeaderFontend",
+    "LeaderBackend":"LeaderBackend",
+    "LeaderBA":"LeaderBA",
+    "LeaderTester":"LeaderTester"
+  
+
+   },
+   "proposal":{
+    "train":"Train",
+    "procedure":"Procedure",
+    "time":"Time",
+    "plan":"Plan"
+   },
   "Store": {
     "name": "Store name",
     "code": "Store code",
@@ -892,5 +919,5 @@
   "Delete": "Delete",
   "Search": "Search",
   "enterSearch": "Enter Search"
-}
+
 }

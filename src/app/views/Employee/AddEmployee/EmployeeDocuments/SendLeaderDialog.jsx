@@ -8,13 +8,14 @@ import MuiDialogActions from "@material-ui/core/DialogActions";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import Typography from "@material-ui/core/Typography";
-import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
 import { Grid, MenuItem } from "@material-ui/core";
-import { POSITIONS } from "app/constants/employeeConstants";
+import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
 import { useDispatch, useSelector } from "react-redux";
-import { updateEmployee } from "app/redux/actions/EmployeeActions";
-import moment from "moment";
 import { getLeaders } from "app/redux/actions/LeaderActions";
+import { POSITIONS } from "app/constants/employeeConstants";
+import moment from "moment";
+import { updateEmployee } from "app/redux/actions/EmployeeActions";
+
 const styles = (theme) => ({
   root: {
     margin: 0,
@@ -54,76 +55,68 @@ const DialogContent = withStyles((theme) => ({
 
 const DialogActions = withStyles((theme) => ({
   root: {
-    padding: theme.spacing(1),
+   padding: theme.spacing(1),
     margin: "10px auto",
     display: "flex",
-    justifyContent: "center",
+    justifyContent: "center"
   },
 }))(MuiDialogActions);
 
-export default function LeadershipSubmitDialog({
-  open,
-  handleClose,
-  handleDialogEmployeeClose,
-  t,
-  employee,
-}) {
-  const [leadershipSubmitInfo, setLeadershipSubmitInfo] = useState({});
+export default function SendLeaderDialog({ open, t, handleClose, employee,handleEmployeeDialogClose,handleProfileClose }) {
+  const [formData, setFormData] = useState({
+    submitDay: employee?.submitDay || new Date().toISOString().split("T")[0],
+    submitContent: employee?.submitContent || "",
+    leaderId: employee?.leaderId || "",
+  });
   const { leaderList } = useSelector((state) => state.leader);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getLeaders());
   }, []);
-  const handleSubmit = () => {
-  
-    const payload = {
-      ...employee,
-      ...leadershipSubmitInfo,
-      submitProfileStatus:2
-    
-    };
-
-    dispatch(updateEmployee(payload));
-    handleClose()
-    handleDialogEmployeeClose()
-   
-  };
-
   const handleChangInput = (e) => {
-   
-    setLeadershipSubmitInfo({
-      ...leadershipSubmitInfo,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
+  const leaderPosition = formData?.leaderId
+    ? leaderList?.find((item) => item.id === formData?.leaderId)?.leaderPosition
+    : "";
+  const leaderName = POSITIONS.find(
+    (position) => position.id === leaderPosition
+  )?.name;
 
-  const leaderPosition=leadershipSubmitInfo?.leaderId? leaderList?.find(item=>item.id===leadershipSubmitInfo?.leaderId).leaderPosition :''
-  const leaderName=POSITIONS.find(position=>position.id===leaderPosition)?.name 
+  const handleSubmit=()=>{
+    dispatch(updateEmployee({...employee,...formData,submitProfileStatus:2}))
+    handleEmployeeDialogClose()
+  
+  }
+  console.log(formData)
   return (
     <div>
+     
       <Dialog
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
         open={open}
-        maxWidth={"md"}
+        maxWidth='md'
         fullWidth={true}
       >
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-          {t('general.sendLeader')}
+          {t("general.sendLeader")}
         </DialogTitle>
-        <ValidatorForm onSubmit={handleSubmit}>
+         <ValidatorForm onSubmit={handleSubmit}>
           <DialogContent dividers>
-            <Grid container spacing={2} className="mb-20">
-              <Grid item xs={12} sm={2}>
+            <Grid container spacing={1} className="mb-20">
+              <Grid item xs={12} md={2}>
                 <TextValidator
+                  variant="outlined"
+                  size={'small'}
                   label={
                     <span>
                       <span className="text-error">*</span>
-                      Ngày trình
+                       {t('staff.submitDay')}
                     </span>
                   }
                   type="date"
-                  value={leadershipSubmitInfo?.submitDay ||  new Date().toISOString().split("T")[0]}
+                  value={formData?.submitDay ||  new Date().toISOString().split("T")[0]}
                   onChange={handleChangInput}
                   className="w-100"
                   InputLabelProps={{
@@ -137,16 +130,18 @@ export default function LeadershipSubmitDialog({
                   }}
                 />
               </Grid>
-              <Grid item xs={12} sm={5}>
+              <Grid item xs={12} md={3}>
                 <TextValidator
+                 variant="outlined"
+                 size={'small'}
                   label={
                     <span>
                       <span className="text-error">*</span>
-                      Tên lãnh đạo
+                      {t('staff.leaderName')}
                     </span>
                   }
                   select
-                  value={( employee?.submitProfileStatus==4||employee?.submitProfileStatus==5) ?employee?.leaderId : leadershipSubmitInfo?.leaderId || ""}
+                  value={( employee?.submitProfileStatus==4||employee?.submitProfileStatus==5) ?employee?.leaderId : formData?.leaderId || ""}
                   disabled={ ( employee?.submitProfileStatus==4||employee?.submitProfileStatus==5)}
                   onChange={handleChangInput}
                   className="w-100"
@@ -164,15 +159,17 @@ export default function LeadershipSubmitDialog({
                 </TextValidator>
               </Grid>
 
-              <Grid item xs={12} sm={5}>
+              <Grid item xs={12} md={3}>
                 <TextValidator
+                 variant="outlined"
+                 size={'small'}
                   label={
                     <span>
                       <span className="text-error ">*</span>
-                      Chức vụ
+                       {t('leader.position')}
                     </span>
                   }
-                value={employee?.leaderPosition? employee?.leaderPosition: leaderName || ''}
+                value={formData?.leaderId ? t(`position.${leaderName}`) : ''}
                   disabled
                   className="w-100"
                  
@@ -180,18 +177,20 @@ export default function LeadershipSubmitDialog({
                   errorMessages={[t("general.required")]}
                 />
               </Grid>
-            </Grid>
+           
 
-            <Grid container spacing={2} className="mb-20">
-              <Grid item xs={12}>
+           
+              <Grid item xs={4}>
                 <TextValidator
+                 variant="outlined"
+                 size={'small'}
                   label={
                     <span>
                       <span className="text-error">*</span>
-                      Nội dung
+                     {t('staff.submitContent')}
                     </span>
                   }
-                  value={leadershipSubmitInfo?.submitContent || ""}
+                  value={formData?.submitContent || ""}
                   onChange={handleChangInput}
                   className="w-100"
                   InputLabelProps={{
@@ -202,7 +201,7 @@ export default function LeadershipSubmitDialog({
                   errorMessages={[t("general.required")]}
                 />
               </Grid>
-            </Grid>
+              </Grid>
           </DialogContent>
 
           <DialogActions>

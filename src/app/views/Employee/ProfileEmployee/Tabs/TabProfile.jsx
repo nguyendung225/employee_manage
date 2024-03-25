@@ -17,7 +17,7 @@ import Paper from "@material-ui/core/Paper";
 import moment from "moment";
 import { GENDER, RELATIONSHIP } from "app/constants/employeeConstants";
 import { formatDate } from "utils";
-import LeterComfirmation from "../../EmployeeDocuments/LeterComfirmation";
+import LeterComfirmation from "../../AddEmployee/EmployeeDocuments/LeterComfirmation";
 import { useDispatch, useSelector } from "react-redux";
 import { getFamilies } from "app/redux/actions/FamilyActions";
 
@@ -35,7 +35,7 @@ export default function TabProfile({ t, employee }) {
     dispatch(getFamilies(employee?.id))
  },[employee?.id,success])
   return (
-    <div className="tabProfile">
+    <div className="profile">
       <Grid container spacing={2}>
         <Grid item xs={3}>
           <Avatar
@@ -260,7 +260,7 @@ export default function TabProfile({ t, employee }) {
               <Grid item xs={8} sm={6} >
                 <LeterComfirmation
                   name={employee?.name}
-                  time={employee?.submitDay}
+                  time={employee?.submitDay || new Date()}
                 />
               </Grid>
             </Grid>
