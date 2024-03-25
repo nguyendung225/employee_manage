@@ -25,7 +25,11 @@
       "title": "Quản lý nhân viên",
       "end": "Kết thúc nhân viên"
     },
-
+    "leader":{
+      "title":"Lãnh đạo",
+      "pending":"Chờ duyệt",
+      "approved":"Đã duyệt"
+    },
     "subcategory": {
       "product": "Danh sách sản phẩm",
       "productType": "Loại sản phẩm",
@@ -155,7 +159,16 @@
     "allProduct": "Tất cả sản phẩm",
     "invalidDateFormat": "Định dạng ngày tháng không hợp lệ",
     "register": "Đăng ký",
-    "sendLeader": "Trình lãnh đạo"
+    "sendLeader": "Trình lãnh đạo",
+    "none":"Không có",
+    "additionalRequest":{
+      "title":"Yêu cầu bổ sung",
+      "content":"Nội dung yêu cầu bổ sung"
+    },
+    "refuse":{
+      "title":"Từ chối",
+      "content":"Lý do từ chối"
+    }
   },
   "toastr": {
     "error": "Có lỗi xảy ra, vui lòng thử lại."
@@ -930,7 +943,11 @@
   "leader": {
     "title": "Lãnh đạo",
     "name:": "Tên lãnh đạo",
-    "position": "Chức vụ"
+    "position": "Chức vụ",
+    "pendingRegister":"Chờ duyệt đăng ký/kết thúc",
+    "pendingSalary":"Chờ duyệt tăng lương",
+    "pendingPromotion":"Chờ duyệt thăng chức",
+    "pendingProposal":"Chờ duyệt tham mưu"
   },
   "position": {
     "staff": "Nhân viên",

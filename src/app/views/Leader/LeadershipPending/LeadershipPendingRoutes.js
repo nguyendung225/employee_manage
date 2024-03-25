@@ -2,15 +2,16 @@ import { EgretLoadable } from "egret";
 import ConstantList from "../../../appConfig";
 import { useTranslation, withTranslation, Trans } from "react-i18next";
 const Employee = EgretLoadable({
-  loader: () => import("../../Leader/LeadershipPending/LeadershipPending"),
+  loader: () => import("./LeadershipPending"),
 });
 const ViewComponent = withTranslation()(Employee);
-const AddEmployeeRoutes = [
+const LeadershipPendingRoutes = [
   {
-    path: ConstantList.ROOT_PATH + "employee_manage/addEmployee",
+    path: ConstantList.ROOT_PATH + "leader/leadershipPending",
     exact: true,
     component: ViewComponent,
   },
 ];
 
-export default AddEmployeeRoutes;
+export default LeadershipPendingRoutes;
+ 
