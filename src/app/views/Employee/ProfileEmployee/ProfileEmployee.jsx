@@ -10,18 +10,19 @@ import CloseIcon from "@material-ui/icons/Close";
 import Typography from "@material-ui/core/Typography";
 import { Tab, Tabs } from "@material-ui/core";
 import { TabPanel, a11yProps } from "app/components/CustomTab";
- import 'styles/views/_profile.scss'
+import "styles/views/_profile.scss";
 import {
   ACTION_EMPLOYEE,
   STATUS_EMPLOYEE,
   TAB_CERTIFICATE_INFO,
-  TAB_CV, 
+  TAB_CV,
   TAB_PERSONAL_BACKGROUND,
 } from "app/constants/employeeConstants";
 import TabCV from "./Tabs/TabCV";
 import TabProfile from "./Tabs/TabProfile";
 import TabCertificate from "./Tabs/TabCertificate";
-import SendLeaderDialog from "../AddEmployee/EmployeeDocuments/SendLeaderDialog";
+import SendLeaderDialog from "../EmployeeDocuments/SendLeaderDialog";
+import ApprovedDialog from "../EmployeeDocuments/ApprovedDialog";
 
 const styles = (theme) => ({
   root: {
@@ -47,7 +48,7 @@ const DialogTitle = withStyles(styles)((props) => {
           className={classes.closeButton}
           onClick={onClose}
         >
-          <CloseIcon /> 
+          <CloseIcon />
         </IconButton>
       ) : null}
     </MuiDialogTitle>
@@ -65,7 +66,6 @@ const DialogContent = withStyles((theme) => ({
   root: {
     background: "#0000002e",
     height: "730px",
-   
   },
 }))(MuiDialogContent);
 
@@ -91,21 +91,36 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function ProfileEmployee({ open, t, handleClose, employee,handleEmployeeDialogClose }) {
+export default function ProfileEmployee({
+  open,
+  t,
+  isManage,
+  handleClose,
+  employee,
+  handleEmployeeDialogClose,
+}) {
   const classes = useStyles();
   const [tab, setTab] = useState(0);
   const [openSendLeader, setOpenSendLeader] = useState(false);
+  const [showDialogApproved, setShowDialogApproved] = useState(false);
   const handleChange = (event, newValue) => {
     setTab(newValue);
   };
 
   const handleSendLeader = () => {
-    console.log("kkk");
     setOpenSendLeader(true);
   };
 
   const handleSendLeaderDialogClose = () => {
     setOpenSendLeader(false);
+  };
+
+  const handleDialogApproved = () => {
+    setShowDialogApproved(true);
+  };
+
+  const handleDialogApprovedClose = () => {
+    setShowDialogApproved(false);
   };
   return (
     <div>
@@ -167,21 +182,54 @@ export default function ProfileEmployee({ open, t, handleClose, employee,handleE
                   variant="contained"
                   color="primary"
                   type="button"
+                  className="ml-10"
                   onClick={() => handleSendLeader()}
                 >
                   {t("general.sendLeader")}
                 </Button>
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  type="button"
-                  className="ml-10"
-                  onClick={handleClose}
-                >
-                  {t("general.cancel")}
-                </Button>
               </div>
             )}
+
+          {isManage && (
+            <div>
+              <Button
+                variant="contained"
+                color="primary"
+                type="button"
+                className="ml-10"
+                onClick={() => handleDialogApproved()}
+              >
+                {t("general.approved")}
+              </Button>
+              <Button
+                variant="contained"
+                color="primary"
+                type="button"
+                className="ml-10"
+                onClick={() => handleDialogApproved()}
+              >
+                {t("general.additionalRequest.title")}
+              </Button>
+              <Button
+                variant="contained"
+                color="primary"
+                type="button"
+                className="ml-10"
+                onClick={() => handleSendLeader()}
+              >
+                {t("general.refuse.title")}
+              </Button>
+            </div>
+          )}
+          <Button
+            variant="contained"
+            color="secondary"
+            type="button"
+            className="ml-10"
+            onClick={handleClose}
+          >
+            {t("general.cancel")}
+          </Button>
         </DialogActions>
       </Dialog>
 
@@ -192,6 +240,16 @@ export default function ProfileEmployee({ open, t, handleClose, employee,handleE
           handleClose={handleSendLeaderDialogClose}
           employee={employee}
           handleEmployeeDialogClose={handleEmployeeDialogClose}
+          handleProfileClose={handleClose}
+        />
+      )}
+
+      {showDialogApproved && (
+        <ApprovedDialog
+          open={showDialogApproved}
+          t={t}
+          handleClose={handleDialogApprovedClose}
+          employee={employee}
           handleProfileClose={handleClose}
         />
       )}
