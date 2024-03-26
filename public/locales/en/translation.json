@@ -206,6 +206,7 @@
     "required": "This field is required",
     "warrantyMonthError": "Warranty Month is not valid",
     "yearPutIntoUseError": "Year Put Into Use is not valid",
+    "content":"content",
     "register":"Register",
     "sendLeader":"sendLeader",
     "none":"none",
@@ -710,7 +711,7 @@
     "displayName": "displayName",
     "leaderName":"leaderName",
     "appointmentDate":"appointmentDate",
-    
+    "rejectionDate":"rejectionDate",
     "gender": {
       "title":"Gender",
       "male":"Nam",

@@ -153,6 +153,7 @@
     "add_asset": "Thêm tài sản",
     "warrantyMonthError": "Tháng bảo hành không hợp lệ",
     "yearPutIntoUseError": "Năm đưa vào sử dụng không hợp lệ",
+    "content":"Nội dung",
     "add": "Thêm",
     "confirmCalculator": "Bạn có chắc chắn muốn lưu?",
     "add_file": "Thêm tài liệu",
@@ -870,7 +871,7 @@
     "displayName": "Họ và tên nhân viên",
     "leaderName":"Tên lãnh đạo",
     "appointmentDate":"Ngày hẹn",
-
+    "rejectionDate":"Ngày từ chối",
     "gender": {
       "title": "Giới tính",
       "male": "Nam",

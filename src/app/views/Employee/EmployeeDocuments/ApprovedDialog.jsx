@@ -13,6 +13,7 @@ import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
 import moment from "moment";
 import { useDispatch } from "react-redux";
 import { updateEmployee } from "app/redux/actions/EmployeeActions";
+import { convertTimeToDate } from "utils";
 
 const styles = (theme) => ({
   root: {
@@ -60,18 +61,30 @@ const DialogActions = withStyles((theme) => ({
   },
 }))(MuiDialogActions);
 
-export default function ApprovedDialog({ open, t, handleClose,handleProfileClose, employee }) {
+export default function ApprovedDialog({
+  open,
+  t,
+  handleClose,
+  handleProfileClose,
+  employee,
+}) {
   const [formData, setFormData] = useState({
     appointmentDate:
       employee?.employee || new Date().toISOString().split("T")[0],
   });
-  const dispatch=useDispatch();
+  const dispatch = useDispatch();
   const handleChangInput = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
   const handleSubmit = () => {
-      dispatch(updateEmployee({...employee,appointmentDate:formData.appointmentDate, submitProfileStatus:3}))
-      handleProfileClose();
+    dispatch(
+      updateEmployee({
+        ...employee,
+        appointmentDate: formData.appointmentDate,
+        submitProfileStatus: 3,
+      })
+    );
+    handleProfileClose();
   };
   return (
     <div>
@@ -79,7 +92,7 @@ export default function ApprovedDialog({ open, t, handleClose,handleProfileClose
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
         open={open}
-        maxWidth={'xs'}
+        maxWidth={"xs"}
         fullWidth={true}
       >
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
@@ -98,7 +111,11 @@ export default function ApprovedDialog({ open, t, handleClose,handleProfileClose
                       {t("staff.appointmentDate")}
                     </span>
                   }
-                  value={formData?.appointmentDate || ""}
+                  value={
+                    typeof formData?.appointmentDate === "string"
+                      ? formData?.appointmentDate
+                      : convertTimeToDate(formData?.appointmentDate) || ""
+                  }
                   onChange={handleChangInput}
                   className="w-100"
                   type="date"
