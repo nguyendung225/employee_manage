@@ -186,7 +186,7 @@ export default function AddEmployeeDialog({
               <Button
                 variant="contained"
                 color="primary"
-                //className="ml-10"
+              
                 onClick={() => handleSubmit()}
               >
                 {t("general.save")}
@@ -198,7 +198,7 @@ export default function AddEmployeeDialog({
             variant="contained"
             color="secondary"
             type="button"
-          //  className="ml-10"
+            className="ml-10"
             onClick={handleClose}
           >
             {t("general.cancel")}

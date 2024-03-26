@@ -15,11 +15,12 @@ import { getLeaders } from "app/redux/actions/LeaderActions";
 import { POSITIONS } from "app/constants/employeeConstants";
 import moment from "moment";
 import { updateEmployee } from "app/redux/actions/EmployeeActions";
+import { convertTimeToDate } from "utils";
 
-const styles = (theme) => ({ 
+const styles = (theme) => ({
   root: {
     margin: 0,
-    padding: theme.spacing(2), 
+    padding: theme.spacing(2),
   },
   closeButton: {
     position: "absolute",
@@ -55,14 +56,22 @@ const DialogContent = withStyles((theme) => ({
 
 const DialogActions = withStyles((theme) => ({
   root: {
-   padding: theme.spacing(1),
+    padding: theme.spacing(1),
     margin: "10px auto",
     display: "flex",
-    justifyContent: "center"
+    justifyContent: "center",
   },
 }))(MuiDialogActions);
 
-export default function SendLeaderDialog({ open, t, handleClose, employee,handleEmployeeDialogClose,handleProfileClose }) {
+export default function SendLeaderDialog({
+  open,
+  t,
+  handleClose,
+  employee,
+  handleEmployeeDialogClose,
+  handleProfileClose,
+}) {
+  console.log(employee);
   const [formData, setFormData] = useState({
     submitDay: employee?.submitDay || new Date().toISOString().split("T")[0],
     submitContent: employee?.submitContent || "",
@@ -83,40 +92,44 @@ export default function SendLeaderDialog({ open, t, handleClose, employee,handle
     (position) => position.id === leaderPosition
   )?.name;
 
-  const handleSubmit=()=>{
-    dispatch(updateEmployee({...employee,...formData,submitProfileStatus:2}))
-    handleEmployeeDialogClose()
-  
-  }
-  console.log(formData)
+  const handleSubmit = () => {
+    dispatch(
+      updateEmployee({ ...employee, ...formData, submitProfileStatus: 2 })
+    );
+    handleEmployeeDialogClose();
+  };
+  console.log(formData);
   return (
     <div>
-     
       <Dialog
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
         open={open}
-        maxWidth='md'
+        maxWidth="md"
         fullWidth={true}
       >
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
           {t("general.sendLeader")}
         </DialogTitle>
-         <ValidatorForm onSubmit={handleSubmit}>
+        <ValidatorForm onSubmit={handleSubmit}>
           <DialogContent dividers>
             <Grid container spacing={1} className="mb-20">
               <Grid item xs={12} md={2}>
                 <TextValidator
                   variant="outlined"
-                  size={'small'}
+                  size={"small"}
                   label={
                     <span>
                       <span className="text-error">*</span>
-                       {t('staff.submitDay')}
+                      {t("staff.submitDay")}
                     </span>
                   }
                   type="date"
-                  value={formData?.submitDay ||  new Date().toISOString().split("T")[0]}
+                  value={
+                    typeof formData?.submitDay === "string"
+                      ? formData?.submitDay
+                      : convertTimeToDate(formData?.submitDay) || ""
+                  }
                   onChange={handleChangInput}
                   className="w-100"
                   InputLabelProps={{
@@ -132,21 +145,29 @@ export default function SendLeaderDialog({ open, t, handleClose, employee,handle
               </Grid>
               <Grid item xs={12} md={3}>
                 <TextValidator
-                 variant="outlined"
-                 size={'small'}
+                  variant="outlined"
+                  size={"small"}
                   label={
                     <span>
                       <span className="text-error">*</span>
-                      {t('staff.leaderName')}
+                      {t("staff.leaderName")}
                     </span>
                   }
                   select
-                  value={( employee?.submitProfileStatus==4||employee?.submitProfileStatus==5) ?employee?.leaderId : formData?.leaderId || ""}
-                  disabled={ ( employee?.submitProfileStatus==4||employee?.submitProfileStatus==5)}
+                  value={
+                    employee?.submitProfileStatus == 4 ||
+                    employee?.submitProfileStatus == 5
+                      ? employee?.leaderId
+                      : formData?.leaderId || ""
+                  }
+                  disabled={
+                    employee?.submitProfileStatus == 4 ||
+                    employee?.submitProfileStatus == 5
+                  }
                   onChange={handleChangInput}
                   className="w-100"
                   name="leaderId"
-                  validators={["required"]} 
+                  validators={["required"]}
                   errorMessages={[t("general.required")]}
                 >
                   {leaderList?.map((item, index) => {
@@ -161,33 +182,30 @@ export default function SendLeaderDialog({ open, t, handleClose, employee,handle
 
               <Grid item xs={12} md={3}>
                 <TextValidator
-                 variant="outlined"
-                 size={'small'}
+                  variant="outlined"
+                  size={"small"}
                   label={
                     <span>
                       <span className="text-error ">*</span>
-                       {t('leader.position')}
+                      {t("leader.position")}
                     </span>
                   }
-                value={formData?.leaderId ? t(`position.${leaderName}`) : ''}
+                  value={formData?.leaderId ? t(`position.${leaderName}`) : ""}
                   disabled
                   className="w-100"
-                 
                   validators={["required"]}
                   errorMessages={[t("general.required")]}
                 />
               </Grid>
-           
 
-           
               <Grid item xs={4}>
                 <TextValidator
-                 variant="outlined"
-                 size={'small'}
+                  variant="outlined"
+                  size={"small"}
                   label={
                     <span>
                       <span className="text-error">*</span>
-                     {t('staff.submitContent')}
+                      {t("staff.submitContent")}
                     </span>
                   }
                   value={formData?.submitContent || ""}
@@ -201,7 +219,7 @@ export default function SendLeaderDialog({ open, t, handleClose, employee,handle
                   errorMessages={[t("general.required")]}
                 />
               </Grid>
-              </Grid>
+            </Grid>
           </DialogContent>
 
           <DialogActions>
