@@ -12,6 +12,7 @@ export const navigations = [
     name: "Dashboard.manage",
     isVisible:true,
     icon: "engineering",
+    role: authRoles.user,
     children: [
       {
         name: "Dashboard.employee_manage.add",
@@ -48,7 +49,7 @@ export const navigations = [
       {
         name: "Dashboard.leader.approved",
         isVisible: true,
-        path: ConstantList.ROOT_PATH + "leader/leadershipApproved",
+        path: ConstantList.ROOT_PATH + "leader/leadershipApproved", 
       },
     ],
   },

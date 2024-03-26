@@ -161,6 +161,7 @@
     "register": "Đăng ký",
     "sendLeader": "Trình lãnh đạo",
     "none":"Không có",
+    "approved":"Phê duyệt",
     "additionalRequest":{
       "title":"Yêu cầu bổ sung",
       "content":"Nội dung yêu cầu bổ sung"
@@ -868,6 +869,8 @@
     "lastName": "Họ",
     "displayName": "Họ và tên nhân viên",
     "leaderName":"Tên lãnh đạo",
+    "appointmentDate":"Ngày hẹn",
+
     "gender": {
       "title": "Giới tính",
       "male": "Nam",

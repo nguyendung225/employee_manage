@@ -209,6 +209,7 @@
     "register":"Register",
     "sendLeader":"sendLeader",
     "none":"none",
+    "approved":"approved",
     "additionalRequest":{
       "title":"additionalRequest",
       "content":"Content additionalRequest"
@@ -708,6 +709,7 @@
     "lastName": "LastName",
     "displayName": "displayName",
     "leaderName":"leaderName",
+    "appointmentDate":"appointmentDate",
     
     "gender": {
       "title":"Gender",

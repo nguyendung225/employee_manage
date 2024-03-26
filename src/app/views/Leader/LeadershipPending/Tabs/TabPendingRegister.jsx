@@ -123,6 +123,6 @@ export default function TabPendingRegister({t}) {
         count={totalElements}
         paging={true}
       />
-      {showProfile && <ProfileEmployee t={t} open={showProfile} employee={employee} handleClose={handleProfileClose}/> }
+      {showProfile && <ProfileEmployee t={t} isManage={true} open={showProfile} employee={employee} handleClose={handleProfileClose}/> }
   </div>
 }
