@@ -8,10 +8,12 @@ import MuiDialogActions from "@material-ui/core/DialogActions";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import Typography from "@material-ui/core/Typography";
-import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
 import { Grid } from "@material-ui/core";
+import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
+import moment from "moment";
 import { useDispatch } from "react-redux";
 import { updateEmployee } from "app/redux/actions/EmployeeActions";
+import { convertTimeToDate } from "utils";
 
 const styles = (theme) => ({
   root: {
@@ -47,7 +49,6 @@ const DialogTitle = withStyles(styles)((props) => {
 const DialogContent = withStyles((theme) => ({
   root: {
     padding: theme.spacing(2),
-    overflow: "hidden",
   },
 }))(MuiDialogContent);
 
@@ -60,28 +61,29 @@ const DialogActions = withStyles((theme) => ({
   },
 }))(MuiDialogActions);
 
-export default function AdditionalRequestDialog({
+export default function RejectionDialog({
   open,
   t,
   handleClose,
-  employee,
   handleProfileClose,
+  employee,
 }) {
   const [formData, setFormData] = useState({
-    additionalRequest: employee?.additionalRequest || "",
+    rejectionDate:
+      employee?.rejectionDate || new Date().toISOString().split("T")[0],
+    reasonForRejection: employee.reasonForRejection || "",
   });
-
   const dispatch = useDispatch();
   const handleChangInput = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
   const handleSubmit = () => {
     dispatch(
       updateEmployee({
         ...employee,
-        additionalRequest: formData.additionalRequest,
-        submitProfileStatus: 4,
+        rejectionDate: formData.rejectionDate,
+        reasonForRejection: formData.reasonForRejection,
+        submitProfileStatus: 5,
       })
     );
     handleProfileClose();
@@ -92,15 +94,44 @@ export default function AdditionalRequestDialog({
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
         open={open}
-        maxWidth={"sm"}
+        maxWidth={"xs"}
         fullWidth={true}
       >
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-          {t("general.additionalRequest.title")}
+          {t("general.refuse.title")}
         </DialogTitle>
         <ValidatorForm onSubmit={handleSubmit}>
           <DialogContent dividers>
-            <Grid container>
+            <Grid container spacing={2}>
+              <Grid item xs={12}>
+                <TextValidator
+                  variant="outlined"
+                  size={"small"}
+                  label={
+                    <span>
+                      <span className="text-error">*</span>
+                      {t("staff.rejectionDate")}
+                    </span>
+                  }
+                  value={
+                    typeof formData?.rejectionDate === "string"
+                      ? formData?.rejectionDate
+                      : convertTimeToDate(formData?.rejectionDate) || ""
+                  }
+                  onChange={handleChangInput}
+                  className="w-100"
+                  type="date"
+                  name="rejectionDate"
+                  validators={["required"]}
+                  errorMessages={[t("general.required")]}
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  inputProps={{
+                    min: moment().format("YYYY-MM-DD"),
+                  }}
+                />
+              </Grid>
               <Grid item xs={12}>
                 <TextValidator
                   variant="outlined"
@@ -109,13 +140,13 @@ export default function AdditionalRequestDialog({
                   label={
                     <span>
                       <span className="text-error">*</span>
-                      {t("general.additionalRequest.content")}
+                      {t("general.refuse.content")}
                     </span>
                   }
-                  value={formData?.additionalRequest || ""}
+                  value={formData?.reasonForRejection || ""}
                   onChange={handleChangInput}
                   className="w-100 "
-                  name="additionalRequest"
+                  name="reasonForRejection"
                   validators={["required"]}
                   errorMessages={[t("general.required")]}
                 />
@@ -129,7 +160,7 @@ export default function AdditionalRequestDialog({
               type="submit"
               className="ml-10"
             >
-              {t("general.additionalRequest.title")}
+              {t("general.refuse.title")}
             </Button>
             <Button
               variant="contained"

@@ -23,6 +23,8 @@ import TabProfile from "./Tabs/TabProfile";
 import TabCertificate from "./Tabs/TabCertificate";
 import SendLeaderDialog from "../EmployeeDocuments/SendLeaderDialog";
 import ApprovedDialog from "../EmployeeDocuments/ApprovedDialog";
+import AdditionalRequestDialog from "../EmployeeDocuments/AdditionalRequestDialog";
+import RejectionDialog from "../EmployeeDocuments/RejectionDialog";
 
 const styles = (theme) => ({
   root: {
@@ -103,6 +105,8 @@ export default function ProfileEmployee({
   const [tab, setTab] = useState(0);
   const [openSendLeader, setOpenSendLeader] = useState(false);
   const [showDialogApproved, setShowDialogApproved] = useState(false);
+  const [showDialogAdditional, setShowDialogAdditional] = useState(false);
+  const [showDialogRejection, setShowDialogRejection] = useState(false);
   const handleChange = (event, newValue) => {
     setTab(newValue);
   };
@@ -121,6 +125,22 @@ export default function ProfileEmployee({
 
   const handleDialogApprovedClose = () => {
     setShowDialogApproved(false);
+  };
+
+  const handleDialogAdditionalRequest = () => {
+    setShowDialogAdditional(true);
+  };
+
+  const handleDialogAdditionalRequestClose = () => {
+    setShowDialogAdditional(false);
+  };
+
+  const handleDialogRejection = () => {
+    setShowDialogRejection(true);
+  };
+
+  const handleDialogRejectionClose = () => {
+    setShowDialogRejection(false);
   };
   return (
     <div>
@@ -206,7 +226,7 @@ export default function ProfileEmployee({
                 color="primary"
                 type="button"
                 className="ml-10"
-                onClick={() => handleDialogApproved()}
+                onClick={() => handleDialogAdditionalRequest()}
               >
                 {t("general.additionalRequest.title")}
               </Button>
@@ -215,7 +235,7 @@ export default function ProfileEmployee({
                 color="primary"
                 type="button"
                 className="ml-10"
-                onClick={() => handleSendLeader()}
+                onClick={() => handleDialogRejection()}
               >
                 {t("general.refuse.title")}
               </Button>
@@ -249,6 +269,24 @@ export default function ProfileEmployee({
           open={showDialogApproved}
           t={t}
           handleClose={handleDialogApprovedClose}
+          employee={employee}
+          handleProfileClose={handleClose}
+        />
+      )}
+      {showDialogAdditional && (
+        <AdditionalRequestDialog
+          open={showDialogAdditional}
+          t={t}
+          handleClose={handleDialogAdditionalRequestClose}
+          employee={employee}
+          handleProfileClose={handleClose}
+        />
+      )}
+      {showDialogRejection && (
+        <RejectionDialog
+          open={showDialogRejection}
+          t={t}
+          handleClose={handleDialogRejectionClose}
           employee={employee}
           handleProfileClose={handleClose}
         />
