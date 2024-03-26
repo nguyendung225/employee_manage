@@ -15,7 +15,7 @@ import {
 } from "../actions/LeaderActions";
 
 const initialState = {
-  leaderList: [],
+  leaderList: [], 
   success: false,
   totalElements: 0,
 

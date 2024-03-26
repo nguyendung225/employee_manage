@@ -16,10 +16,10 @@ import { POSITIONS } from "app/constants/employeeConstants";
 import moment from "moment";
 import { updateEmployee } from "app/redux/actions/EmployeeActions";
 
-const styles = (theme) => ({
+const styles = (theme) => ({ 
   root: {
     margin: 0,
-    padding: theme.spacing(2),
+    padding: theme.spacing(2), 
   },
   closeButton: {
     position: "absolute",

@@ -13,10 +13,6 @@ import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
 import moment from "moment";
 import { useDispatch } from "react-redux";
 import { updateEmployee } from "app/redux/actions/EmployeeActions";
-import { updateSalaryByEmployee } from "app/redux/actions/SalaryActions";
-import { convertTimeToDate, formatDate } from "utils";
-import { updatePromotionByEmployee } from "app/redux/actions/PromotionActions";
-import { updateProposalByEmployee } from "app/redux/actions/ProposalActions";
 
 const styles = (theme) => ({
   root: {
@@ -64,68 +60,27 @@ const DialogActions = withStyles((theme) => ({
   },
 }))(MuiDialogActions);
 
-export default function ApprovedDialog({
-  t,
-  open,
-  handleClose,
-  employee,
-  handleCloseProfile,
-  isRegister,
-  isSalary,
-  salary,
-  isPromotion,
-  promotion,
-  isProposal,
-  proposal
-}) {
-  const [appointmentDate, setAppointmentDate] = useState("");
-  const [acceptanceDate, setAcceptanceDate] = useState("");
-  const dispatch = useDispatch();
+export default function ApprovedDialog({ open, t, handleClose,handleProfileClose, employee }) {
+  const [formData, setFormData] = useState({
+    appointmentDate:
+      employee?.employee || new Date().toISOString().split("T")[0],
+  });
+  const dispatch=useDispatch();
   const handleChangInput = (e) => {
-    const { value } = e.target;
-    isRegister ? setAppointmentDate(value) : setAcceptanceDate(value);
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
- 
   const handleSubmit = () => {
-    isRegister &&
-      dispatch(
-        updateEmployee({ ...employee, appointmentDate, submitProfileStatus: 3 })
-      );
-    isSalary &&
-      dispatch(
-        updateSalaryByEmployee({
-          ...salary,
-          acceptanceDate,
-          salaryIncreaseStatus: 3,
-        })
-      );
-    isPromotion &&
-      dispatch(
-        updatePromotionByEmployee({
-          ...promotion,
-          acceptanceDate,
-          processStatus: 3,
-        })
-      );
-      isProposal &&
-      dispatch(
-        updateProposalByEmployee({
-          ...proposal,
-          acceptanceDate,
-          proposalStatus: 3,
-        })
-      );
-    handleClose();
-    handleCloseProfile();
+      dispatch(updateEmployee({...employee,appointmentDate:formData.appointmentDate, submitProfileStatus:3}))
+      handleProfileClose();
   };
   return (
     <div>
       <Dialog
-        maxWidth={"sm"}
-        fullWidth={true}
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
         open={open}
+        maxWidth={'xs'}
+        fullWidth={true}
       >
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
           {t("general.approved")}
@@ -135,22 +90,24 @@ export default function ApprovedDialog({
             <Grid container>
               <Grid item xs={12}>
                 <TextValidator
+                  variant="outlined"
+                  size={"small"}
                   label={
                     <span>
                       <span className="text-error">*</span>
-                      {t("general.approvedDate")} 
+                      {t("staff.appointmentDate")}
                     </span>
                   }
-                  type="date"
-                  value={isRegister ? appointmentDate : acceptanceDate}
+                  value={formData?.appointmentDate || ""}
                   onChange={handleChangInput}
                   className="w-100"
+                  type="date"
+                  name="appointmentDate"
+                  validators={["required"]}
+                  errorMessages={[t("general.required")]}
                   InputLabelProps={{
                     shrink: true,
                   }}
-                  name={isRegister ? "appointmentDate" : "acceptanceDate"}
-                  validators={["required"]}
-                  errorMessages={[t("general.required")]}
                   inputProps={{
                     min: moment().format("YYYY-MM-DD"),
                   }}
@@ -158,15 +115,20 @@ export default function ApprovedDialog({
               </Grid>
             </Grid>
           </DialogContent>
-
           <DialogActions>
-            <Button variant="contained" color="primary" type="submit">
-            {t("general.approved")}
+            <Button
+              variant="contained"
+              color="primary"
+              type="submit"
+              className="ml-10"
+            >
+              {t("general.approved")}
             </Button>
             <Button
               variant="contained"
               color="secondary"
               type="button"
+              className="ml-10"
               onClick={handleClose}
             >
               {t("general.cancel")}

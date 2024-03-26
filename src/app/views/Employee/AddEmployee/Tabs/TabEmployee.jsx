@@ -9,6 +9,7 @@ import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
 import { GENDER, TEAMS } from "app/constants/employeeConstants";
 import  {MenuItem} from '@material-ui/core'
 import { useDispatch } from "react-redux";
+import CameraAltIcon from '@material-ui/icons/CameraAlt';
 import { addEmployee, updateEmployee } from "app/redux/actions/EmployeeActions";
 import moment from "moment";
 import {
@@ -122,9 +123,9 @@ export default function TabEmployee({
             }
             className="w-140 h-140 m-auto"
           />
-
-          <Button variant="contained" color="primary" component="label">
-            {t("general.choosePhoto")}
+         
+          <Button variant="contained" color="primary" className="mt-10" component="label">
+          <CameraAltIcon color="blue"/>
             <input
               type="file"
               accept="image/jpeg, image/png"
