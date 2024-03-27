@@ -10,6 +10,8 @@ import certificateReducer from "./CertificateReducer";
 import familyReducer from "./FamilyReducer";
 import LeaderReducer from "./LeaderReducer";
 import salaryReducer from "./SalaryReducer";
+import promotionReducer from "./PromotionReducer";
+import proposalReducer from "./ProposalReducer";
 
 
 const RootReducer = combineReducers({
@@ -24,8 +26,10 @@ const RootReducer = combineReducers({
   certificate:certificateReducer,
   family:familyReducer,
   leader:LeaderReducer,
-  salary:salaryReducer
- 
+  salary:salaryReducer,
+  promotion:promotionReducer,
+  proposal:proposalReducer,
+  
 });
 
 export default RootReducer;
