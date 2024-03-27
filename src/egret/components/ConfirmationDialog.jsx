@@ -22,12 +22,13 @@ const ConfirmationDialog = ({
         <p>{text}</p>
         <DialogActions>
           <div className="flex flex-space-between flex-middle">
+          <Button onClick={onYesClick} className={"mr-10"} variant="contained" color="primary">
+              {Yes}
+            </Button>
             {No && (<Button onClick={onConfirmDialogClose} variant="contained" color="secondary">
               {No}
             </Button>)}
-            <Button onClick={onYesClick} className={"ml-16"} variant="contained" color="primary">
-              {Yes}
-            </Button>
+          
           </div>
           </DialogActions>
       </div>

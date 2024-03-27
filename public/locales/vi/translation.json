@@ -162,6 +162,8 @@
     "register": "Đăng ký",
     "sendLeader": "Trình lãnh đạo",
     "none":"Không có",
+    "viewProfile":"Xem hồ sơ",
+    "end":"Kết thúc",
     "approved":"Phê duyệt",
     "additionalRequest":{
       "title":"Yêu cầu bổ sung",
@@ -971,22 +973,26 @@
     "oldSalary":"Mức lương cũ",
     "newSalary":"Mức lương mới",
     "reason":"Lý do",
-    "note":"Ghi chú"
+    "note":"Ghi chú",
+    "salaryIncreaseStatus":"Trạng thái"
 
   },
   "promotion":{
     "title":"Thăng chức",
-    "promotionDay":"promotionDay",
-    "currentPosition":"currentPosition",
-    "note":"Note"
-
+    "promotionDay":"Ngày thăng chức",
+    "currentPosition":"Vị trí hiện tại",
+    "newPosition":"Vị trí mới",
+    "note":"Ghi chú",
+    "processStatus":"Trạng thái"
   },
   "proposal":{
     "title":"Tham mưu",
+    "type":"Loại đề xuất",
     "proposalDate":"Ngày đề xuất",
     "content":"Nội dung",
-    "note":"Note",
+    "note":"Ghi chú",
     "detailedDescription":"Mô tả",
+    "proposalStatus":"Trạng thái",
 
       "train":"Đào tạo",
       "procedure":"Quy trình",
@@ -1001,7 +1007,7 @@
     "deputyDepartment": "Phó phòng",
     "manager": "Giám đốc",
     "viceDirector": "Phó giám đốc",
-    "LeaderFontend": "Trưởng nhóm Fontend",
+    "leaderFontend": "Trưởng nhóm Fontend",
     "LeaderBackend": "Trưởng nhóm Bacend",
     "LeaderBA": "Trưởng nhóm BA",
     "LeaderTester": "Trưởng nhóm Tester"
