@@ -1,12 +1,16 @@
-
-export const GENDER = [{value: 0, name:"male" }, { value:1, name:"female" }, {value: 2,name: "other" }];
+export const GENDER = [
+  { value: 0, name: "male" },
+  { value: 1, name: "female" },
+  { value: 2, name: "other" },
+];
 
 export const STATUS_EMPLOYEE = {
   ADD: "1,2,4,5",
-  PENDING:'2,6'
+  PENDING: "2,6",
+  MANAGE: "3,6,8,9",
 };
 export const SUBMIT_PROFILE_STATUS = [
-  { value: 0, name:"save" },
+  { value: 0, name: "save" },
   { value: 1, name: "createNew" },
   { value: 2, name: "pending" },
   { value: 3, name: "approved" },
@@ -21,31 +25,34 @@ export const TEAMS = [
   { value: 0, name: "Frontend" },
   { value: 1, name: "Backend" },
   { value: 2, name: "BA" },
-  { value: 3, name: "Tester" }, 
+  { value: 3, name: "Tester" },
 ];
 
-export const ACTION_EMPLOYEE={
-  VIEW:'2,3,4,5',
-  EDIT:'1,4,5',
-  DELETE:'1',
-  NOTIFY:'4,5',
-  PENDING_END:'6',
+export const ACTION_EMPLOYEE = {
+  VIEW: "2,3,4,5,6",
+  EDIT: "1,4,5,3,8,9",
+  DELETE: "1",
+  NOTIFY: "4,5",
+  PENDING_END: "6",
 
-}
-
+};
 
 export const TAB_EMPLOYEE = 0;
 export const TAB_CERTIFICATE = 1;
 export const TAB_FAMILY = 2;
 
-export const TAB_CV=0
-export const TAB_PERSONAL_BACKGROUND=1
-export const TAB_CERTIFICATE_INFO= 2;
+export const TAB_CV = 0;
+export const TAB_PERSONAL_BACKGROUND = 1;
+export const TAB_CERTIFICATE_INFO = 2;
 
-export const TAB_PENDING_REGISTER=0;
-export const TAB_PENDING_SALARY=1;
-export const TAB_PENDING_PROMOTION=2;
-export const TAB_PENDING_PROPOSAL=3
+export const TAB_PENDING_REGISTER = 0;
+export const TAB_PENDING_SALARY = 1;
+export const TAB_PENDING_PROMOTION = 2;
+export const TAB_PENDING_PROPOSAL = 3;
+
+export const TAB_SALARY = 0;
+export const TAB_PROMOTION = 1;
+export const TAB_PROPOSAL = 2;
 
 export const RELATIONSHIP = [
   {
@@ -71,7 +78,7 @@ export const RELATIONSHIP = [
   {
     value: 5,
     name: "youngerSister",
-  }, 
+  },
   {
     value: 6,
     name: "grandFather",
@@ -90,8 +97,6 @@ export const RELATIONSHIP = [
   },
 ];
 
-
-
 export const POSITIONS = [
   { id: 1, name: "staff" },
   { id: 2, name: "generalinchief" },
@@ -103,11 +108,3 @@ export const POSITIONS = [
   { id: 8, name: "LeaderBA" },
   { id: 9, name: "LeaderTester" },
 ];
-
-export const PROPOSAL = [
-  { id: 1, name: "train" },
-  { id: 2, name: "procedure" },
-  { id: 3, name: "time" },
-  { id: 4, name: "phlen" },
-];
-

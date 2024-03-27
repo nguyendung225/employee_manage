@@ -9,6 +9,7 @@ import EmployeeReducer from "./EmployeeReducer";
 import certificateReducer from "./CertificateReducer";
 import familyReducer from "./FamilyReducer";
 import LeaderReducer from "./LeaderReducer";
+import salaryReducer from "./SalaryReducer";
 
 
 const RootReducer = combineReducers({
@@ -22,7 +23,8 @@ const RootReducer = combineReducers({
   employee:EmployeeReducer,
   certificate:certificateReducer,
   family:familyReducer,
-  leader:LeaderReducer
+  leader:LeaderReducer,
+  salary:salaryReducer
  
 });
 
