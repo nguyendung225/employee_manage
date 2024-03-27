@@ -798,6 +798,48 @@
      "pendingPromotion":"pendingPromotion",
      "pendingProposal":"pendingProposal"
   },
+  "procees":{
+    "processUpdate":"processUpdate",
+    "processStatus": {
+      "createNew": "createNew",
+      "pending": "pending",
+      "approved": "approved",
+      "additionalRequest": "additionalRequest",
+      "reject": "reject"
+     
+    }
+
+  },
+  "salary":{
+    "title":"Salary",
+    "startDate":"Salary startDate",
+    "oldSalary":"OldSalary",
+    "newSalary":"NewSalary",
+    "reason":"reason",
+    "note":"Note"
+
+  },
+  "promotion":{
+    "title":"Thăng chức",
+    "promotionDay":"promotionDay",
+    "currentPosition":"currentPosition",
+    "note":"Note"
+
+  },
+  "proposal":{
+    "title":"Tham mưu",
+    "proposalDate":"proposalDate",
+    "content":"content",
+    "note":"Note",
+    "detailedDescription":"detailedDescription",
+
+      "train":"Train",
+      "procedure":"Procedure",
+      "time":"Time",
+      "plan":"Plan"
+     
+
+  },
   "position":{
     "staff":"staff",
     "generalinchief":"generalinchief",
@@ -811,12 +853,7 @@
   
 
    },
-   "proposal":{
-    "train":"Train",
-    "procedure":"Procedure",
-    "time":"Time",
-    "plan":"Plan"
-   },
+
   "Store": {
     "name": "Store name",
     "code": "Store code",

@@ -126,7 +126,7 @@ export default function SendLeaderDialog({
                   }
                   type="date"
                   value={
-                    typeof formData?.submitDay === "string"
+                    typeof formData?.submitDay === "string" 
                       ? formData?.submitDay
                       : convertTimeToDate(formData?.submitDay) || ""
                   }
@@ -149,7 +149,7 @@ export default function SendLeaderDialog({
                   size={"small"}
                   label={
                     <span>
-                      <span className="text-error">*</span>
+                      <span className="text-error">*</span> 
                       {t("staff.leaderName")}
                     </span>
                   }

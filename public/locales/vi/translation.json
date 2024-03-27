@@ -902,7 +902,7 @@
     },
     "submitProfileStatus": {
       "save": "Nộp lưu",
-      "createNew": "Tạo mới",
+      "createNew": "Lưu mới",
       "pending": "Chờ xử lý",
       "approved": "Đã duyệt",
       "additionalRequest": "Yêu cầu bổ sung",
@@ -911,6 +911,7 @@
       "approvedEnd": "Đã duyệt kết thúc",
       "additionalRequestEnd": "Yêu cầu bổ sung kết thúc",
       "rejectEnd": "Từ chối kết thúc"
+      
     }
   },
   "certificate": {
@@ -953,6 +954,47 @@
     "pendingPromotion":"Chờ duyệt thăng chức",
     "pendingProposal":"Chờ duyệt tham mưu"
   },
+  "process":{
+    "processUpdate":"Cập nhật diễn biến",
+    "processStatus": {
+      "createNew": "Lưu mới",
+      "pending": "Chờ xử lý",
+      "approved": "Đã duyệt",
+      "additionalRequest": "Yêu cầu bổ sung",
+      "reject": "Từ chối"
+     
+    }
+  },
+  "salary":{
+    "title":"Tăng lương",
+    "startDate":"Ngày tăng lương",
+    "oldSalary":"Mức lương cũ",
+    "newSalary":"Mức lương mới",
+    "reason":"Lý do",
+    "note":"Ghi chú"
+
+  },
+  "promotion":{
+    "title":"Thăng chức",
+    "promotionDay":"promotionDay",
+    "currentPosition":"currentPosition",
+    "note":"Note"
+
+  },
+  "proposal":{
+    "title":"Tham mưu",
+    "proposalDate":"Ngày đề xuất",
+    "content":"Nội dung",
+    "note":"Note",
+    "detailedDescription":"Mô tả",
+
+      "train":"Đào tạo",
+      "procedure":"Quy trình",
+      "time":"Thời gian",
+      "plan":"Kế hoạch"
+     
+
+  },
   "position": {
     "staff": "Nhân viên",
     "generalinchief": "Trưởng phòng",
@@ -964,12 +1006,7 @@
     "LeaderBA": "Trưởng nhóm BA",
     "LeaderTester": "Trưởng nhóm Tester"
   },
-  "proposal": {
-    "train": "Đào tạo",
-    "procedure": "Quy trình",
-    "time": "Thời gian",
-    "plan": "Kế hoạch"
-  },
+ 
   "Store": {
     "title": "Kho",
     "name": "Tên kho",
