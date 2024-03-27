@@ -128,31 +128,31 @@ export const familyColoums = (t,action) => [
 
 export const salaryColoums = (t,action) => [
   {
-    title: "Thao tác",
+    title: t("general.action"),
     field: "custom",
     render: action,
     align: "center",
   },
   
   {
-    title: "Ngày tăng lương",
+    title: t('salary.startDate'),
     align: "center",
     field: "startDate",
     render: (rowData) => formatDate(rowData.startDate),
   },
 
-  { title: "Mức lương cũ", field: "oldSalary", align: "center",render:rowData=>(
+  { title: t('salary.oldSalary'), field: "oldSalary", align: "center",render:rowData=>(
     formatCurrency(rowData.oldSalary)
   ) },
-  { title: "Mức lương mới", field: "newSalary", align: "center",render:rowData=>(
+  { title: t('salary.newSalary'), field: "newSalary", align: "center",render:rowData=>(
     formatCurrency(rowData.newSalary)
   )},
-  { title: "Lý do", field: "reason",render:(rowData)=>(
+  { title: t('salary.reason'), field: "reason",render:(rowData)=>(
     rowData.reason?.length>45?  rowData.reason?.slice(0,45)+'...':  rowData.reason ) },
-  { title: "Ghi chú", field: "note",render:(rowData)=>(
+  { title: t('salary.note'), field: "note",render:(rowData)=>(
     rowData.note?.length>45?  rowData.note?.slice(0,45)+'...':  rowData.note ) },
   {
-    title: "Trạng thái",
+    title: t('salary.salaryIncreaseStatus'),
     field: "salaryIncreaseStatus",
     render: (rowData) =>
     t(
@@ -160,79 +160,79 @@ export const salaryColoums = (t,action) => [
         SUBMIT_PROCESS_STATUS.find(
           (item) => item.value === +rowData.salaryIncreaseStatus
         )?.name
-      }`
+      }` 
     ),
   },
 ];
 
-export const promotionColoums = (action) => [
+export const promotionColoums = (t,action) => [
   {
-    title: "Thao tác",
+    title: t("general.action"),
     field: "custom",
     render: action,
     align: "center",
   },
   
   {
-    title: "Ngày thăng chức",
+    title:t('promotion.promotionDay'),
     align: "center",
     field: "promotionDay",
     render: (rowData) => formatDate(rowData.promotionDay),
   },
 
   {
-    title: "Vị trí cũ",
+    title:t('promotion.currentPosition'),
     field: "currentPosition",
     render: (rowData) =>
-      POSITIONS.find((item) => item.id === rowData.currentPosition)?.name,
+      t(`position.${POSITIONS.find((item) => item.id === rowData.currentPosition)?.name}`),
   },
   {
-    title: "Vị trí mới",
+    title: t('promotion.newPosition'),
     field: "newPosition",
     render: (rowData) =>
-      POSITIONS.find((item) => item.id === rowData.newPosition)?.name,
+      t(`position.${POSITIONS.find((item) => item.id === rowData.newPosition)?.name}`),
   },
  
-  { title: "Ghi chú", field: "note",render:(rowData)=>(
+  { title: t('promotion.note'), field: "note",render:(rowData)=>(
     rowData.note?.length>45?  rowData.note?.slice(0,45)+'...':  rowData?.note ) },
   {
-    title: "Trạng thái",
+    title: t('promotion.processStatus'),
     field: "processStatus",
-    render: (rowData) => SUBMIT_PROCESS_STATUS.find(item=>item.value===+rowData.processStatus)?.name,
+    render: (rowData) =>t(`process.processStatus.${SUBMIT_PROCESS_STATUS.find(item=>item.value===+rowData.processStatus)?.name}`),
   },
 ];
 
-export const proposalColoums = (action) => [
+export const proposalColoums = (t,action) => [
   {
-    title: "Thao tác",
+    title: t("general.action"),
     field: "custom",
     render: action,
     align: "center",
   }, 
   
   {
-    title: "Ngày đề xuất",
+    title: t('proposal.proposalDate'),
     field: "proposalDate",
     align: "center",
     render: (rowData) => formatDate(rowData.proposalDate),
   },
   
   {
-    title: "Loại đề xuất",
+    title: t('proposal.type'),
     field: "type",
       align: "center",
     render: (rowData) =>
-      PROPOSAL.find((item) => item.id === rowData.type)?.name,
+      t(`proposal.${PROPOSAL.find((item) => item.id === rowData.type)?.name}`),
   },
-  { title: "Ghi chú", field: "note",render:(rowData)=>(
+  { title: t('proposal.note'), field: "note",render:(rowData)=>(
     rowData.note?.length>45?  rowData.note?.slice(0,45)+'...':  rowData.note ) },
-  { title: "Nội dung", field: "content",render:(rowData)=>(
+  { title: t('proposal.content'), field: "content",render:(rowData)=>(
     rowData?.content?.length>45?  rowData?.content?.slice(0,45)+'...':  rowData?.content ) },
-  { title: "Mô tả", field: "detailedDescription",render:(rowData)=>(
+  { title: t('proposal.detailedDescription'), field: "detailedDescription",render:(rowData)=>(
     rowData.detailedDescription?.length>45?  rowData.detailedDescription?.slice(0,45)+'...':  rowData.detailedDescription ) }, 
   {
-    title: "Trạng thái",
+    title: t('proposal.proposalStatus'),
     field: "proposalStatus",
-    render: (rowData) => SUBMIT_PROCESS_STATUS.find(item=>item.value===+rowData.proposalStatus)?.name,
+    render: (rowData) => t(`process.processStatus.${SUBMIT_PROCESS_STATUS.find(item=>item.value===+rowData.proposalStatus)?.name}`),
   },
 ];

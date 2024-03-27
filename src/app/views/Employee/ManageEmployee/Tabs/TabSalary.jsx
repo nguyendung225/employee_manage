@@ -28,7 +28,7 @@ export default function TabSalary({ t, employee }) {
   const [shouldOpenConfirmationDialog, setShouldOpenConfirmationDialog] =
     useState(false);
   const [id, setId] = useState(null);
-  const [showNotify, setShowNotify]=useState(false)
+  const [showNotify, setShowNotify] = useState(false);
   const dispatch = useDispatch();
   const { salaryListByEmployee, success } = useSelector(
     (state) => state.salary
@@ -51,7 +51,14 @@ export default function TabSalary({ t, employee }) {
       dispatch(
         addSalaryByEmployee({
           id: employee?.id,
-          data: [{ oldSalary: salary?.oldSalary || 0, ...salary }],
+          data: [
+            {
+              startDate:
+                salary?.startDate || new Date().toISOString().split("T")[0],
+              oldSalary: salary?.oldSalary || 0,
+              ...salary,
+            },
+          ],
         })
       );
     }
@@ -78,12 +85,12 @@ export default function TabSalary({ t, employee }) {
     setSalary(salary);
   };
 
-  const handleNotifyDialog=(salary)=>{
+  const handleNotifyDialog = (salary) => {
     setShowNotify(true);
     setSalary(salary);
-  }
+  };
 
-   const handleCloseNotify = () => {
+  const handleCloseNotify = () => {
     setShowNotify(false);
     setSalary({});
   };
@@ -107,24 +114,18 @@ export default function TabSalary({ t, employee }) {
           <Icon color="error">delete</Icon>
         </IconButton>
       )}
-
       {ACTION_PROCESS.VIEW.includes(rowData.salaryIncreaseStatus) && (
-        <IconButton
-          fontSize="small"
-          color="secondary"
-         
-        >
+        <IconButton fontSize="small" color="secondary">
           <Icon>
             <Visibility />
           </Icon>
         </IconButton>
       )}
-
-      {ACTION_PROCESS.NOTIFY.includes(rowData.submitProfileStatus) && (
+      {ACTION_PROCESS.NOTIFY.includes(rowData.salaryIncreaseStatus) && (
         <IconButton
           fontSize="small"
           color="secondary"
-           onClick={() => handleNotifyDialog(rowData)}
+          onClick={() => handleNotifyDialog(rowData)}
         >
           <Notifications />
         </IconButton>
@@ -142,7 +143,7 @@ export default function TabSalary({ t, employee }) {
               label={
                 <span>
                   <span className="text-error">*</span>
-                  {t('salary.startDate')}
+                  {t("salary.startDate")}
                 </span>
               }
               type="date"
@@ -172,7 +173,7 @@ export default function TabSalary({ t, employee }) {
               label={
                 <span>
                   <span className="text-error">*</span>
-                  {t('salary.oldSalary')}
+                  {t("salary.oldSalary")}
                 </span>
               }
               value={salary?.oldSalary || 0}
@@ -191,7 +192,7 @@ export default function TabSalary({ t, employee }) {
               label={
                 <span>
                   <span className="text-error">*</span>
-                {t('salary.newSalary')}
+                  {t("salary.newSalary")}
                 </span>
               }
               value={salary?.newSalary || ""}
@@ -203,14 +204,14 @@ export default function TabSalary({ t, employee }) {
             />
           </Grid>
 
-          <Grid item xs={12} sm={4} md={2}>
+          <Grid item xs={12} sm={6} md={2}>
             <TextValidator
               variant="outlined"
               size={"small"}
               label={
                 <span>
                   <span className="text-error">*</span>
-                 {t('salary.reason')}
+                  {t("salary.reason")}
                 </span>
               }
               value={salary?.reason || ""}
@@ -222,14 +223,14 @@ export default function TabSalary({ t, employee }) {
             />
           </Grid>
 
-          <Grid item xs={12} sm={4} md={2}>
+          <Grid item xs={12} sm={6} md={2}>
             <TextValidator
               variant="outlined"
               size={"small"}
               label={
                 <span>
                   <span className="text-error">*</span>
-                 {t('salary.note')}
+                  {t("salary.note")}
                 </span>
               }
               value={salary?.note || ""}
@@ -241,7 +242,7 @@ export default function TabSalary({ t, employee }) {
             />
           </Grid>
 
-          <Grid item xs={12} sm={4} md={2}>
+          <Grid item xs={12} sm={12} md={2}>
             <div className="text-center">
               <Button
                 variant="contained"
@@ -254,7 +255,7 @@ export default function TabSalary({ t, employee }) {
                     salaryListByEmployee.some(
                       (item) => +item.salaryIncreaseStatus === 2
                     )
-                ) }
+                )}
               >
                 {t("general.save")}
               </Button>
@@ -273,7 +274,7 @@ export default function TabSalary({ t, employee }) {
       <div className="mt-10">
         <CustomTable data={salaryListByEmployee} columns={columns} t={t} />
       </div>
-   {showNotify && (
+      {showNotify && (
         <ShowDialog
           onConfirmDialogClose={handleCloseNotify}
           open={showNotify}
