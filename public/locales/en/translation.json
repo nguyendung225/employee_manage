@@ -210,6 +210,8 @@
     "register":"Register",
     "sendLeader":"sendLeader",
     "none":"none",
+    "viewProfile":"viewProfile",
+    "end":"End",
     "approved":"approved",
     "additionalRequest":{
       "title":"additionalRequest",
@@ -816,22 +818,28 @@
     "oldSalary":"OldSalary",
     "newSalary":"NewSalary",
     "reason":"reason",
-    "note":"Note"
+    "note":"Note",
+    "salaryIncreaseStatus":"salaryIncreaseStatus"
 
   },
   "promotion":{
     "title":"Thăng chức",
     "promotionDay":"promotionDay",
     "currentPosition":"currentPosition",
-    "note":"Note"
+    "newPosition":"newPosition",
+    "note":"Note",
+    "processStatus":"processStatus"
 
   },
   "proposal":{
-    "title":"Tham mưu",
+    "title":"proposal",
+
+    "type":"type",
     "proposalDate":"proposalDate",
     "content":"content",
     "note":"Note",
     "detailedDescription":"detailedDescription",
+    "proposalStatus":"proposalStatus",
 
       "train":"Train",
       "procedure":"Procedure",
@@ -846,7 +854,7 @@
     "deputyDepartment":"deputyDepartment",
     "manager":"manager",
     "viceDirector":"viceDirector",
-    "LeaderFontend":"LeaderFontend",
+    "leaderFontend":"leaderFontend",
     "LeaderBackend":"LeaderBackend",
     "LeaderBA":"LeaderBA",
     "LeaderTester":"LeaderTester"

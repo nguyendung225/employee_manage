@@ -2,7 +2,7 @@ export const PROPOSAL = [
   { id: 1, name: "train" },
   { id: 2, name: "procedure" },
   { id: 3, name: "time" },
-  { id: 4, name: "phlen" },
+  { id: 4, name: "plan" },
 ];
 
 export const ACTION_PROCESS = {
