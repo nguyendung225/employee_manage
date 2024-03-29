@@ -11,13 +11,11 @@
 
   .reason{
 position: relative;
-// top: 20px;
    .title{
    
     position: absolute;
     background: white;
     left: 0px;
-    /* height: 50px; */
     top: 4px;
     z-index: 2;
     font-size: large;
@@ -32,13 +30,12 @@ position: relative;
     resize: none;
     whiteSpace: pre-wrap;
     overflow: hidden;
-    position: absolute;
-    bottom: 0px;
+     position: relative;
+    bottom: 0px; 
     left: 0px;
     
   font-family: 'Times New Roman', Times, serif;
   font-size: large;
-   // border-bottom: 1px dashed black;
     outline: none;
    
 }

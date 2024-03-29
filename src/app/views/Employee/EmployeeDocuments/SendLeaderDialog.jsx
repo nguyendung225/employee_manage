@@ -16,6 +16,9 @@ import { POSITIONS } from "app/constants/employeeConstants";
 import moment from "moment";
 import { updateEmployee } from "app/redux/actions/EmployeeActions";
 import { convertTimeToDate } from "utils";
+import { updateSalaryByEmployee } from "app/redux/actions/SalaryActions";
+import { updatePromotionByEmployee } from "app/redux/actions/PromotionActions";
+import { updateProposalByEmployee } from "app/redux/actions/ProposalActions";
 
 const styles = (theme) => ({
   root: {
@@ -69,9 +72,20 @@ export default function SendLeaderDialog({
   handleClose,
   employee,
   handleEmployeeDialogClose,
-  handleProfileClose,
+  isRegister,
+  isSalary,
+  salary,
+  handleDialogSalaryClose,
+  isPromotion,
+  promotion,
+  handleDialogPromotionClose,
+  isProposal,
+  proposal,
+  handleDialogProposalClose,
+  isEnd,
+  handleDialogEmployeeClose
+  
 }) {
-  console.log(employee);
   const [formData, setFormData] = useState({
     submitDay: employee?.submitDay || new Date().toISOString().split("T")[0],
     submitContent: employee?.submitContent || "",
@@ -93,10 +107,32 @@ export default function SendLeaderDialog({
   )?.name;
 
   const handleSubmit = () => {
-    dispatch(
-      updateEmployee({ ...employee, ...formData, submitProfileStatus: 2 })
-    );
-    handleEmployeeDialogClose();
+    if (isRegister) {
+      dispatch(
+        updateEmployee({ ...employee, ...formData, submitProfileStatus: 2 })
+      );
+      handleEmployeeDialogClose();
+    }
+    else if (isSalary) {
+      dispatch(
+        updateSalaryByEmployee({
+          ...salary,
+          leaderId: formData.leaderId,
+          salaryIncreaseStatus: 2,
+        })
+      );
+      handleDialogSalaryClose();
+    }else if(isPromotion){
+      dispatch(updatePromotionByEmployee({...promotion,leaderId:formData.leaderId,processStatus: 2}))
+      handleDialogPromotionClose()
+    }else if(isProposal){
+      dispatch(updateProposalByEmployee({...proposal,leaderId:formData.leaderId,proposalStatus: 2}))
+      handleDialogProposalClose()
+    }else{
+      dispatch(updateEmployee({ ...employee, leaderId: formData.leaderId,submitProfileStatus:6 }));
+      handleDialogEmployeeClose()
+      
+    }
   };
   console.log(formData);
   return (
@@ -112,115 +148,181 @@ export default function SendLeaderDialog({
           {t("general.sendLeader")}
         </DialogTitle>
         <ValidatorForm onSubmit={handleSubmit}>
-          <DialogContent dividers>
-            <Grid container spacing={1} className="mb-20">
-              <Grid item xs={12} md={2}>
-                <TextValidator
-                  variant="outlined"
-                  size={"small"}
-                  label={
-                    <span>
-                      <span className="text-error">*</span>
-                      {t("staff.submitDay")}
-                    </span>
-                  }
-                  type="date"
-                  value={
-                    typeof formData?.submitDay === "string" 
-                      ? formData?.submitDay
-                      : convertTimeToDate(formData?.submitDay) || ""
-                  }
-                  onChange={handleChangInput}
-                  className="w-100"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  name="submitDay"
-                  validators={["required"]}
-                  errorMessages={[t("general.required")]}
-                  inputProps={{
-                    min: moment().format("YYYY-MM-DD"),
-                  }}
-                />
-              </Grid>
-              <Grid item xs={12} md={3}>
-                <TextValidator
-                  variant="outlined"
-                  size={"small"}
-                  label={
-                    <span>
-                      <span className="text-error">*</span> 
-                      {t("staff.leaderName")}
-                    </span>
-                  }
-                  select
-                  value={
-                    employee?.submitProfileStatus == 4 ||
-                    employee?.submitProfileStatus == 5
-                      ? employee?.leaderId
-                      : formData?.leaderId || ""
-                  }
-                  disabled={
-                    employee?.submitProfileStatus == 4 ||
-                    employee?.submitProfileStatus == 5
-                  }
-                  onChange={handleChangInput}
-                  className="w-100"
-                  name="leaderId"
-                  validators={["required"]}
-                  errorMessages={[t("general.required")]}
-                >
-                  {leaderList?.map((item, index) => {
-                    return (
-                      <MenuItem key={index} value={item?.id}>
-                        {item.leaderName}
-                      </MenuItem>
-                    );
-                  })}
-                </TextValidator>
-              </Grid>
+          {(!isSalary &&  !isPromotion && !isProposal && !isEnd) ? (
+            <DialogContent dividers>
+              <Grid container spacing={1} className="mb-20">
+                <Grid item xs={12} sm={3} md={2}>
+                  &&{" "}
+                  <TextValidator
+                    variant="outlined"
+                    size={"small"}
+                    label={
+                      <span>
+                        <span className="text-error">*</span>
+                        {t("staff.submitDay")}
+                      </span>
+                    }
+                    type="date"
+                    value={
+                      typeof formData?.submitDay === "string"
+                        ? formData?.submitDay
+                        : convertTimeToDate(formData?.submitDay) || ""
+                    }
+                    onChange={handleChangInput}
+                    className="w-100"
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                    name="submitDay"
+                    validators={["required"]}
+                    errorMessages={[t("general.required")]}
+                    inputProps={{
+                      min: moment().format("YYYY-MM-DD"),
+                    }}
+                  />
+                </Grid>
+                <Grid item xs={12} sm={3} md={3}>
+                  <TextValidator
+                    variant="outlined"
+                    size={"small"}
+                    label={
+                      <span>
+                        <span className="text-error">*</span>
+                        {t("staff.leaderName")}
+                      </span>
+                    }
+                    select
+                    value={
+                      employee?.submitProfileStatus == 4 ||
+                      employee?.submitProfileStatus == 5
+                        ? employee?.leaderId
+                        : formData?.leaderId || ""
+                    }
+                    disabled={
+                      employee?.submitProfileStatus == 4 ||
+                      employee?.submitProfileStatus == 5
+                    }
+                    onChange={handleChangInput}
+                    className="w-100"
+                    name="leaderId"
+                    validators={["required"]}
+                    errorMessages={[t("general.required")]}
+                  >
+                    {leaderList?.map((item, index) => {
+                      return (
+                        <MenuItem key={index} value={item?.id}>
+                          {item.leaderName}
+                        </MenuItem>
+                      );
+                    })}
+                  </TextValidator>
+                </Grid>
 
-              <Grid item xs={12} md={3}>
-                <TextValidator
-                  variant="outlined"
-                  size={"small"}
-                  label={
-                    <span>
-                      <span className="text-error ">*</span>
-                      {t("leader.position")}
-                    </span>
-                  }
-                  value={formData?.leaderId ? t(`position.${leaderName}`) : ""}
-                  disabled
-                  className="w-100"
-                  validators={["required"]}
-                  errorMessages={[t("general.required")]}
-                />
-              </Grid>
+                <Grid item xs={12} sm={3} md={3}>
+                  <TextValidator
+                    variant="outlined"
+                    size={"small"}
+                    label={
+                      <span>
+                        <span className="text-error ">*</span>
+                        {t("leader.position")}
+                      </span>
+                    }
+                    value={
+                      formData?.leaderId ? t(`position.${leaderName}`) : ""
+                    }
+                    disabled
+                    className="w-100"
+                    validators={["required"]}
+                    errorMessages={[t("general.required")]}
+                  />
+                </Grid>
 
-              <Grid item xs={4}>
-                <TextValidator
-                  variant="outlined"
-                  size={"small"}
-                  label={
-                    <span>
-                      <span className="text-error">*</span>
-                      {t("staff.submitContent")}
-                    </span>
-                  }
-                  value={formData?.submitContent || ""}
-                  onChange={handleChangInput}
-                  className="w-100"
-                  InputLabelProps={{
-                    shrink: true,
-                  }}
-                  name="submitContent"
-                  validators={["required"]}
-                  errorMessages={[t("general.required")]}
-                />
+                <Grid item xs={12} sm={3} md={4}>
+                  <TextValidator
+                    variant="outlined"
+                    size={"small"}
+                    label={
+                      <span>
+                        <span className="text-error">*</span>
+                        {t("staff.submitContent")}
+                      </span>
+                    }
+                    value={formData?.submitContent || ""}
+                    onChange={handleChangInput}
+                    className="w-100"
+                    InputLabelProps={{
+                      shrink: true,
+                    }}
+                    name="submitContent"
+                    validators={["required"]}
+                    errorMessages={[t("general.required")]}
+                  />
+                </Grid>
               </Grid>
-            </Grid>
-          </DialogContent>
+            </DialogContent>
+          ) : (
+            <DialogContent dividers>
+              <Grid container spacing={1} className="mb-20">
+                <Grid item xs={12} sm={6}>
+                  <TextValidator
+                    variant="outlined"
+                    size={"small"}
+                    label={
+                      <span>
+                        <span className="text-error">*</span>
+                        {t("staff.leaderName")}
+                      </span>
+                    }
+                    select
+                    value={
+                      employee?.submitProfileStatus == 4 ||
+                      employee?.submitProfileStatus == 5
+                        ? employee?.leaderId
+                        : formData?.leaderId || ""
+                    }
+                    disabled={
+                      employee?.submitProfileStatus == 4 ||
+                      employee?.submitProfileStatus == 5
+                    }
+                    onChange={handleChangInput}
+                    className="w-100"
+                    name="leaderId"
+                    validators={["required"]}
+                    errorMessages={[t("general.required")]}
+                  >
+                    {leaderList?.map((item, index) => {
+                      return (
+                        <MenuItem key={index} value={item?.id}>
+                          {item.leaderName}
+                        </MenuItem>
+                      );
+                    })}
+                  </TextValidator>
+                </Grid>
+
+                <Grid item xs={12} sm={6}>
+                  <TextValidator
+                    variant="outlined"
+                    size={"small"}
+                    label={
+                      <span>
+                        <span className="text-error ">*</span>
+                        {t("leader.position")}
+                      </span>
+                    }
+                    value={
+                      formData?.leaderId ? t(`position.${leaderName}`) : ""
+                    }
+                    disabled
+                    className="w-100"
+                    validators={["required"]}
+                    errorMessages={[t("general.required")]}
+                  />
+                </Grid>
+              </Grid>
+            </DialogContent>
+          )}
 
           <DialogActions>
             <Button variant="contained" color="primary" type="submit">

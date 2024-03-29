@@ -19,6 +19,7 @@ import React, { useEffect, useState } from "react";
 import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
 import { useDispatch, useSelector } from "react-redux";
 import { convertTimeToDate } from "utils";
+import ProposalInfoDialog from "../../EmployeeDocuments/ProposalInfoDialog";
 
 export default function TabProposal({ t, employee }) {
   const [proposal, setProposal] = useState({
@@ -32,6 +33,7 @@ export default function TabProposal({ t, employee }) {
     useState(false);
   const [id, setId] = useState(null);
   const [showNotify, setShowNotify] = useState(false);
+  const [showProposal, setShowProposal] = useState(false);
   const dispatch = useDispatch();
   const { proposalListByEmployee, success } = useSelector(
     (state) => state.proposal
@@ -47,6 +49,14 @@ export default function TabProposal({ t, employee }) {
     setProposal({});
   };
 
+  const handleProposalDialogClose = () => {
+    setShowProposal(false);
+    setProposal({});
+  };
+  const handleProposalDialog = (proposal) => {
+    setShowProposal(true);
+    setProposal(proposal);
+  };
   const handleSubmit = () => {
     if (proposal?.id) {
       dispatch(updateProposalByEmployee(proposal));
@@ -117,7 +127,11 @@ export default function TabProposal({ t, employee }) {
         </IconButton>
       )}
       {ACTION_PROCESS.VIEW.includes(rowData.proposalStatus) && (
-        <IconButton fontSize="small" color="secondary">
+        <IconButton
+          fontSize="small"
+          color="secondary"
+          onClick={() => handleProposalDialog(rowData)}
+        >
           <Icon>
             <Visibility />
           </Icon>
@@ -298,7 +312,7 @@ export default function TabProposal({ t, employee }) {
           title={
             proposal?.proposalIncreaseStatus == 4
               ? t("general.additionalRequest.title")
-              : t("general.refuse.reason")
+              : t("general.refuse.titile")
           }
         />
       )}
@@ -312,6 +326,17 @@ export default function TabProposal({ t, employee }) {
           text={t("general.deleteConfirm")}
           Yes={t("general.confirm")}
           No={t("general.cancel")}
+        />
+      )}
+
+      {showProposal && (
+        <ProposalInfoDialog
+          open={showProposal}
+          t={t}
+          handleClose={handleProposalDialogClose}
+          proposalListByEmployee={proposalListByEmployee}
+          employee={employee}
+          proposal={proposal}
         />
       )}
     </div>

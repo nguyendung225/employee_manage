@@ -16,6 +16,7 @@ import React, { useEffect, useState } from "react";
 import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
 import { useDispatch, useSelector } from "react-redux";
 import { convertTimeToDate } from "utils";
+import SalaryInfoDialog from "../../EmployeeDocuments/SalaryInfoDialog";
 
 export default function TabSalary({ t, employee }) {
   const [salary, setSalary] = useState({
@@ -29,6 +30,7 @@ export default function TabSalary({ t, employee }) {
     useState(false);
   const [id, setId] = useState(null);
   const [showNotify, setShowNotify] = useState(false);
+  const [showSalary, setShowSalary] = useState(false);
   const dispatch = useDispatch();
   const { salaryListByEmployee, success } = useSelector(
     (state) => state.salary
@@ -94,6 +96,16 @@ export default function TabSalary({ t, employee }) {
     setShowNotify(false);
     setSalary({});
   };
+
+  const handleViewSalary = (salary) => {
+    setShowSalary(true);
+    salary && setSalary(salary);
+  };
+
+  const handleDialogSalaryClose = () => {
+    setShowSalary(false);
+    setSalary({});
+  };
   const columns = salaryColoums(t, (rowData) => (
     <div>
       {ACTION_PROCESS.EDIT.includes(rowData.salaryIncreaseStatus) && (
@@ -115,7 +127,11 @@ export default function TabSalary({ t, employee }) {
         </IconButton>
       )}
       {ACTION_PROCESS.VIEW.includes(rowData.salaryIncreaseStatus) && (
-        <IconButton fontSize="small" color="secondary">
+        <IconButton
+          fontSize="small"
+          color="secondary"
+          onClick={() => handleViewSalary(rowData)}
+        >
           <Icon>
             <Visibility />
           </Icon>
@@ -286,7 +302,7 @@ export default function TabSalary({ t, employee }) {
           title={
             salary?.salaryIncreaseStatus === 4
               ? t("general.additionalRequest.title")
-              : t("general.refuse.reason")
+              : t("general.refuse.title")
           }
         />
       )}
@@ -300,6 +316,16 @@ export default function TabSalary({ t, employee }) {
           text={t("general.deleteConfirm")}
           Yes={t("general.confirm")}
           No={t("general.cancel")}
+        />
+      )}
+
+      {showSalary && (
+        <SalaryInfoDialog
+          salary={salary}
+          open={showSalary}
+          t={t}
+          salaryListByEmployee={salaryListByEmployee}
+          handleClose={handleDialogSalaryClose}
         />
       )}
     </div>
