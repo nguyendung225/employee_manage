@@ -5,7 +5,7 @@ import {
   promotionColoums,
 } from "app/components/CustomColumns";
 import CustomTable from "app/components/CustomTable";
-import { ACTION_EMPLOYEE, POSITIONS } from "app/constants/employeeConstants";
+import {  POSITIONS } from "app/constants/employeeConstants";
 import { ACTION_PROCESS } from "app/constants/processConstants";
 import {
   addPromotionByEmployee,
@@ -19,6 +19,7 @@ import React, { useEffect, useState } from "react";
 import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
 import { useDispatch, useSelector } from "react-redux";
 import { convertTimeToDate } from "utils";
+import PromotionInfoDialog from "../../EmployeeDocuments/PromotionInfoDialog";
 
 export default function TabPromotion({ t, employee }) {
   const [promotion, setPromotion] = useState({
@@ -29,6 +30,7 @@ export default function TabPromotion({ t, employee }) {
   });
   const [shouldOpenConfirmationDialog, setShouldOpenConfirmationDialog] =
     useState(false);
+    const [showPromotion, setShowPromotion] = useState(false);
   const [id, setId] = useState(null);
   const [showNotify, setShowNotify] = useState(false);
   const dispatch = useDispatch();
@@ -46,6 +48,14 @@ export default function TabPromotion({ t, employee }) {
     setPromotion({});
   };
 
+  const handlePromotionDialogClose = () => {
+    setShowPromotion(false);
+    setPromotion({});
+  };
+  const handlePromotionDialog = (promotion) => {
+    setShowPromotion(true);
+    setPromotion(promotion);
+  };
   const handleSubmit = () => {
     if (promotion?.id) {
       dispatch(updatePromotionByEmployee(promotion));
@@ -118,7 +128,8 @@ export default function TabPromotion({ t, employee }) {
         </IconButton>
       )}
       {ACTION_PROCESS.VIEW.includes(rowData.processStatus) && (
-        <IconButton fontSize="small" color="secondary">
+        <IconButton fontSize="small" color="secondary"
+        onClick={()=>handlePromotionDialog(rowData)}>
           <Icon>
             <Visibility />
           </Icon>
@@ -295,7 +306,7 @@ export default function TabPromotion({ t, employee }) {
           title={
             promotion?.promotionIncreaseStatus == 4
               ? t("general.additionalRequest.title")
-              : t("general.refuse.reason")
+              : t("general.refuse.title")
           }
         />
       )}
@@ -309,6 +320,17 @@ export default function TabPromotion({ t, employee }) {
           text={t("general.deleteConfirm")}
           Yes={t("general.confirm")}
           No={t("general.cancel")}
+        />
+      )}
+
+{showPromotion && (
+        <PromotionInfoDialog
+          open={showPromotion}
+          t={t}
+          handleClose={handlePromotionDialogClose}
+          promotionListByEmployee={promotionListByEmployee}
+          employee={employee}
+          promotion={promotion}
         />
       )}
     </div>

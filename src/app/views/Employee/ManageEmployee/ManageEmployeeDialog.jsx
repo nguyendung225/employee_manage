@@ -14,32 +14,20 @@ import Tab from "@material-ui/core/Tab";
 import ConstantList from "app/appConfig";
 import {
   GENDER,
-  TAB_CERTIFICATE,
-  TAB_EMPLOYEE,
-  TAB_FAMILY,
   TAB_PROMOTION,
   TAB_PROPOSAL,
   TAB_SALARY,
   TEAMS,
 } from "app/constants/employeeConstants";
 import { TabPanel, a11yProps } from "app/components/CustomTab";
-import TabEmployee from "./Tabs/TabSalary";
-import TabCertificate from "./Tabs/TabPromotion";
-import TabFamily from "./Tabs/TabProposal";
-import { useDispatch, useSelector } from "react-redux";
-import { toast } from "react-toastify";
-//import { getCertificates } from "app/redux/actions/CertificateActions";
-import { setEmployee, updateEmployee } from "app/redux/actions/EmployeeActions";
-import { getCertificates } from "app/redux/actions/CertificateActions";
-import { getFamilies } from "app/redux/actions/FamilyActions";
 import ProfileEmployee from "../ProfileEmployee/ProfileEmployee";
-import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
 import { Avatar, Grid, MenuItem, TextField } from "@material-ui/core";
 import { convertTimeToDate, formatDate } from "utils";
 import moment from "moment";
 import TabSalary from "./Tabs/TabSalary";
 import TabPromotion from "./Tabs/TabPromotion";
 import TabProposal from "./Tabs/TabProposal";
+import ResignationLetter from "../EmployeeDocuments/ResignationLetter";
 
 const styles = (theme) => ({
   root: {
@@ -96,7 +84,7 @@ export default function ManageEmployeeDialog({
 }) {
   const [tab, setTab] = React.useState(0);
   const [showProfile, setShowProfile] = useState(false);
-
+  const [showResignationLetter, setShowResignationLetter] = useState(false);
   const handleChangeTab = (event, newValue) => {
     setTab(newValue);
   };
@@ -106,6 +94,14 @@ export default function ManageEmployeeDialog({
   };
   const handleDialogProfileClose = () => {
     setShowProfile(false);
+  };
+
+  const handleReasonForEnding = () => {
+    setShowResignationLetter(true);
+  };
+
+  const handleReasonForEndingClose = () => {
+    setShowResignationLetter(false);
   };
 
   return (
@@ -314,20 +310,18 @@ export default function ManageEmployeeDialog({
           <Button
             variant="contained"
             color="primary"
-            type="submit"
             onClick={() => handleDialogProfile()}
           >
             {t("general.viewProfile")}
           </Button>
-          <Button variant="contained" color="primary" type="submit">
-            {t("general.end")}
-          </Button>
           <Button
             variant="contained"
-            color="secondary"
-            type="button"
-            onClick={handleClose}
+            color="primary"
+            onClick={() => handleReasonForEnding()}
           >
+            {t("general.end")}
+          </Button>
+          <Button variant="contained" color="secondary" onClick={handleClose}>
             {t("general.cancel")}
           </Button>
         </DialogActions>
@@ -340,6 +334,16 @@ export default function ManageEmployeeDialog({
           handleClose={handleDialogProfileClose}
           employee={employee}
           handleEmployeeDialogClose={handleClose}
+        />
+      )}
+
+      {showResignationLetter && (
+        <ResignationLetter
+          t={t}
+          open={showResignationLetter}
+          handleClose={handleReasonForEndingClose}
+          employee={employee}
+          handleDialogEmployeeClose={handleClose}
         />
       )}
     </div>
