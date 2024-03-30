@@ -155,14 +155,14 @@ export const searchDataByKeyword = (data, keyword) => {
   });
 };
 export function getYearsMonthsDays(input) {
-  let ms = input; // Giả sử đây là số milliseconds
+  let ms = input; 
 
-  // Nếu input là một chuỗi, chuyển đổi thành số milliseconds
+  
   if (typeof input === 'string') {
     ms = parseInt(input, 10);
   }
 
-  // Nếu input không phải là một số milliseconds hợp lệ, trả về null
+ 
   if (isNaN(ms) || ms <= 0) {
     return null;
   }
