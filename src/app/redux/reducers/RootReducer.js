@@ -12,6 +12,7 @@ import LeaderReducer from "./LeaderReducer";
 import salaryReducer from "./SalaryReducer";
 import promotionReducer from "./PromotionReducer";
 import proposalReducer from "./ProposalReducer";
+import ExperienceReducer from "./ExperienceReducer";
 
 
 const RootReducer = combineReducers({
@@ -29,6 +30,7 @@ const RootReducer = combineReducers({
   salary:salaryReducer,
   promotion:promotionReducer,
   proposal:proposalReducer,
+  experience:ExperienceReducer
   
 });
 

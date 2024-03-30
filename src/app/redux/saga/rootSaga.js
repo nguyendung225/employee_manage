@@ -6,6 +6,7 @@ import { leaderSaga } from "./leaderSaga";
 import { salarySaga } from "./salarySaga";
 import { promotionSaga } from "./promotionSaga";
 import { proposalSaga } from "./proposalSaga";
+import { experienceSaga } from "./experienceSaga";
 export function* rootSaga() {
   yield all([
     employeeSaga(),
@@ -14,6 +15,7 @@ export function* rootSaga() {
     leaderSaga(),
     salarySaga(),
     promotionSaga(),
-    proposalSaga()
+    proposalSaga(),
+    experienceSaga(),
   ]);
 }
