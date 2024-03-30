@@ -2,8 +2,7 @@ import { Button, Grid, Icon, IconButton } from "@material-ui/core";
 import { Notifications, Visibility } from "@material-ui/icons";
 import { employeesColumns, salaryColoums } from "app/components/CustomColumns";
 import CustomTable from "app/components/CustomTable";
-import { ACTION_EMPLOYEE } from "app/constants/employeeConstants";
-import { ACTION_PROCESS } from "app/constants/processConstants";
+import { ACTION_PROCESS } from "app/constants/employeeConstants";
 import {
   addSalaryByEmployee,
   deleteSalaryByEmployee,

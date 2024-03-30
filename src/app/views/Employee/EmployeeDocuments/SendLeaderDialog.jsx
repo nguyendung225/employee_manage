@@ -83,8 +83,7 @@ export default function SendLeaderDialog({
   proposal,
   handleDialogProposalClose,
   isEnd,
-  handleDialogEmployeeClose
-  
+  handleDialogEmployeeClose,
 }) {
   const [formData, setFormData] = useState({
     submitDay: employee?.submitDay || new Date().toISOString().split("T")[0],
@@ -112,8 +111,7 @@ export default function SendLeaderDialog({
         updateEmployee({ ...employee, ...formData, submitProfileStatus: 2 })
       );
       handleEmployeeDialogClose();
-    }
-    else if (isSalary) {
+    } else if (isSalary) {
       dispatch(
         updateSalaryByEmployee({
           ...salary,
@@ -122,19 +120,35 @@ export default function SendLeaderDialog({
         })
       );
       handleDialogSalaryClose();
-    }else if(isPromotion){
-      dispatch(updatePromotionByEmployee({...promotion,leaderId:formData.leaderId,processStatus: 2}))
-      handleDialogPromotionClose()
-    }else if(isProposal){
-      dispatch(updateProposalByEmployee({...proposal,leaderId:formData.leaderId,proposalStatus: 2}))
-      handleDialogProposalClose()
-    }else{
-      dispatch(updateEmployee({ ...employee, leaderId: formData.leaderId,submitProfileStatus:6 }));
-      handleDialogEmployeeClose()
-      
+    } else if (isPromotion) {
+      dispatch(
+        updatePromotionByEmployee({
+          ...promotion,
+          leaderId: formData.leaderId,
+          processStatus: 2,
+        })
+      );
+      handleDialogPromotionClose();
+    } else if (isProposal) {
+      dispatch(
+        updateProposalByEmployee({
+          ...proposal,
+          leaderId: formData.leaderId,
+          proposalStatus: 2,
+        })
+      );
+      handleDialogProposalClose();
+    } else {
+      dispatch(
+        updateEmployee({
+          ...employee,
+          leaderId: formData.leaderId,
+          submitProfileStatus: 6,
+        })
+      );
+      handleDialogEmployeeClose();
     }
   };
-  console.log(formData);
   return (
     <div>
       <Dialog
@@ -148,11 +162,10 @@ export default function SendLeaderDialog({
           {t("general.sendLeader")}
         </DialogTitle>
         <ValidatorForm onSubmit={handleSubmit}>
-          {(!isSalary &&  !isPromotion && !isProposal && !isEnd) ? (
+          {!isSalary && !isPromotion && !isProposal && !isEnd ? (
             <DialogContent dividers>
               <Grid container spacing={1} className="mb-20">
                 <Grid item xs={12} sm={3} md={2}>
-                  &&{" "}
                   <TextValidator
                     variant="outlined"
                     size={"small"}

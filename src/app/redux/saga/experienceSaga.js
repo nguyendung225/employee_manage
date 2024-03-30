@@ -43,9 +43,7 @@ function* addExperienceSaga(action) {
   try {
     const { payload } = action;
     const response = yield call(addExperience(payload));
-    console.log(response);
     const { data, code, message } = response?.data;
-
     if (code === statusCode.SUCCESS) {
       yield put(addExperienceSuccess(data));
       toast.success("Thêm thành công");
@@ -61,9 +59,7 @@ function* addExperienceSaga(action) {
 function* updateExperienceSaga(action) {
   try {
     const { id, ...payload } = action.payload;
-
     const response = yield call(updateExperience(id, payload));
-
     const { code, message, data } = response?.data;
     if (code === statusCode.SUCCESS) {
       yield put(updateExperienceSuccess(data));

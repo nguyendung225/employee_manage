@@ -714,6 +714,10 @@
     "leaderName":"leaderName",
     "appointmentDate":"appointmentDate",
     "rejectionDate":"rejectionDate",
+    "experience":"experience",
+    "companyName":"companyName",
+    "startDate":"startDate",
+    "endDate":"endDate",
     "gender": {
       "title":"Gender",
       "male":"Nam",

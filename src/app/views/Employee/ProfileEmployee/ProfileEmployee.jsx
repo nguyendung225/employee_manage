@@ -2,12 +2,11 @@ import React, { useEffect, useState } from "react";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import MuiDialogTitle from "@material-ui/core/DialogTitle";
-import MuiDialogContent from "@material-ui/core/DialogContent";
 import MuiDialogActions from "@material-ui/core/DialogActions";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import Typography from "@material-ui/core/Typography";
-import { Dialog, Tab, Tabs } from "@material-ui/core";
+import { Dialog, DialogContent, Tab, Tabs } from "@material-ui/core";
 import { TabPanel, a11yProps } from "app/components/CustomTab";
 import "styles/views/_profile.scss";
 import {
@@ -27,6 +26,7 @@ import RejectionDialog from "../EmployeeDocuments/RejectionDialog";
 import { isMobile } from "utils";
 import { getExperiences } from "app/redux/actions/ExperienceActions";
 import { useDispatch, useSelector } from "react-redux";
+import { getCertificates } from "app/redux/actions/CertificateActions";
 
 const styles = (theme) => ({
   root: {
@@ -59,12 +59,7 @@ const DialogTitle = withStyles(styles)((props) => {
   );
 });
 
-const DialogContent = withStyles((theme) => ({
-  root: {
-    background: "#0000002e",
-    height: "634px"
-  },
-}))(MuiDialogContent);
+
 
 const DialogActions = withStyles((theme) => ({
   root: {
@@ -104,9 +99,10 @@ export default function ProfileEmployee({
   const [showDialogRejection, setShowDialogRejection] = useState(false);
   const dispatch=useDispatch()
   const { experienceList, success } = useSelector((state) => state.experience);
+  const { certificateList } = useSelector((state) => state.certificate);
 
   const handleChange = (event, newValue) => {
-    setTab(newValue);
+    setTab(newValue); 
   };
 
   const handleSendLeader = () => {
@@ -142,7 +138,10 @@ export default function ProfileEmployee({
   };
 
   useEffect(() => {
-    employee?.id && dispatch(getExperiences(employee?.id));
+    if(employee?.id) {
+      dispatch(getExperiences(employee?.id));
+      dispatch(getCertificates(employee?.id))
+    } 
   }, [employee?.id, success]);
   return (
     <div>
@@ -178,7 +177,7 @@ export default function ProfileEmployee({
           </Tabs>
           <DialogContent dividers>
             <TabPanel value={tab} index={TAB_CV} className={"tabCV"}>
-              <TabCV employee={employee} t={t} />
+              <TabCV employee={employee} certificates={certificateList} t={t}  experiences={experienceList}/>
             </TabPanel>
             <TabPanel
               value={tab}

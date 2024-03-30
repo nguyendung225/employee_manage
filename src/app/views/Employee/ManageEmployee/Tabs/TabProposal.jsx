@@ -5,8 +5,8 @@ import {
   proposalColoums,
 } from "app/components/CustomColumns";
 import CustomTable from "app/components/CustomTable";
-import { ACTION_EMPLOYEE, POSITIONS } from "app/constants/employeeConstants";
-import { ACTION_PROCESS, PROPOSAL } from "app/constants/processConstants";
+import {  POSITIONS , ACTION_PROCESS, PROPOSAL } from "app/constants/employeeConstants";
+
 import {
   addProposalByEmployee,
   deleteProposalByEmployee,
