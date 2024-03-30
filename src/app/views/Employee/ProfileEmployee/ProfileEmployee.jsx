@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles, withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import MuiDialogTitle from "@material-ui/core/DialogTitle";
@@ -25,6 +25,8 @@ import ApprovedDialog from "../EmployeeDocuments/ApprovedDialog";
 import AdditionalRequestDialog from "../EmployeeDocuments/AdditionalRequestDialog";
 import RejectionDialog from "../EmployeeDocuments/RejectionDialog";
 import { isMobile } from "utils";
+import { getExperiences } from "app/redux/actions/ExperienceActions";
+import { useDispatch, useSelector } from "react-redux";
 
 const styles = (theme) => ({
   root: {
@@ -60,7 +62,7 @@ const DialogTitle = withStyles(styles)((props) => {
 const DialogContent = withStyles((theme) => ({
   root: {
     background: "#0000002e",
-    height: isMobile()?'586px' :"634px",
+    height: "634px"
   },
 }))(MuiDialogContent);
 
@@ -78,7 +80,7 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     backgroundColor: theme.palette.background.paper,
     display: isMobile() ? "block" : "flex",
- //   height: 224,
+ 
   },
   tabs: {
     borderRight: `1px solid ${theme.palette.divider}`,
@@ -100,6 +102,9 @@ export default function ProfileEmployee({
   const [showDialogApproved, setShowDialogApproved] = useState(false);
   const [showDialogAdditional, setShowDialogAdditional] = useState(false);
   const [showDialogRejection, setShowDialogRejection] = useState(false);
+  const dispatch=useDispatch()
+  const { experienceList, success } = useSelector((state) => state.experience);
+
   const handleChange = (event, newValue) => {
     setTab(newValue);
   };
@@ -135,6 +140,10 @@ export default function ProfileEmployee({
   const handleDialogRejectionClose = () => {
     setShowDialogRejection(false);
   };
+
+  useEffect(() => {
+    employee?.id && dispatch(getExperiences(employee?.id));
+  }, [employee?.id, success]);
   return (
     <div>
       <Dialog
