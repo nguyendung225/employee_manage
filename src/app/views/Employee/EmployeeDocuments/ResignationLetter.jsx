@@ -83,6 +83,7 @@ export default function ResignationLetter({
     reasonForEnding: employee?.reasonForEnding || "",
   });
   
+  const [status, setStatus] = useState(false);
   const [lines, setLines] = useState([]);
   const defaultReason = "Lý do xin thôi việc: ";
 
@@ -119,11 +120,18 @@ export default function ResignationLetter({
   const handleChangInput = (e) => {
     !isManage && setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
+  const textareaRef = useRef(null);
+  const reasonRef = useRef(null);
   useEffect(() => {
     const lines = formData.reasonForEnding?.split("\n");
     setLines(lines);
-  }, [formData?.reasonForEnding]);
+    if (textareaRef.current) {
+      const textareaHeight = textareaRef.current.offsetHeight;
+      reasonRef.current.style.height = `${textareaHeight}px`;
+    } else {
+      setStatus(true);
+    }
+  }, [formData?.reasonForEnding, textareaRef.current, status]);
 
   const handleChangReason = (e) => {
     const { value } = e.target;
@@ -210,11 +218,10 @@ export default function ResignationLetter({
                 .
               </Typography>
             </Typography>
-            <Typography className="reason">
+            <Typography className="reason" ref={reasonRef}>
               <Typography className={"title"}> Lý do xin thôi việc:</Typography>
-              <Input
-                multiline
-                disableUnderline
+              <textarea
+                ref={textareaRef}
                 className="reasonForEnding"
                 onChange={handleChangReason}
                 value={
