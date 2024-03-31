@@ -878,6 +878,9 @@
     "companyName":"Tên công ty",
     "startDate":"Ngày bắt đầu",
     "endDate":"Ngày kết thúc",
+    "save":"Nộp lưu",
+    "decisionDay":"Ngày nộp lưu",
+    "numberSaved":"Mã nộp lưu",
     "gender": {
       "title": "Giới tính",
       "male": "Nam",

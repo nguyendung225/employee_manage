@@ -718,6 +718,10 @@
     "companyName":"companyName",
     "startDate":"startDate",
     "endDate":"endDate",
+    "save":"Save",
+    "decisionDay":"decisionDay",
+    "numberSaved":"numberSaved",
+
     "gender": {
       "title":"Gender",
       "male":"Nam",
