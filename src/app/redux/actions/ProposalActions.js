@@ -18,7 +18,7 @@ export const getProposalListByEmployee = (id) => {
     type: GET_PROPOSAL_LIST_BY_EMPLOYEE_REQUEST,
     id,
   };
-};
+}; 
 export const getProposalListByEmployeeSuccess = (payload) => {
   return {
     type: GET_PROPOSAL_LIST_BY_EMPLOYEE_SUCCESS,

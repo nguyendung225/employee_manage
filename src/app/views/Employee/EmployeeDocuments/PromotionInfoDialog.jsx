@@ -11,7 +11,6 @@ import Typography from "@material-ui/core/Typography";
 import "styles/views/_letter.scss";
 import { Grid } from "@material-ui/core";
 import { getDayMonthYear } from "utils";
-import { ACTION_PROCESS } from "app/constants/processConstants";
 import {
   addPromotionByEmployee,
   updatePromotionByEmployee,

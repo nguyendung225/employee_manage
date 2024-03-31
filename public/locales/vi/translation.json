@@ -874,6 +874,10 @@
     "leaderName":"Tên lãnh đạo",
     "appointmentDate":"Ngày hẹn",
     "rejectionDate":"Ngày từ chối",
+    "experience":"Kinh nghiệm làm việc",
+    "companyName":"Tên công ty",
+    "startDate":"Ngày bắt đầu",
+    "endDate":"Ngày kết thúc",
     "gender": {
       "title": "Giới tính",
       "male": "Nam",

@@ -39,7 +39,7 @@ const ExperienceReducer = function (state = initialState, action) {
     case GET_EXPERIENCE_LIST_SUCCESS:
       return {
         ...state,
-        
+        experienceList:action.payload,
         success: true,
       };
 

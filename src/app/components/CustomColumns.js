@@ -4,10 +4,12 @@ import {
   RELATIONSHIP,
   STATUS_EMPLOYEE,
   STATUS_PROCESS,
+  SUBMIT_PROCESS_STATUS,
+  PROPOSAL,
   SUBMIT_PROFILE_STATUS,
   TEAMS,
 } from "app/constants/employeeConstants";
-import { PROPOSAL, SUBMIT_PROCESS_STATUS } from "app/constants/processConstants";
+
 
 import { formatCurrency, formatDate } from "utils";
 export const employeesColumns = (t, action) => [

@@ -12,7 +12,6 @@ import "styles/views/_letter.scss";
 import { Grid } from "@material-ui/core";
 import { getDayMonthYear } from "utils";
 import {  TEAMS } from "app/constants/employeeConstants";
-import { ACTION_PROCESS } from "app/constants/processConstants";
 import {
   addProposalByEmployee,
   updateProposalByEmployee,

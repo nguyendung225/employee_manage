@@ -6,7 +6,7 @@ import {
 } from "app/components/CustomColumns";
 import CustomTable from "app/components/CustomTable";
 import {  POSITIONS } from "app/constants/employeeConstants";
-import { ACTION_PROCESS } from "app/constants/processConstants";
+import { ACTION_PROCESS } from "app/constants/employeeConstants";
 import {
   addPromotionByEmployee,
   deletePromotionByEmployee,
