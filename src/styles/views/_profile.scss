@@ -1,22 +1,22 @@
-// .tabCV{
-//     width: 890px;
-//     background: white;
-//     margin: auto;
-//     height: 794px;
-
-// }
-// .tabProfile,.tabCertificate{
-//     background: white; 
-//     width: 940px;  
-//     margin: auto;
-//    font-family: 'Times New Roman', Times, serif !important;
-//    font-size: 1rem !important;
-//    .MuiTypography-body1{
-//     font-family: 'Times New Roman', Times, serif !important;
-//    font-size: large;
-//    .MuiTableCell-root{
-//     font-family: 'Times New Roman', Times, serif !important;
-//     font-size: large;
-//    }
-// }
-// }
+.tabCV{
+    background: white; 
+    width: 1054px;  
+    margin:0px auto; 
+}
+.tabProfile,.tabCertificate{
+    background: white; 
+    width: 1054px;  
+    margin: 0px;
+   font-family: 'Times New Roman', Times, serif !important;
+   font-size: 1rem !important;
+   .MuiTypography-body1{
+    font-family: 'Times New Roman', Times, serif !important;
+   font-size: large;
+   .MuiTableCell-root{
+    font-family: 'Times New Roman', Times, serif !important;
+    font-size: large;
+    box-sizing: border-box;
+    
+   }
+}
+}

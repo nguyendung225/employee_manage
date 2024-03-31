@@ -19,6 +19,14 @@
       "title": "Manage Employee",
       "end": "End employee"
     },
+    "leader":{
+      "title":"Leader",
+      "pending":"Pending",
+      "approved":"Approved",
+    
+    },
+    
+      
 
     "subcategory": {
       "product": "Product",
@@ -198,7 +206,22 @@
     "required": "This field is required",
     "warrantyMonthError": "Warranty Month is not valid",
     "yearPutIntoUseError": "Year Put Into Use is not valid",
-    "register":"Register"
+    "content":"content",
+    "register":"Register",
+    "sendLeader":"sendLeader",
+    "none":"none",
+    "viewProfile":"viewProfile",
+    "end":"End",
+    "approved":"approved",
+    "additionalRequest":{
+      "title":"additionalRequest",
+      "content":"Content additionalRequest"
+    },
+    "refuse":{
+      "title":"refuse",
+      "reason":"reason"
+    }
+   
   },
   "component": {
     "product": {
@@ -688,7 +711,17 @@
     "firstName": "firstName",
     "lastName": "LastName",
     "displayName": "displayName",
-    
+    "leaderName":"leaderName",
+    "appointmentDate":"appointmentDate",
+    "rejectionDate":"rejectionDate",
+    "experience":"experience",
+    "companyName":"companyName",
+    "startDate":"startDate",
+    "endDate":"endDate",
+    "save":"Save",
+    "decisionDay":"decisionDay",
+    "numberSaved":"numberSaved",
+
     "gender": {
       "title":"Gender",
       "male":"Nam",
@@ -703,6 +736,9 @@
     "search": "Search by name and code",
     "UserName": "User name",
     "department": "Department",
+    "submitDay":"submitDay",
+    "submitContent":"submitContent",
+
     "noti": {
       "use": "Nhân viên đang sử dụng, không thể xóa",
       "use_all": "Nhân viên đều đã sử dụng",
@@ -729,7 +765,8 @@
     }
    
   },
-  "cetificate": {
+
+  "certificate": {
     "name": "Name certificate",
     "code": "Code certificate",
     "field": "field",
@@ -737,11 +774,6 @@
     "content": "content"
   },
 
-  "family": {
-    "displayName": "displayName",
-    "name": "name",
-    "gender": "gender",
-    "dateOfBirth": "dateOfBirth",
     "family": {
       "displayName": "Họ tên",
       "name": "Họ và viên",
@@ -758,7 +790,8 @@
        "grandFather":"grandFather",
        "grandma":"grandma",
        "wife/husband":"wife/husband",
-       "other":"other"
+       "other":"other",
+       "position":"position"
       },
     "cccd": "cccd",
     "citizenIdentificationNumber": "citizenIdentificationNumber",
@@ -766,6 +799,77 @@
     "email": "email",
     "phoneNumber": "SĐT"
   },
+  "leader": {
+    "title":"title",
+    "name:":"name",
+     "position":"position",
+     "pendingRegister":"pendingRegister",
+     "pendingSalary":"pendingSalary",
+     "pendingPromotion":"pendingPromotion",
+     "pendingProposal":"pendingProposal"
+  },
+  "procees":{
+    "processUpdate":"processUpdate",
+    "processStatus": {
+      "createNew": "createNew",
+      "pending": "pending",
+      "approved": "approved",
+      "additionalRequest": "additionalRequest",
+      "reject": "reject"
+     
+    }
+
+  },
+  "salary":{
+    "title":"Salary",
+    "startDate":"Salary startDate",
+    "oldSalary":"OldSalary",
+    "newSalary":"NewSalary",
+    "reason":"reason",
+    "note":"Note",
+    "salaryIncreaseStatus":"salaryIncreaseStatus"
+
+  },
+  "promotion":{
+    "title":"Thăng chức",
+    "promotionDay":"promotionDay",
+    "currentPosition":"currentPosition",
+    "newPosition":"newPosition",
+    "note":"Note",
+    "processStatus":"processStatus"
+
+  },
+  "proposal":{
+    "title":"proposal",
+
+    "type":"type",
+    "proposalDate":"proposalDate",
+    "content":"content",
+    "note":"Note",
+    "detailedDescription":"detailedDescription",
+    "proposalStatus":"proposalStatus",
+
+      "train":"Train",
+      "procedure":"Procedure",
+      "time":"Time",
+      "plan":"Plan"
+     
+
+  },
+  "position":{
+    "staff":"staff",
+    "generalinchief":"generalinchief",
+    "deputyDepartment":"deputyDepartment",
+    "manager":"manager",
+    "viceDirector":"viceDirector",
+    "leaderFontend":"leaderFontend",
+    "LeaderBackend":"LeaderBackend",
+    "LeaderBA":"LeaderBA",
+    "LeaderTester":"LeaderTester"
+  
+
+   },
+
   "Store": {
     "name": "Store name",
     "code": "Store code",
@@ -892,5 +996,5 @@
   "Delete": "Delete",
   "Search": "Search",
   "enterSearch": "Enter Search"
-}
+
 }

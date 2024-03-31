@@ -11,7 +11,7 @@ import Typography from "@material-ui/core/Typography";
 import "styles/views/_letter.scss";
 import { Grid } from "@material-ui/core";
 import { getDayMonthYear } from "utils";
-import { ACTION_PROCESS, TEAMS } from "app/constants/employeeConstants";
+import {  TEAMS } from "app/constants/employeeConstants";
 import {
   addProposalByEmployee,
   updateProposalByEmployee,
@@ -265,35 +265,20 @@ export default function ProposalInfoDialog({
                 </Button>
               </>
             )}
-            {!ACTION_PROCESS.MANAGE.includes(proposal.proposalStatus) &&
-              !proposalListByEmployee?.find((item) =>
-                ACTION_PROCESS.PENDING.includes(item?.proposalStatus)
-              ) && (
+        
+            
+            
                 <Button
                   variant="contained"
                   color="primary"
                   type="button"
                   className="mr-12"
+                  disabled={proposalListByEmployee?.some(item => item.proposalStatus == 2)}
                   onClick={() => handleDialogSendLeader()}
                 >
                   {t("general.sendLeader")}
                 </Button>
-              )}
-            {!ACTION_PROCESS.MANAGE.includes(proposal.proposalStatus) &&
-              proposalListByEmployee?.find((item) =>
-                ACTION_PROCESS.PENDING.includes(item?.proposalStatus)
-              ) && (
-                <Button
-                  variant="contained"
-                  color="primary"
-                  type="button"
-                  className="mr-12"
-                  disabled
-                  onClick={() => handleDialogSendLeader()}
-                >
-                  {t("general.sendLeader")}
-                </Button>
-              )}
+            
 
             <Button
               variant="contained"

@@ -2,11 +2,11 @@
   "web_site": "Phần mềm quản lý Trang Thiết Bị Y tế",
   "Dashboard": {
     "dashboard": "Trang chủ",
-    "AdministrativeUnit":"Đơn vị hành chính",
+    "AdministrativeUnit": "Đơn vị hành chính",
     "login": "Đăng nhập",
     "logout": "Đăng xuất",
     "profile": "Thông tin tài khoản",
-    "directory":"Danh mục",
+    "directory": "Danh mục",
     "asset": "Tài sản",
     "edit": "Sửa",
     "delete": "Xóa",
@@ -20,12 +20,16 @@
     "manage": "Quản lý",
     "purchase": "Quản lý mua sắm",
     "assetStatusTest": "Trạng thái tài sản demo",
-     "employee_manage":{
-      "add":"Thêm mới nhân viên",
-      "title":"Quản lý nhân viên",
-      "end":"Kết thúc nhân viên"
-     },
-    
+    "employee_manage": {
+      "add": "Thêm mới nhân viên",
+      "title": "Quản lý nhân viên",
+      "end": "Kết thúc nhân viên"
+    },
+    "leader":{
+      "title":"Lãnh đạo",
+      "pending":"Chờ duyệt",
+      "approved":"Đã duyệt"
+    },
     "subcategory": {
       "product": "Danh sách sản phẩm",
       "productType": "Loại sản phẩm",
@@ -52,42 +56,42 @@
       "title": "Báo cáo tổng hợp",
       "aggregate_assets_by_asset_group": "Tổng hợp theo nhóm tài sản",
       "amount_of_assets_grouped_by_asset_group": "BC tài sản theo nhóm",
-      "amount_of_assets_grouped_by_product_category":"BC tài sản theo DMSP",
-      "amount_of_assets_grouped_by_department":"BC tài sản theo phòng ban",
-      "report_increase_or_decrease_assets":"BC tăng giảm tài sản"
+      "amount_of_assets_grouped_by_product_category": "BC tài sản theo DMSP",
+      "amount_of_assets_grouped_by_department": "BC tài sản theo phòng ban",
+      "report_increase_or_decrease_assets": "BC tăng giảm tài sản"
     },
     "Purchase": {
-      "purchase_supplies":"Mua sắm vật tư",
-      "purchase_asset":"Mua sắm tài sản",
+      "purchase_supplies": "Mua sắm vật tư",
+      "purchase_asset": "Mua sắm tài sản",
       "purchaseRequest": "Yêu cầu mua sắm",
       "purchasePlaning": "Kế hoạch mua sắm",
       "ReceivingAsset": "Tiếp nhận tài sản",
       "purchaseRequestStauts": "Trạng thái yêu cầu mua sắm",
       "purchase_request_count": "Tổng hợp yêu cầu mua sắm",
-      "suppliesPurchaseRequest":"Yêu cầu mua sắm ",
-      "supplies_purchase_request_count":"Tổng hợp yêu cầu mua sắm",
-      "suppliespurchasePlaning":"Kế hoạch mua sắm",
-      "noti":{
-        "warning_planing":"Kế hoạch đã được phê duyệt"
+      "suppliesPurchaseRequest": "Yêu cầu mua sắm ",
+      "supplies_purchase_request_count": "Tổng hợp yêu cầu mua sắm",
+      "suppliespurchasePlaning": "Kế hoạch mua sắm",
+      "noti": {
+        "warning_planing": "Kế hoạch đã được phê duyệt"
       }
     }
   },
-  
+
   "general": {
-    "roles":"Vai Trò",
+    "roles": "Vai Trò",
     "noti": "Thông báo",
     "print": "In Phiếu",
     "exportToExcel": "Xuất Excel",
     "importExcel": "Nhập Excel",
     "select": "Chọn",
-    "select_asset": "Chọn tài sản",    
+    "select_asset": "Chọn tài sản",
     "saveUpdate": "Thêm mới/Cập nhật",
     "update": "Cập nhật",
     "cancel": "Hủy",
     "search": "Tìm kiếm",
     "search_tree_department": "Tìm kiếm phòng ban",
     "save": "Lưu",
-    "addNew":"Thêm mới",
+    "addNew": "Thêm mới",
     "viewDocument": "Xem tài liệu",
     "downloadDocument": "Tải xuống",
     "removeDocument": "Xoá tài liệu",
@@ -145,16 +149,30 @@
     "selects": "Đã chọn {0} hàng",
     "download": "Tải về",
     "view": "Xem",
-    "choosePhoto":"Chọn ảnh",
+    "choosePhoto": "Chọn ảnh",
     "add_asset": "Thêm tài sản",
     "warrantyMonthError": "Tháng bảo hành không hợp lệ",
     "yearPutIntoUseError": "Năm đưa vào sử dụng không hợp lệ",
+    "content":"Nội dung",
     "add": "Thêm",
     "confirmCalculator": "Bạn có chắc chắn muốn lưu?",
-    "add_file":"Thêm tài liệu",
+    "add_file": "Thêm tài liệu",
     "allProduct": "Tất cả sản phẩm",
     "invalidDateFormat": "Định dạng ngày tháng không hợp lệ",
-    "register":"Đăng ký"
+    "register": "Đăng ký",
+    "sendLeader": "Trình lãnh đạo",
+    "none":"Không có",
+    "viewProfile":"Xem hồ sơ",
+    "end":"Kết thúc",
+    "approved":"Phê duyệt",
+    "additionalRequest":{
+      "title":"Yêu cầu bổ sung",
+      "content":"Nội dung yêu cầu bổ sung"
+    },
+    "refuse":{
+      "title":"Từ chối",
+      "content":"Lý do từ chối"
+    }
   },
   "toastr": {
     "error": "Có lỗi xảy ra, vui lòng thử lại."
@@ -189,8 +207,8 @@
     "reload_code": "Tải lại mã tài sản",
     "list_asset": "Danh sách tài sản",
     "add_asset": "Thêm tài sản",
-    "asset_transfer_to_another_unit":"Tài sản chuyển đi",
-    "asset_liquidate":"Thanh lý tài sản",
+    "asset_transfer_to_another_unit": "Tài sản chuyển đi",
+    "asset_liquidate": "Thanh lý tài sản",
     "allocation_asset": "Cấp phát tài sản",
     "transfer_asset": "Điều chuyển tài sản",
     "maintain_request": "Bảo hành - sửa chữa",
@@ -225,7 +243,7 @@
     "carryingAmount": "Giá trị còn lại (VNĐ)",
     "viewHistory": "Lịch sử tài sản",
     "action": "Thao tác",
-    "store":"Tên kho",
+    "store": "Tên kho",
     "manufacturer": "Hãng sản xuất",
     "usedTime": "Thời gian sử dụng (Tháng)",
     "model": "Model tài sản",
@@ -397,11 +415,11 @@
       "use_all": "Danh sản phẩm đều đã sử dụng",
       "deleted_unused": "Đã xoá danh sản phẩm chưa sử dụng",
       "dupli_code": "Mã đã được sử dụng",
-      "updateFailParent":"Không thể chọn danh mục này làm danh mục cha",
+      "updateFailParent": "Không thể chọn danh mục này làm danh mục cha",
       "addSuccess": "Tạo mới thành công danh mục sản phẩm",
       "updateSuccess": "Cập nhật thành công thông tin danh mục sản phẩm"
     },
-    "filter":"Tìm kiếm theo mã và tên danh mục sản phẩm"
+    "filter": "Tìm kiếm theo mã và tên danh mục sản phẩm"
   },
   "ProductAttribute": {
     "add": "Thêm thuộc tính sản phẩm",
@@ -431,7 +449,7 @@
       "use_all": "Nhóm tài sản đều đã sử dụng",
       "deleted_unused": "Đã xoá nhóm tài sản chưa sử dụng",
       "dupli_code": "Mã đã được sử dụng",
-      "updateFailParent":"Không thể chọn nhóm tài sản này làm nhóm tài sản cha"
+      "updateFailParent": "Không thể chọn nhóm tài sản này làm nhóm tài sản cha"
     },
     "viewIndex": "Số thứ tự của nhóm"
   },
@@ -454,7 +472,7 @@
     "type": "Kiểu phòng ban",
     "parent": "Thuộc phòng ban cha",
     "isAssetManagement": "Là phòng ban quản lý tài sản",
-    "saveUpdate":"Thêm mới/Cập nhật phòng ban",
+    "saveUpdate": "Thêm mới/Cập nhật phòng ban",
     "dialog": {
       "title": "Cập nhật vòng ngoại kiểm"
     },
@@ -464,7 +482,7 @@
       "use_all": "Phòng ban đều đã sử dụng",
       "deleted_unused": "Đã xoá phòng ban chưa sử dụng",
       "dupli_code": "Mã đã được sử dụng",
-      "updateFailParent":"Không thể chọn phòng ban này làm phòng ban cha"
+      "updateFailParent": "Không thể chọn phòng ban này làm phòng ban cha"
     }
   },
   "CommonObjectType": {
@@ -595,9 +613,9 @@
       "dupli_code": "Mã đã được sử dụng"
     }
   },
-  "Detail":{
-    "add":"Thêm Vào Danh Sách ",
-    "join":"Tham Gia"
+  "Detail": {
+    "add": "Thêm Vào Danh Sách ",
+    "join": "Tham Gia"
   },
   "maintainRequest": {
     "title": "Bảo hành - sửa chữa",
@@ -614,7 +632,7 @@
     "maintain_request_history": "Lịch sử bảo hành - sửa chữa",
     "date": "Ngày sửa chữa",
     "maintain_request_costs": "Chi phí (VND)",
-    "dialog":"Thêm mới/Cập nhật phiếu bảo hành - sửa chữa",
+    "dialog": "Thêm mới/Cập nhật phiếu bảo hành - sửa chữa",
     "receiverPerson": "Người tiếp nhận"
   },
   "ProductTemplate": {
@@ -624,7 +642,7 @@
     "name": "Tên mẫu sản phẩm",
     "code": "Mã mẫu sản phẩm",
     "properties": "Tên thuộc tính sản phẩm",
-    "filter": "Tìm theo tên và mã mẫu sản phẩm" ,
+    "filter": "Tìm theo tên và mã mẫu sản phẩm",
     "noti": {
       "use": "Mẫu sản phẩm đang sử dụng, không thể xóa",
       "use_all": "Mẫu sản phẩm đều đã sử dụng",
@@ -647,8 +665,8 @@
   "DeleteAllConfirm": "Bạn có chắc chắn xóa toàn bộ?",
   "DeleteConfirm": "Bạn có chắc chắn xóa",
   "EnterSearch": "Nhập từ khóa tìm kiếm",
-  "Delete":"Xóa",
-  "Search":"Tìm Kiếm",
+  "Delete": "Xóa",
+  "Search": "Tìm Kiếm",
   "confirm": "Xác nhận",
   "PleaseSelect": "Vui lòng chọn",
   "deleteQuestion": "Bạn có chắc chắn muốn xóa",
@@ -690,38 +708,38 @@
     "part2": "Switch language between english and german using buttons above.",
     "part3": "English path."
   },
-  "webinar":{
-    "list":"Danh sách hội thảo",
-    "myList":"Danh sách hội thảo của bạn",
+  "webinar": {
+    "list": "Danh sách hội thảo",
+    "myList": "Danh sách hội thảo của bạn",
     "title": "Danh Sách Hội Thảo",
     "description": "Mô Tả",
     "startTime": "Thời Gian Bắt Đầu",
-    "name":"Tên Phòng",
-    "id":"Mã Phòng",
+    "name": "Tên Phòng",
+    "id": "Mã Phòng",
     "endTime": "Thời Gian Kết Thúc",
     "Action": "Hành Động",
-    "Delete": "Xóa",    
+    "Delete": "Xóa",
     "Search": "Tìm kiếm",
-    "confirm":"Xác nhận",
-    "addConfirm": "Thêm vào danh sách của bạn" ,
-    "deleteConfirm":"Bạn có chắc chắn xóa?",
-    "deleteSuccess":"Xoá thành công",
+    "confirm": "Xác nhận",
+    "addConfirm": "Thêm vào danh sách của bạn",
+    "deleteConfirm": "Bạn có chắc chắn xóa?",
+    "deleteSuccess": "Xoá thành công",
     "add": "Thêm",
     "cancel": "Hủy",
-    "edit":"Sửa",
-    "addSuccess":"Đã thêm vào cuộc họp của bạn",
-    "exist":"Đã tồn tại trong danh sách",
-    "userZoom":"Không thể tạo cuộc hội thảo, tài khoản host chưa cập nhật thông tin ZoomId và Zoom PassWord. Vui lòng liên hệ Admin.",
-    "webinarName":"Tên hội thảo",
+    "edit": "Sửa",
+    "addSuccess": "Đã thêm vào cuộc họp của bạn",
+    "exist": "Đã tồn tại trong danh sách",
+    "userZoom": "Không thể tạo cuộc hội thảo, tài khoản host chưa cập nhật thông tin ZoomId và Zoom PassWord. Vui lòng liên hệ Admin.",
+    "webinarName": "Tên hội thảo",
     "webinarDescription": "Mô tả",
-    "webinarTime":"Thời Gian",
-    "webinarId":"Mã hội thảo",
-    "des":"Mô tả",
+    "webinarTime": "Thời Gian",
+    "webinarId": "Mã hội thảo",
+    "des": "Mô tả",
     "time": "Thời gian",
-    "joinWebinar":"Tham gia hội thảo",
+    "joinWebinar": "Tham gia hội thảo",
     "startWebinar": "Bắt đầu hội thảo",
-    "webinarEnd":"Hội thảo đã kết thúc",
-    "emptyHost":"Meeting Number và Meeting Password rỗng, bạn có muốn tạo host mới?",
+    "webinarEnd": "Hội thảo đã kết thúc",
+    "emptyHost": "Meeting Number và Meeting Password rỗng, bạn có muốn tạo host mới?",
     "notYet": "Chưa đến giờ hội thảo",
     "WebinarJoin": "Bạn có muốn tham gia hội thảo?",
     "join": "Tham gia",
@@ -729,17 +747,17 @@
     "start": "Bắt đầu"
   },
 
-  "Verify":{
-    "something_went_wrong":"Oh no, something went wrong...",
-    "verify_successful_title":"Registered successfully!",
+  "Verify": {
+    "something_went_wrong": "Oh no, something went wrong...",
+    "verify_successful_title": "Registered successfully!",
     "invalid_token": "The URL is invalid. Please check again.",
     "verify_successful_message": "",
     "try_again": "Please try again!",
     "make_sure_connection_ok": "Make sure that your internet connection is stable.",
-    "make_sure_correct_url":"Make sure that the URL is correct.",
-    "make_sure_within_time":"Make sure that you verify your account within 24 hours after registration.",
-    "login":"Back to login",
-    "back_to_dashboard":"Back to homepage",
+    "make_sure_correct_url": "Make sure that the URL is correct.",
+    "make_sure_within_time": "Make sure that you verify your account within 24 hours after registration.",
+    "login": "Back to login",
+    "back_to_dashboard": "Back to homepage",
     "time_expired": "Verification time expired. Please register again."
   },
 
@@ -748,12 +766,12 @@
     "selected": "đã chọn",
     "upload": "Tải lên",
     "no_file_selected": "Chưa chọn file nào",
-    "note_limit":"Cho phép .jpg, .jpeg, .png, Tối đa :2MB ",
+    "note_limit": "Cho phép .jpg, .jpeg, .png, Tối đa :2MB ",
     "note_size": "File không được lớn hơn 2mb!",
     "note_format": "File không đúng định dạng!"
   },
 
-  "ZoomMeeting":{
+  "ZoomMeeting": {
     "meetingNumber": "Số Phòng"
   },
   "analytics": {
@@ -811,7 +829,7 @@
     "add": "Thêm mới phiếu",
     "note": "Ghi chú",
     "enterSearch": "Tìm kiếm theo tên, phòng ban và trạng thái",
-    "dialog":"Thêm mới/Cập nhật phiếu kiểm kê tài sản"
+    "dialog": "Thêm mới/Cập nhật phiếu kiểm kê tài sản"
   },
   "InventoryCountStatus": {
     "name": "Tên trạng thái kiểm kê",
@@ -853,12 +871,22 @@
     "firstName": "Tên",
     "lastName": "Họ",
     "displayName": "Họ và tên nhân viên",
-    "gender":{
-     "title":"Giới tính",
-     "male":"Nam",
-     "female":"Nữ",
-     "other":"Khác"
-    } ,
+    "leaderName":"Tên lãnh đạo",
+    "appointmentDate":"Ngày hẹn",
+    "rejectionDate":"Ngày từ chối",
+    "experience":"Kinh nghiệm làm việc",
+    "companyName":"Tên công ty",
+    "startDate":"Ngày bắt đầu",
+    "endDate":"Ngày kết thúc",
+    "save":"Nộp lưu",
+    "decisionDay":"Ngày nộp lưu",
+    "numberSaved":"Mã nộp lưu",
+    "gender": {
+      "title": "Giới tính",
+      "male": "Nam",
+      "female": "Nữ",
+      "other": "Khác"
+    },
     "birthDate": "Ngày sinh",
     "birthPlaceame": "Nơi sinh",
     "phone": "SĐT",
@@ -867,21 +895,23 @@
     "UserName": "Tên đăng nhập",
     "department": "Phòng ban",
     "Email": "Email",
+    "submitDay": "Ngày trình",
+    "submitContent": "Nội dung",
     "noti": {
       "use": "Nhân viên đang sử dụng, không thể xóa",
       "use_all": "Nhân viên đều đã sử dụng",
       "deleted_unused": "Đã xoá nhân viên chưa sử dụng",
       "dupli_code": "Mã đã được sử dụng"
     },
-    "profile":{
-      "title":"Hồ sơ nhân viên",
-      "cv":"cv",
-      "personalBackground":"Sơ yếu lý lịch",
-      "certificate":"Văng bằng"
+    "profile": {
+      "title": "Hồ sơ nhân viên",
+      "cv": "cv",
+      "personalBackground": "Sơ yếu lý lịch",
+      "certificate": "Văng bằng"
     },
     "submitProfileStatus": {
       "save": "Nộp lưu",
-      "createNew": "Tạo mới",
+      "createNew": "Lưu mới",
       "pending": "Chờ xử lý",
       "approved": "Đã duyệt",
       "additionalRequest": "Yêu cầu bổ sung",
@@ -890,10 +920,10 @@
       "approvedEnd": "Đã duyệt kết thúc",
       "additionalRequestEnd": "Yêu cầu bổ sung kết thúc",
       "rejectEnd": "Từ chối kết thúc"
+      
     }
-   
   },
-  "cetificate": {
+  "certificate": {
     "name": "Tên văn bằng",
     "code": "Mã văn bằng",
     "field": "Lĩnh vực",
@@ -907,23 +937,89 @@
     "gender": "Giới tính",
     "dateOfBirth": "Ngày sinh",
     "relationShip": {
-     "title":"Quan hệ",
-     "father":"Bố",
-     "mother":"Mẹ",
-     "olderBrother":"Anh trai",
-     "youngerBrother":"Em trai",
-     "olderSister":"Chị gái",
-     "youngerSister":"Em gái",
-     "grandFather":"Ông",
-     "grandma":"Bà",
-     "wife/husband":"Vợ/chồng",
-     "other":"Khác"
+      "title": "Quan hệ",
+      "father": "Bố",
+      "mother": "Mẹ",
+      "olderBrother": "Anh trai",
+      "youngerBrother": "Em trai",
+      "olderSister": "Chị gái",
+      "youngerSister": "Em gái",
+      "grandFather": "Ông",
+      "grandma": "Bà",
+      "wife/husband": "Vợ/chồng",
+      "other": "Khác"
     },
     "citizenIdentificationNumber": "Căn cước công dân",
     "address": "Địa chỉ",
     "email": "Email",
     "phoneNumber": "SĐT"
   },
+  "leader": {
+    "title": "Lãnh đạo",
+    "name:": "Tên lãnh đạo",
+    "position": "Chức vụ",
+    "pendingRegister":"Chờ duyệt đăng ký/kết thúc",
+    "pendingSalary":"Chờ duyệt tăng lương",
+    "pendingPromotion":"Chờ duyệt thăng chức",
+    "pendingProposal":"Chờ duyệt tham mưu"
+  },
+  "process":{
+    "processUpdate":"Cập nhật diễn biến",
+    "processStatus": {
+      "createNew": "Lưu mới",
+      "pending": "Chờ xử lý",
+      "approved": "Đã duyệt",
+      "additionalRequest": "Yêu cầu bổ sung",
+      "reject": "Từ chối"
+     
+    }
+  },
+  "salary":{
+    "title":"Tăng lương",
+    "startDate":"Ngày tăng lương",
+    "oldSalary":"Mức lương cũ",
+    "newSalary":"Mức lương mới",
+    "reason":"Lý do",
+    "note":"Ghi chú",
+    "salaryIncreaseStatus":"Trạng thái"
+
+  },
+  "promotion":{
+    "title":"Thăng chức",
+    "promotionDay":"Ngày thăng chức",
+    "currentPosition":"Vị trí hiện tại",
+    "newPosition":"Vị trí mới",
+    "note":"Ghi chú",
+    "processStatus":"Trạng thái"
+  },
+  "proposal":{
+    "title":"Tham mưu",
+    "type":"Loại đề xuất",
+    "proposalDate":"Ngày đề xuất",
+    "content":"Nội dung",
+    "note":"Ghi chú",
+    "detailedDescription":"Mô tả",
+    "proposalStatus":"Trạng thái",
+
+      "train":"Đào tạo",
+      "procedure":"Quy trình",
+      "time":"Thời gian",
+      "plan":"Kế hoạch"
+     
+
+  },
+  "position": {
+    "staff": "Nhân viên",
+    "generalinchief": "Trưởng phòng",
+    "deputyDepartment": "Phó phòng",
+    "manager": "Giám đốc",
+    "viceDirector": "Phó giám đốc",
+    "leaderFontend": "Trưởng nhóm Fontend",
+    "LeaderBackend": "Trưởng nhóm Bacend",
+    "LeaderBA": "Trưởng nhóm BA",
+    "LeaderTester": "Trưởng nhóm Tester"
+  },
+ 
   "Store": {
     "title": "Kho",
     "name": "Tên kho",
@@ -961,11 +1057,11 @@
     "batchCode": "Mã lô",
     "handoverPerson": "Người tạo phiếu",
     "total": "Tổng giá trị(VNĐ)",
-    "dialog":"Thêm mới/Cập nhật phiếu nhập kho"
+    "dialog": "Thêm mới/Cập nhật phiếu nhập kho"
   },
   "InventoryDeliveryVoucher": {
     "title": "Xuất kho",
-    "dialog":"Thêm mới/Cập nhật phiếu xuất kho",
+    "dialog": "Thêm mới/Cập nhật phiếu xuất kho",
     "stt": "STT",
     "issueDate": "Ngày xuất",
     "code": "Mã phiếu xuất kho",
@@ -996,13 +1092,13 @@
     "totalOriginalCost": "Tổng nguyên giá(VNĐ)",
     "list_asset_by_asset_group": "Danh sách tài sản theo nhóm tài sản",
     "search": "Tìm kiếm",
-    "list_asset_by_department":"Danh sách tài sản theo phòng ban sử dụng",
-    "list_asset_by_product_category":"Danh sách tài sản theo danh mục sản phẩm",
-    "increaseQuantity":"Số lượng tăng trong năm",
-    "reductionQuantity":"Số lượng giảm trong năm",
-    "firstQuantity":"Số lượng đầu năm",
-    "originalCost":"Nguyên giá (VNĐ)",
-    "finalQuantity":"Số lượng cuối năm"
+    "list_asset_by_department": "Danh sách tài sản theo phòng ban sử dụng",
+    "list_asset_by_product_category": "Danh sách tài sản theo danh mục sản phẩm",
+    "increaseQuantity": "Số lượng tăng trong năm",
+    "reductionQuantity": "Số lượng giảm trong năm",
+    "firstQuantity": "Số lượng đầu năm",
+    "originalCost": "Nguyên giá (VNĐ)",
+    "finalQuantity": "Số lượng cuối năm"
   },
   "StockSummaryReport": {
     "title": "Báo cáo nhập xuất tồn kho",
@@ -1026,14 +1122,14 @@
     "import_history": "Lịch sử nhập",
     "export_history": "Lịch sử xuất",
     "total": "Thành tiền(VNĐ)",
-    "remainingQuantityFromDate": "Tồn kho đầu", 
+    "remainingQuantityFromDate": "Tồn kho đầu",
     "remainingQuantityToDate": "Tồn kho cuối",
-    "fromDate":"Từ Ngày",
+    "fromDate": "Từ Ngày",
     "toDate": "Tới ngày",
     "totalStockIn": "Tổng nhập",
     "totalStockOut": "Tổng xuất",
-    "price":"Đơn giá(VNĐ)",
-    "date":"Ngày tháng",
+    "price": "Đơn giá(VNĐ)",
+    "date": "Ngày tháng",
     "importQuantity": "Số lượng nhập",
     "exportQuantity": "Số lượng xuất"
   },
@@ -1053,15 +1149,15 @@
     "saveUpdate": "Thêm mới/Cập nhật phiếu tiếp nhận"
   },
   "purchaseRequestStauts": {
-    "search":"Tìm kiếm theo tên và mã trạng thái",
+    "search": "Tìm kiếm theo tên và mã trạng thái",
     "title": "Trạng thái yêu cầu mua sắm",
     "name": "Tên trạng thái yêu cầu",
     "code": "Mã trạng thái yêu cầu",
     "filter": "Tìm kiếm theo tên hoặc mã trạng thái",
-    "noti":{
-      "use":"Trạng thái đã được sử dụng, không thể xóa",
-      "use_all":"Danh sách trạng thái đều đã sử dụng",
-      "deleted_unused":"Đã xoá trạng thái chưa sử dụng"
+    "noti": {
+      "use": "Trạng thái đã được sử dụng, không thể xóa",
+      "use_all": "Danh sách trạng thái đều đã sử dụng",
+      "deleted_unused": "Đã xoá trạng thái chưa sử dụng"
     }
   },
   "purchaseRequest": {
@@ -1081,7 +1177,6 @@
     "listProducts": "Các sản phẩm mua sắm",
     "note": "Ghi chú",
     "search": "Tìm kiếm theo phòng ban"
-
   },
   "purchase_request_count": {
     "title": "Tổng hợp yêu cầu mua sắm",
@@ -1097,17 +1192,17 @@
     "description": "Mô tả",
     "code": "Mã menu",
     "name": "Tên menu",
-    "icon":"Biểu tượng",
-    "key":"Tên menu",
-    "path":"Đường dẫn",
+    "icon": "Biểu tượng",
+    "key": "Tên menu",
+    "path": "Đường dẫn",
     "parent": "Menu cha"
   },
-  "asset_liquidate":{
-    "dialog":"Thêm mới/Cập nhật phiếu thanh lý",
-    "deleteConfirm":"Chú ý nếu xóa sẽ phải cập nhật lại trạng thái những tài sản ở trong phiếu tại danh sách tài sản. Bạn có chắc chắn xóa?"
+  "asset_liquidate": {
+    "dialog": "Thêm mới/Cập nhật phiếu thanh lý",
+    "deleteConfirm": "Chú ý nếu xóa sẽ phải cập nhật lại trạng thái những tài sản ở trong phiếu tại danh sách tài sản. Bạn có chắc chắn xóa?"
   },
-  "TransferToAnotherUnit":{
-    "transferAddress":"Địa chỉ chuyển đi",
-    "dialog":"Thêm mới/Cập nhật phiếu chuyển đi"
+  "TransferToAnotherUnit": {
+    "transferAddress": "Địa chỉ chuyển đi",
+    "dialog": "Thêm mới/Cập nhật phiếu chuyển đi"
   }
 }

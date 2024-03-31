@@ -11,7 +11,6 @@ import Typography from "@material-ui/core/Typography";
 import "styles/views/_letter.scss";
 import { Grid } from "@material-ui/core";
 import { getDayMonthYear } from "utils";
-import { ACTION_PROCESS } from "app/constants/employeeConstants";
 import {
   addPromotionByEmployee,
   updatePromotionByEmployee,
@@ -140,7 +139,7 @@ export default function PromotionInfoDialog({
         className="dialog"
       >
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-          Đề xuất thăng chức
+        <Typography className="h4 font-weight-600">Đề xuất thăng chức</Typography>
         </DialogTitle>
         <DialogContent dividers>
           <div className="pl-20 pr-20">
@@ -298,36 +297,21 @@ export default function PromotionInfoDialog({
                 </Button>
               </>
             )}
-           {  
-              !ACTION_PROCESS.MANAGE.includes(promotion.processStatus ) && !promotionListByEmployee?.find(item => ACTION_PROCESS.PENDING.includes(item?.processStatus))
-             &&  (
+        
+             
                 <Button
                   variant="contained"
                   color="primary"
                   type="button"
                   className="mr-12"
-                  onClick={() => handleDialogSendLeader()}
-                >
-                  {t("general.sendLeader")}
-                </Button>
-              )
-            }
-            {  
-              !ACTION_PROCESS.MANAGE.includes(promotion.processStatus ) && promotionListByEmployee?.find(item => ACTION_PROCESS.PENDING.includes(item?.processStatus))
-             &&  (
-                <Button
-                  variant="contained"
-                  color="primary"
-                  type="button"
-                  className="mr-12"
-                  disabled
-                  onClick={() => handleDialogSendLeader()}
-                >
-                  {t("general.sendLeader")}
-                </Button>
-              )
-            }
+                  disabled={promotionListByEmployee?.some(item => item.processStatus == 2)}
 
+                  onClick={() => handleDialogSendLeader()}
+                >
+                  {t("general.sendLeader")}
+                </Button>
+  
+         
             <Button
               variant="contained"
               color="secondary"

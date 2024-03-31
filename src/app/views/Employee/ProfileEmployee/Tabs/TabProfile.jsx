@@ -29,13 +29,14 @@ const useStyles = makeStyles({
 
 export default function TabProfile({ t, employee }) {
   const classes = useStyles();
-  const {familyList,success}=useSelector(state=>state.family);
-  const dispatch=useDispatch();
-  useEffect(()=>{
-    dispatch(getFamilies(employee?.id))
- },[employee?.id,success])
+  const { familyList, success } = useSelector((state) => state.family);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getFamilies(employee?.id));
+  }, [employee?.id, success]);
+
   return (
-    <div className="tabProfile">
+    <div className="profile">
       <Grid container spacing={2}>
         <Grid item xs={3}>
           <Avatar
@@ -83,10 +84,12 @@ export default function TabProfile({ t, employee }) {
                     <Typography> 2.Giới tính:</Typography>{" "}
                     <Typography className="title">
                       {" "}
-                      {
-                        t(`staff.gender.${GENDER.find((item) => item.value === employee?.gender)
-                          ?.name}`)
-                      }
+                      {t(
+                        `staff.gender.${
+                          GENDER.find((item) => item.value === employee?.gender)
+                            ?.name
+                        }`
+                      )}
                     </Typography>
                   </div>
                 </Grid>
@@ -199,9 +202,13 @@ export default function TabProfile({ t, employee }) {
               <Table className={classes.table} aria-label="simple table">
                 <TableHead>
                   <TableRow>
-                    <TableCell align="center" width={50}>STT</TableCell>
+                    <TableCell align="center" width={50}>
+                      STT
+                    </TableCell>
                     <TableCell align="left">Tên người thân</TableCell>
-                    <TableCell align="center" width={100}>Ngày sinh</TableCell>
+                    <TableCell align="center" width={100}>
+                      Ngày sinh
+                    </TableCell>
                     <TableCell align="left">Quan hệ</TableCell>
                     <TableCell align="center">Căn cước</TableCell>
                     <TableCell align="center">Số điện thoại</TableCell>
@@ -211,17 +218,21 @@ export default function TabProfile({ t, employee }) {
                 <TableBody>
                   {familyList.map((familiy, index) => (
                     <TableRow key={familiy?.id}>
-                      <TableCell align="center" width={50}>{index + 1}</TableCell>
+                      <TableCell align="center" width={50}>
+                        {index + 1}
+                      </TableCell>
                       <TableCell align="left">{familiy?.name}</TableCell>
                       <TableCell align="center" width={100}>
                         {formatDate(familiy?.dateOfBirth)}
                       </TableCell>
                       <TableCell align="left">
-                        {
-                          t(`family.relationShip.${RELATIONSHIP.find(
-                            (item) => item.value === familiy?.relationShip
-                          ).name}`)
-                        }
+                        {t(
+                          `family.relationShip.${
+                            RELATIONSHIP.find(
+                              (item) => item.value === familiy?.relationShip
+                            ).name
+                          }`
+                        )}
                       </TableCell>
                       <TableCell align="center">
                         {familiy?.citizenIdentificationNumber}
@@ -229,9 +240,7 @@ export default function TabProfile({ t, employee }) {
                       <TableCell align="center">
                         {familiy?.phoneNumber}
                       </TableCell>
-                      <TableCell align="left">
-                        {familiy?.address}
-                      </TableCell>
+                      <TableCell align="left">{familiy?.address}</TableCell>
                     </TableRow>
                   ))}
                 </TableBody>
@@ -257,15 +266,15 @@ export default function TabProfile({ t, employee }) {
           <div className="my-40 flex flex-middle">
             <Grid container spacing={2}>
               <Grid item xs={4} sm={6}></Grid>
-              <Grid item xs={8} sm={6} >
+              <Grid item xs={8} sm={6}>
                 <LeterComfirmation
                   name={employee?.name}
-                  time={employee?.submitDay}
+                  time={employee?.submitDay || new Date()}
                 />
               </Grid>
             </Grid>
           </div>
-        </div> 
+        </div>
       </div>
     </div>
   );

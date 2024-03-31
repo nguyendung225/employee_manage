@@ -8,7 +8,6 @@ import MuiDialogActions from "@material-ui/core/DialogActions";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import Typography from "@material-ui/core/Typography";
-import { ACTION_PROCESS } from "app/constants/employeeConstants";
 import { Grid } from "@material-ui/core";
 import "styles/views/_letter.scss";
 import { formatCurrency, formatMoney, getDayMonthYear } from "utils";
@@ -80,6 +79,7 @@ export default function SalaryInfoDialog({
   const [showDialogApproved, setShowDialogApproved] = useState(false);
   const [showDialogAdditionalRequest, setShowDialogAdditionalRequest] =
     useState(false);
+    const [showPromotion, setShowPromotion] = useState(false);
   const [showDialogReasonForRejection, setShowDialogReasonForRejection] =
     useState(false);
     const [showDialogSendLeader, setShowDialogSendLeader] = useState(false);
@@ -116,7 +116,7 @@ export default function SalaryInfoDialog({
   };
   
   return (
-    <div className="wrapper">
+    <div >
       <Dialog
         onClose={handleClose}
         aria-labelledby="customized-dialog-title"
@@ -126,7 +126,7 @@ export default function SalaryInfoDialog({
         className="dialog"
       >
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-          Đề xuất tăng lương
+        <Typography className="h4 font-weight-600">Đề xuất tăng lương</Typography>
         </DialogTitle>
         <DialogContent dividers>
           <div className="pl-20 pr-20">
@@ -216,18 +216,15 @@ export default function SalaryInfoDialog({
                    
                     {salary?.salaryIncreaseStatus === 3 &&   <LeterComfirmation title={'Giám đốc'} name={ employee?.leaderName} time={salary?.startDate}/>
                          }
-                      
-                
-                   
-                  </div>
-                </Grid>
-              </Grid>
-            </div>
+                       </div> 
+                </Grid>  
+              </Grid> 
+            </div> 
           </div>
           </div>
         </DialogContent>
         <DialogActions>
-          <div className="text-center m-auto ">
+          <div className="text-center m-auto "> 
             {isManage && (
               <>
                 <Button
@@ -256,29 +253,17 @@ export default function SalaryInfoDialog({
                 </Button>
               </>
             )}
-           {  
-              !ACTION_PROCESS.MANAGE.includes(salary.salaryIncreaseStatus ) && !salaryListByEmployee?.find(item => ACTION_PROCESS.PENDING.includes(item?.salaryIncreaseStatus))
-             &&  (
-                <Button
-                  variant="contained"
-                  color="primary"
-                  type="button"
-                  className="mr-12"
-                  onClick={() => handleDialogSendLeader()}
-                >
-                  {t("general.sendLeader")}
-                </Button>
-              )
-            }
+           
+          
             {  
-              !ACTION_PROCESS.MANAGE.includes(salary.salaryIncreaseStatus ) && salaryListByEmployee?.find(item => ACTION_PROCESS.PENDING.includes(item?.salaryIncreaseStatus))
-             &&  (
+              (
                 <Button
                   variant="contained"
                   color="primary"
                   type="button"
                   className="mr-12"
-                  disabled
+                  disabled={salaryListByEmployee?.some(item => item.salaryIncreaseStatus == 2)}
+
                   onClick={() => handleDialogSendLeader()}
                 >
                   {t("general.sendLeader")}

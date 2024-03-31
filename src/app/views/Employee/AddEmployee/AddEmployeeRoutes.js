@@ -14,4 +14,3 @@ const AddEmployeeRoutes = [
 ];
 
 export default AddEmployeeRoutes;
- 

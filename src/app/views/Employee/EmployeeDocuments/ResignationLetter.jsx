@@ -8,7 +8,7 @@ import MuiDialogActions from "@material-ui/core/DialogActions";
 import IconButton from "@material-ui/core/IconButton";
 import CloseIcon from "@material-ui/icons/Close";
 import Typography from "@material-ui/core/Typography";
-import { Grid, TextField, TextareaAutosize } from "@material-ui/core";
+import { Grid, Input, TextField, TextareaAutosize } from "@material-ui/core";
 import { getDayMonthYear } from "utils";
 import { useDispatch } from "react-redux";
 import { updateEmployee } from "app/redux/actions/EmployeeActions";
@@ -78,16 +78,18 @@ export default function ResignationLetter({
     useState(false);
   const [showDialogReasonForRejection, setShowDialogReasonForRejection] =
     useState(false);
-  const [content, setContent] = useState({
+  const [formData, setFormData] = useState({
     endDay: employee?.endDay || new Date().toISOString().split("T")[0],
     reasonForEnding: employee?.reasonForEnding || "",
   });
+  
+  const [lines, setLines] = useState([]);
+  const defaultReason = "Lý do xin thôi việc: ";
 
   const dispatch = useDispatch();
 
   const handleDialogSendLeader = () => {
     setShowDialogSendLeader(true);
-    // setContent({ ...content,reasonForEnding: containerRef.current.innerText });
   };
   const handleDialogSendLeaderClose = () => {
     setShowDialogSendLeader(false);
@@ -115,58 +117,28 @@ export default function ResignationLetter({
   };
 
   const handleChangInput = (e) => {
-    !isManage &&  setContent({ ...content, [e.target.name]: e.target.value });
+    !isManage && setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const textareaRef = useRef(null);
-  const reasonRef = useRef(null);
-  const [lines, setLines] = useState([]);
-  const [status, setStatus] = useState(false);
-  const defaultReason = "Lý do xin thôi việc: ";
   useEffect(() => {
-    const lines = content.reasonForEnding?.split("\n");
-    const countLines = lines.length > 0 ? lines.length : 1;
-    const lineSpans = [];
-    lines.forEach((line, index) => {
-      lineSpans.push(
-        <span
-          key={index}
-          style={{
-            position: `absolute`,
-            left: "0px",
-            top: `${(100 / countLines) * (index + 1)}%`,
-            width: "100%",
-            display: "inline-block",
-            border: "1px dashed black",
-            marginTop: "-8px",
-          }}
-        ></span>
-      );
-    });
-
-    setLines(lineSpans);
-    if (textareaRef.current) {
-      const textareaHeight = textareaRef.current.offsetHeight;
-      reasonRef.current.style.height = `${textareaHeight}px`;
-    } else {
-      setStatus(true);
-    }
-  }, [content?.reasonForEnding, textareaRef.current, status]);
-
+    const lines = formData.reasonForEnding?.split("\n");
+    setLines(lines);
+  }, [formData?.reasonForEnding]);
 
   const handleChangReason = (e) => {
     const { value } = e.target;
-    if (value.startsWith(defaultReason) ) {
-    !isManage && setContent({
-        ...content,
-        reasonForEnding: value.replace(defaultReason, ""),
-      });
+    if (value.startsWith(defaultReason)) {
+      !isManage &&
+        setFormData({
+          ...formData,
+          reasonForEnding: value.replace(defaultReason, ""),
+        });
     } else {
-      !isManage &&  setContent({ ...content, reasonForEnding: "" });
+      !isManage && setFormData({ ...formData, reasonForEnding: "" });
     }
   };
 
-  const { day, month, year } = getDayMonthYear(content?.endDay);
+  const { day, month, year } = getDayMonthYear(formData?.endDay);
   return (
     <div>
       <Dialog
@@ -178,7 +150,9 @@ export default function ResignationLetter({
         className="dialog"
       >
         <DialogTitle id="customized-dialog-title" onClose={handleClose}>
-          Đơn xin thôi việc
+          <Typography className="h4 font-weight-600">
+            Đơn xin thôi việc
+          </Typography>
         </DialogTitle>
         <DialogContent dividers>
           <div className="m-auto px-20 py-20">
@@ -220,7 +194,7 @@ export default function ResignationLetter({
               <Typography>
                 <TextField
                   type="date"
-                  value={content?.endDay}
+                  value={formData?.endDay}
                   onChange={handleChangInput}
                   className="endDay"
                   InputLabelProps={{
@@ -236,22 +210,39 @@ export default function ResignationLetter({
                 .
               </Typography>
             </Typography>
-            <Typography className="reason" ref={reasonRef}>
+            <Typography className="reason">
               <Typography className={"title"}> Lý do xin thôi việc:</Typography>
-              <textarea
-                ref={textareaRef}
-                //  className
+              <Input
+                multiline
+                disableUnderline
                 className="reasonForEnding"
                 onChange={handleChangReason}
-                value={isManage? defaultReason +  content?.reasonForEnding.trim():defaultReason +  content?.reasonForEnding}
+                value={
+                  isManage
+                    ? defaultReason + formData?.reasonForEnding.trim()
+                    : defaultReason + formData?.reasonForEnding
+                }
                 name="reasonForEnding"
                 rows={
-                  content?.reasonForEnding
-                    ? content?.reasonForEnding.split("\n").length
+                  formData?.reasonForEnding
+                    ? formData?.reasonForEnding.split("\n").length
                     : 1
                 }
               />
-              {lines}
+              {lines.map((item, index) => (
+                <span
+                  key={index}
+                  style={{
+                    position: `absolute`,
+                    left: "0px",
+                    top: `${(100 / lines.length) * (index + 1)}%`,
+                    width: "100%",
+                    display: "inline-block",
+                    border: "1px dashed black",
+                    marginTop: "-8px",
+                  }}
+                ></span>
+              ))}
             </Typography>
 
             <Typography className="flex">
@@ -277,7 +268,7 @@ export default function ResignationLetter({
               <Grid item xs={6}></Grid>
               <Grid item xs={6}>
                 <LeterComfirmation
-                  time={content?.endDay}
+                  time={formData?.endDay}
                   name={employee?.name}
                 />
               </Grid>
@@ -343,8 +334,10 @@ export default function ResignationLetter({
           open={showDialogSendLeader}
           handleClose={handleDialogSendLeaderClose}
           employee={employee}
-          content={content}
+          formData={formData}
           handleDialogEmployeeClose={handleDialogEmployeeClose}
+          handleDialogResignClose={handleClose}
+          isEnd={true}
         />
       )}
       {showDialogAdditionalRequest && (

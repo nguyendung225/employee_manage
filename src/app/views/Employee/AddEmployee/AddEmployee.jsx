@@ -14,6 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   deleteEmployee,
   getEmployees,
+  setEmployee,
 } from "app/redux/actions/EmployeeActions";
 import {
   ACTION_EMPLOYEE,
@@ -30,11 +31,11 @@ export default function AddEmployee({ t }) {
   const [pageIndex, setPageIndex] = useState(0);
   const [showEmployee, setShowEmployee] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
-  const [employee, setEmployee] = useState({});
+  const [showNotify,setShowNotify]=useState(false)
   const [shouldOpenConfirmationDialog, setShouldOpenConfirmationDialog] =
     useState(false);
   const [id, setId] = useState(null);
-  const { employeeList, totalElements, success } = useSelector(
+  const { employeeList, totalElements,employee, success } = useSelector(
     (state) => state.employee
   );
 
@@ -71,12 +72,12 @@ export default function AddEmployee({ t }) {
 
   const handleDialogEmployee = (employee) => {
     setShowEmployee(true);
-    employee && setEmployee(employee);
+    employee && dispatch(setEmployee(employee));
   };
 
   const handleCloseEmployeeDialog = () => {
     setShowEmployee(false);
-    setEmployee({});
+    dispatch(setEmployee({}));
   };
 
   const handleDeleteEmployee = (employee) => {
@@ -88,18 +89,31 @@ export default function AddEmployee({ t }) {
     setShouldOpenConfirmationDialog(false);
     setId(null);
   };
+  
   const handleConfirmationResponse = () => {
     dispatch(deleteEmployee(id));
     handleDialogConfirmationClose();
   };
+
   const handleViewEmployee = (employee) => {
     setShowProfile(true);
-    setEmployee(employee)
+    dispatch(setEmployee(employee));
+    
   };
+
   const handleDialogProfileClose = () => {
     setShowProfile(false);
   };
-  const handleNotifyDialog = (employee) => {};
+
+  const handleNotifyDialog = (employee) => {
+    setShowNotify(true)
+    dispatch(setEmployee(employee))
+  };
+
+  const handleNotifyClose=()=>{
+    setShowNotify(false)
+    dispatch(setEmployee({}))
+  }
   const columns = employeesColumns(t, (rowData) => (
     <div>
       {ACTION_EMPLOYEE.EDIT.includes(rowData.submitProfileStatus) && (
@@ -220,6 +234,19 @@ export default function AddEmployee({ t }) {
           employee={employee}
         />
       )}
+      {showNotify && <ShowDialog open={showNotify} 
+        text={
+          employee?.submitProfileStatus === "4"
+            ? employee?.additionalRequest ||  t('general.none')
+            : employee?.reasonForRejection || t('general.none')
+        }
+        title={
+          employee?.submitProfileStatus === "4"
+            ?  t('general.additionalRequest.title')
+            :  t('general.refuse.title')
+        }
+        onConfirmDialogClose={handleNotifyClose}/>}
+      
     </div>
   );
 }

@@ -5,6 +5,9 @@ import sessionRoutes from "./views/sessions/SessionRoutes";
 import dashboardRoutes from "./views/dashboard/DashboardRoutes";
 import ConstantList from "./appConfig";
 import AddEmployeeRoutes from "./views/Employee/AddEmployee/AddEmployeeRoutes";
+import LeadershipPendingRoutes from "./views/Leader/LeadershipPending/LeadershipPendingRoutes";
+import ManageEmployeeRoutes from "./views/Employee/ManageEmployee/ManageEmployeeRoutes";
+import EndEmployeeRoutes from "./views/Employee/EndEmployee/EndEmployeeRoutes";
 
 const redirectRoute = [
   {
@@ -23,8 +26,11 @@ const errorRoute = [
 const routes = [
   ...homeRoutes,
   ...sessionRoutes,
-  ...dashboardRoutes,
+  ...dashboardRoutes, 
   ...AddEmployeeRoutes,
+  ...ManageEmployeeRoutes,
+  ...LeadershipPendingRoutes,
+  ...EndEmployeeRoutes,
   ...errorRoute,
 ];
 
