@@ -8,6 +8,7 @@ export const STATUS_EMPLOYEE = {
   ADD: "1,2,4,5",
   PENDING: "2,6",
   MANAGE: "3,6,8,9",
+  END:'0,7',
 };
 export const SUBMIT_PROFILE_STATUS = [
   { value: 0, name: "save" },
@@ -21,7 +22,7 @@ export const SUBMIT_PROFILE_STATUS = [
   { value: 8, name: "additionalRequestEnd" },
   { value: 9, name: "rejectEnd" },
 ];
-export const TEAMS = [
+export const TEAMS = [ 
   { value: 0, name: "Frontend" },
   { value: 1, name: "Backend" },
   { value: 2, name: "BA" },
@@ -34,6 +35,7 @@ export const ACTION_EMPLOYEE = {
   DELETE: "1",
   NOTIFY: "4,5",
   PENDING_END: "6",
+  END:'7'
 };
 
 export const TAB_EMPLOYEE = 0;

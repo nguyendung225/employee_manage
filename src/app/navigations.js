@@ -30,7 +30,7 @@ export const navigations = [
       {
         name: "Dashboard.employee_manage.end",
         isVisible:true,
-        path: ConstantList.ROOT_PATH + "employee_manage/manageEmployee",
+        path: ConstantList.ROOT_PATH + "employee_manage/endEmployee",
         icon: "keyboard_arrow_right"
       },
     ]
